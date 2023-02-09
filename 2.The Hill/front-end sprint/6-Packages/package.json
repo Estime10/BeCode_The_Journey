@@ -1,0 +1,24 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "working on npm ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx parcel src/index.html",
+    "start": "newFile: mkdir package && > index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estime",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mapbox-gl": "^2.10.0",
+    "parcel": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
+  }
+}

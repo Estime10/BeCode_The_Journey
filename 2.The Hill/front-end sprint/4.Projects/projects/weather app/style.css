@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    height: 100vh;
+    margin: 0px;
+    font-family: "Permanent Marker", cursive;
+    color: white;
+    align-items: center;
+    justify-content: flex-end;
+}
+.contenaire{
+    font-size: 25px;
+    position: relative;
+    top: -215px;
+    left: 10px;
+    background: #0a0909;
+    padding: 0.6em;
+    color: white;
+    border-radius: 30px;
+    /* margin: 1em; */
+    opacity: 0.7;
+}
+#bxl{
+    margin: 0;
+}
+#bxl-2{
+    margin: 0;
+}
+button{
+    margin: 0.5em;
+    border-radius: 50%;
+    border:none;
+    height: 2.5em;
+    width:2.5em;
+    opacity: 0.7;
+}
+button:hover{
+    background-color: rgb(10, 120, 167);
+}
+.searchBox{
+    background: #0a0909;
+    padding: 2em;
+    color:white;
+    border-radius: 30px;
+    max-width: 420px;
+    margin: 1em;
+    opacity: 0.7;
+}
+input{
+    margin: 0.5em;
+    opacity: 0.3;
+    border-radius: 50px; 
+    opacity: 0.7;
+    height: 2.5em;
+    width:13em;
+    border: none;
+    color: rgb(0, 0, 0);
+}
+input[type="text"]{
+    font-size: 22px;
+    line-height: 20px;
+    height: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    color: #888;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+.box{
+    background: #0a0909;
+    padding: 0.6em;
+    color: white;
+    border-radius: 30px;
+    margin: 1em;
+    opacity: 1.7;
+}
+h3{
+    display:flex;
+    justify-content: center;
+    color:rgb(252, 252, 255);
+    text-transform: capitalize;
+}
+.search{
+    display:flex;
+    justify-content: center;
+}
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image{
+    height: 100px;
+    width: 80%;
+}
+
+.imgClass{
+    height: 100px;
+    width: 80%;
+}
+.description {
+    text-transform: capitalize;
+    
+}
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  
+    
+  
+    
+  <form action="/test" method="post" enctype="multipart/form-data">
+    <label for="image">Select Image</label>
+    <!-- <input type="file"  name="image"> -->
+    <img id="pics" 
+                src="Image.jpg" 
+                alt="your image" width="100" height="100" style="border-radius: 50%;" />
+                <input type="file"  name="image"
+          onchange="document.getElementById('pics').src = window.URL.createObjectURL(this.files[0])"
+                accept=".jpg, .jpeg, .png" />
+    <button type="submit" name="submit" value="Add Image">upload</button>
+</form>
+</body>

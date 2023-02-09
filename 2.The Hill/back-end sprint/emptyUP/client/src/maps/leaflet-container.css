@@ -1,0 +1,10 @@
+.leaflet-map {
+    height: 80%;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+
+}
+.leaflet-container {
+    background-color: gray !important;
+  }

@@ -1,0 +1,14 @@
+{
+  "name": "3.the-moutain",
+  "version": "1.0.0",
+  "description": "quiz inside terminal",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "the real Batman",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

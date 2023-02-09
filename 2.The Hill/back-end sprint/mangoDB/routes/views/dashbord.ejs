@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+  <title>What-a-Dashboard</title>
+</head>
+<body>
+
+  
+<h1 class="proname"><span class="nom"><%= name %></span> 's Sneaker profile</h1>
+  
+    
+
+<!-- <a href="/logout" class="btn btn-secondary">Logout</a> -->
+<!-- move the logout in the profile settings menu -->
+
+
+           
+<div class="name-pro">
+    <div class="picprof">
+      <a href="http://localhost:3000/avatar/<%= name %>">
+        <% if (typeof avatar !== 'undefined' && avatar) { %>
+        <img src="/uploads/<%= avatar %>" alt="Avatar"
+             width="200px" height="200px" style="border-radius: 50%; margin-top: -70px;" />
+        <% } else { %>
+        <img src="/Image.jpg" alt="Avatar" style="border-radius: 50%; margin-top: -70px;"
+             width="200px" height="200px" />
+        <% } %>
+      </a>
+</div>
+    
+    
+
+<div class="hotdrop">
+      <h2 class="drop">THE <span class="nom">HOT</span> DROP</h2> 
+</div>
+<div class="container-sneaker">
+    <!--  need to create endpoints to this route  create a css aswell-->
+    <div class="slide"  id="slide1" style="background-image: url('/travis-scott-jordan-1-low-1670838159.jpg');">
+      <h3>Nike Travis Scott Phantom Black </h3>
+    </div>
+  
+    <div class="slide"  id="slide2" style="background-image: url('/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
+      <h3>Air Jordan 1 High OG Dior </h3>
+    </div>
+  
+    <div class="slide"  id="slide3" style="background-image: url('/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
+      <h3>Air Jordan 4 UC </h3>
+    </div>
+  
+    <div class="slide"  id="slide4" style="background-image: url('/yeezy-700-wash-orange-IG-1024x1280.jpg');">
+      <h3>Yeezy 700 Wash orange</h3>
+    </div>
+  </div>
+
+  <div class="bio">
+      <p style="text-align: center">"Everything I’m building now is because of them and for them," he said.<br>
+        "As a coach for one of my daughter’s teams, I also hope to pass along a <br>
+        little 
+        Basketball knowledge too." Bryant had a magnificent and straightforward<br> 
+        way with words, talent he worked hard at, Just like he did to hone his skills on<br> 
+        the court. 
+        "Through basketball, I learned discipline, perseverance, teamwork,<br>
+        failure, success. 
+        </p>
+  </div>
+
+  
+  <!-- </section>   -->
+  <div class="followers">
+      <p class="posts">posts
+          <span class="number" id="post-count">0</span>
+      </p>
+      <p class="follow">followers
+          <span class="number" id="following-count">0</span>
+      </p>
+      <p class="followed">followed
+          <span class="number">0</span>
+      </p>
+  </div>
+
+  <div class="btn-activities">
+      <button class="following">
+       follow
+  </button>
+
+   <button class="btn-activities">
+      <a href="http://localhost:3000/post/<%= name %>"
+        class="add"> post
+      </a>
+</button>
+</div>
+</div>
+
+</body>
+<footer>
+  <p>
+    Estime aka The Real Batman
+  </p>
+</footer>
+<script>
+    function sliderPluggin(activeslide = 0) {
+  const slides = document.querySelectorAll('.slide');
+  
+  slides[activeslide].classList.add('active');
+
+  function clearActiveClasses() {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+  }
+
+  for (const slide of slides) {
+    slide.addEventListener('click', () => {
+      clearActiveClasses();
+      slide.classList.add('active');
+    });
+  }
+}
+
+sliderPluggin(0);
+
+// button follow
+const followBtn = document.querySelector(".following")
+const postBtn = document.querySelector(".post")
+// count followers
+const count = document.querySelector("#following-count")
+const add= document.querySelector("#post-count")
+
+// button clicked
+let clicked = false;
+followBtn.addEventListener("click", () =>{
+  if(!clicked) {
+      clicked = true;
+      count.textContent++;
+  } else {
+      clicked = false;
+      count.textContent--;
+  }
+});
+// button posted
+let posted = false;
+addBtn.addEventListener("click", () =>{
+  if(!posted) {
+      posted = true;
+      add.textContent++;
+  } else {
+      posted = false;
+      add.textContent--;
+  }
+});
+
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+      body {
+        /* background: #f6f5f7; */
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Montserrat', sans-serif;
+        color:whitesmoke;
+      }
+      .picprof{
+        display: flex;
+        float: right;
+        margin-top: -50px;
+      }
+      .bio{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        width: 32%;
+        align-content: flex-end;
+        justify-content: flex-start;
+      }
+      .container-sneaker {
+        width: 60%;
+        display: flex;
+        padding: 0px 0px;
+        float: left;
+        left: 50px;
+        margin-right: 100px;
+      }
+      .hotdrop{
+        align-items: center;
+        }
+      .followers{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 32%;
+        align-content: flex-end;
+        justify-content: flex-start;
+      }
+      .slide {
+        height: 50vh;
+        border-radius: 20px;
+        margin: 10px;
+        margin-top: 100px;
+        cursor: pointer;
+        color: #fff;
+        flex: 1;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        transition: all 500ms ease-in-out;
+        margin-left: 4px;
+      }
+
+      .slide h3 {
+        position: absolute;
+        font-size: 15px;
+        bottom: 20px;
+        left: 15px;
+        margin: 0;
+        opacity: 0;
+        color: red;
+      }
+
+      .slide.active {
+        flex: 10;
+      }
+
+      .slide.active h3 {
+        opacity: 1;
+        transition: opacity 0.3s ease-in 0.4s;
+      }
+      .proname{
+        text-align: left;
+        text-transform: uppercase;
+        margin-top: 25px;
+        color: whitesmoke;
+      }
+      .nom{
+        color: rgb(210, 42, 42);
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 30px;
+      }
+      .defaultpic{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      h1 {
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+      }
+      .proname{
+        text-align: left;
+        text-transform: uppercase;
+        margin-top: 25px;
+        color:whitesmoke;
+      }
+       h2 {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-top: 60px;
+        color: whitesmoke;
+      } 
+      .lead{
+        margin-top: 35px;
+        text-align: left;
+      }
+      
+      p {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        margin: 0px 0 10px;
+
+      }
+      
+      span {
+        font-size: 15px;
+      }
+      
+      a {
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+        margin: 15px 0;
+      }
+      
+      button {
+        border-radius: 20px;
+        border: 1px solid whitesmoke;
+        background-color: black;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0px 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+      }
+      .modifProfil{
+        top: 55px;
+        border: 1px solid whitesmoke;
+        border-radius: 20px;
+        background-color: black;
+        color: white;
+        font-size: 10px;
+        font-weight: bold;
+        padding: 0px 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        flex-direction: row;
+        position: relative;
+      }
+      
+      button:active {
+        transform: scale(0.95);
+        padding: 1px 10px;
+      }
+      
+      button:focus {
+        outline: none;
+      }
+      
+      button.ghost {
+        background-color: transparent;
+        border-color: #FFFFFF;
+      }
+      
+      form {
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 50px;
+        height: 100%;
+        text-align: center;
+        border-radius: 2%;
+      }
+      
+      input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 100%;
+      }
+      .form-container {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+      }
+      .sign-in-container {
+        left: 0;
+        width: 50%;
+        z-index: 2;
+      }
+
+      @keyframes show {
+        0%, 49.99% {
+          opacity: 0;
+          z-index: 1;
+        }
+        
+        50%, 100% {
+          opacity: 1;
+          z-index: 5;
+        }
+      }
+     
+      .container-pro{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+      }
+      .followers{
+        display: flex;
+        font-size: 25px;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
+      .number{
+        color: rgb(210, 42, 42);
+        text-transform: lowercase;
+        font-size: 20px;
+        margin-top: 19px;
+      }
+      .posts{
+        font-size: 25px;
+        margin-right: 5px;
+        margin-bottom: 20px;
+      }
+      .follow{
+        font-size: 25px;
+        margin-right: 5px;
+      }
+      .followed{
+        font-size: 25px;
+        margin-right: 5px;
+      }
+      footer {
+        /* background-color: #f6f5f7; */
+        color: red;
+        font-size: 14px;
+        bottom: 0;
+        position: fixed;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 999;
+      }
+      
+      footer p {
+        margin: 10px 0;
+      }
+      .fa-circle-plus:before, .fa-plus-circle:before {
+        content: "\f055";
+        position: absolute;
+        top: 200px;
+        right: 235px;
+        font-size: 20px;
+      }
+      
+</style>

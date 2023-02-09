@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Locker-Room</title>
+</head>
+<body>
+    <form action="/">
+        <div class="mb-3">
+            <label>Last name :</label>
+            <input type="text" name="name" id="last_name" class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Email Address :</label>
+            <input type="text" name="email_address" id="email_address" class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Password :</label>
+            <input type="text" name="password" id="password" class="form-control"/>
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" name="submit_button" id="login" value="subscribe" />
+            <input type="submit" name="submit_button" id="btn" value="login" />
+        </div>    
+    </form> 
+
+    
+
+    <script>
+        
+        const subscribe = document.getElementById("login")
+        const login = document.getElementById("btn")
+        const pwr = document.getElementById("password")
+        const mail = document.getElementById("email_address")
+        const name = document.getElementById("last_name")
+
+        const url = "http://localhost:3000"
+
+
+        subscribe.addEventListener("click", getInfo)
+        async function getInfo (e) {
+            e.preventDefault()
+            const res = await fetch(url, 
+            {
+                method: "GET"
+            }) 
+            console.log(res)
+            const data = await res.json()
+            input.value = data.info
+                
+            
+        }
+        login.addEventListener("click", postInfo)
+
+        async function postInfo (e) {
+            e.preventDefault()
+            if (input.value == "") {
+                return
+            }
+
+            const res = await fetch(url,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    parcel: input.value
+                })
+
+            })
+            console.log(res)
+            const data = await res.json()       //add up DB
+            input.value = data.info
+        }
+    </script>
+
+</body>
+</html>

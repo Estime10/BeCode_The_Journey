@@ -1,0 +1,122 @@
+
+body{
+    /* color: whitesmoke; */
+    width: 90%;
+    margin: auto;
+    background-image:url(farmer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* font-size: x-large; */
+    
+}
+header{
+    text-align: center;
+    
+}
+header >h1{
+    display: inline-flex;
+    background-color: yellow;
+    color:black;
+}
+.date{
+    padding:32rem;
+}
+q{
+    font-size: 160%;
+    width: 50%;
+    background-color: rgb(164, 163, 163);
+    margin: 25%;
+    border-left: solid firebrick 3px;
+    padding-left: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px; 
+    color:blue;
+    font-style: italic;
+}
+p{
+    font-size: larger;
+    color: white;
+    /* margin-bottom: 5rem; */
+    font-size: x-large;
+
+}
+.Farmer{
+    color:black;
+    font-size: 25px;
+    display: inline-flex;
+    background-color: whitesmoke;
+
+}
+.villagers{
+    color: gray;
+    font-size: 25px;
+    display: inline-flex;
+    background-color: black;
+}
+blockquote{
+    font-size: x-large;
+}
+em{
+    font-size: x-large;
+    color: whitesmoke;
+   }
+table{
+    font-size: xx-large;
+    border-collapse: collapse;
+}
+td, th{
+    border: 3px solid black;
+    text-align: center;
+   
+}
+.grey{
+    background-color: grey;
+}
+.white{
+    background-color: white;
+}
+h4{
+    font-weight: bold;
+    font-size: x-large;
+}
+ul{
+    font-size: x-large;
+}
+.bien{
+    background-image: url(bien.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:28% 75%;
+}
+.mal{
+    background-image: url(mal.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:28% 75%;}
+.chat{
+    background-image: url(chat.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:28% 75%;
+}
+.imagetxt{
+    float: left;
+    margin: 0 30px 10px 0;
+    width : 500px;
+   
+}
+.txt{
+    float: inline-start;
+    margin: auto 0;
+}
+mark.red{
+    color:red;
+    background: none;
+}
+mark.green{
+    color:green;
+    background: none;
+    text-transform: capitalize;
+}
+

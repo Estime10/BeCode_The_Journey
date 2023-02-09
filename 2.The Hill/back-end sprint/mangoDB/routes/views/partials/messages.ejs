@@ -1,0 +1,35 @@
+<% if(typeof errors != "undefined") { %>
+    <% errors.forEach( (error) =>{ %>
+
+    <div class="erromessage">
+      <%= error.message %>
+    </div>
+        
+    
+   <% }) %>
+<% } %>
+
+<% if(success_msg!= '') { %> 
+    
+    <p class="succes" style="color: green;"><%=success_msg %> </p>
+ 
+    <% } %>
+
+
+    <% if(error_msg != '') { %> 
+        <%= error_msg %> 
+      <% } %> 
+      
+      <% if(error != '') { %> 
+        <%= error %> 
+      <% } %>
+
+
+      
+<style>
+  .erromessage{
+    color: red;
+    font-size: large;
+  }
+</style>
+        

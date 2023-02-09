@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-image: url(./assets/Blanc\ Minimaliste\ Océan\ Voyage\ Image\ Carte\ postale.png);
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+#menu{
+    position: relative;
+    top: -28px;
+
+}
+.middle{
+    display: flex;
+    justify-content: center;
+
+}
+.picture{
+    width: 534px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    position: relative;
+    top: -129px;
+    left: 120px;
+    -webkit-animation: slide-tl 0.9s linear 2s alternate-reverse both;
+	animation: slide-tl 0.9s linear 2s alternate-reverse both;
+}
+.txt{
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    position: relative;
+    left: 106px;
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+	animation: rotate-center 0.6s ease-in-out both;
+}
+.txt> h2{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    position: relative;
+    top: 42px;
+}
+.txt> h4{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom:14px;
+    text-transform: capitalize;
+    position: relative;
+    top: 42px;
+
+}
+.txt> p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    position: relative;
+    top: 45px;
+}
+.boutons{
+    display: flex;
+    justify-content:space-evenly;
+    padding-left: 180px;
+}
+.one{
+    text-transform: uppercase;
+    font-size:25px ;
+    border: solid 2px black;
+    border-radius: 300px;
+    text-align: center;
+    box-sizing: border-box;
+    width: 215px;
+    height: 60px;
+
+}
+.color{
+    background-color: #4C00F7;
+    color: white;
+    
+}
+.contacts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: -261px;
+    left: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+/* card rotation */
+
+@-webkit-keyframes slide-tl {
+    0% {
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      -webkit-transform: translateY(-100px) translateX(-100px);
+              transform: translateY(-100px) translateX(-100px);
+    }
+  }
+  @keyframes slide-tl {
+    0% {
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      -webkit-transform: translateY(-100px) translateX(-100px);
+              transform: translateY(-100px) translateX(-100px);
+    }
+  }
+  /* texte rotation */
+
+  @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
+  

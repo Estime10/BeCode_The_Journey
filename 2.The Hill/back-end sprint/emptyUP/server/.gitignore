@@ -1,0 +1,9 @@
+.DS_STORE
+node_modules
+node_modules
+package-lock.json
+.env
+server.zip
+exemp.mjs
+tmp
+schemaDbEmptyUp.sql

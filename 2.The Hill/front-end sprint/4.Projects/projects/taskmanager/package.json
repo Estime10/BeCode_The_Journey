@@ -1,0 +1,12 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task.js",
+  "scripts": {
+    "start": "node task.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
