@@ -36,12 +36,13 @@ const storage = multer.diskStorage({
 
 // EJS
 app.use(expressEjsLayouts);
-app.use(express.static("./public"));
+app.use(express.static('public')); 
+app.use('/uploads', express.static('uploads'))
 app.set("views", "./routes/views");
-app.set("view engine", "ejs");
+app.set("view engine", "ejs")
 // Static files
-app.use(express.static("public"));
-app.use(express.static("public/uploads/"));
+
+
 // BodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -207,7 +208,7 @@ app.get("/avatar/:id", (req, res) => {
   }
   const _id = req.user._id;
   const name = req.user.name;
-  const avatarData = avatar;
+  
   req.session.user = { _id, name };
 
   User.findOne({ user: _id, name })
@@ -238,7 +239,7 @@ app.post("/avatar/:id", upload, (req, res) => {
           const { _id, name, avatar } = user;
           res.render("avatar", { avatar: req.file.filename, name,  _id });
         }
-      });
+      })
     }
   });
 })
