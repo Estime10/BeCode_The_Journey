@@ -185,11 +185,12 @@ app.post("/dashbord/:id", (req, res) => {
         return res.status(404).json({ error: "User not found" });
       }
       const name = user.name;
-      Posts.findOne({ userId: _id })
-        .then(post => {
-          if (!post) {
+      Posts.find({ userId: _id }).sort({ createdAt: -1 }).limit(1)
+        .then(posts => {
+          if (!posts.length) {
             return res.status(404).json({ error: "Post not found" });
           }
+          const post = posts[0];
           console.log("post", post)
           const avatar = post.avatar;
           req.session.user = { _id, name, avatar };
@@ -199,7 +200,8 @@ app.post("/dashbord/:id", (req, res) => {
           res.status(500).json({ error: error });
         });
     })
-})
+});
+
 // Avatar Page
 app.get("/avatar/:id", (req, res) => {
   console.log(req.user)
