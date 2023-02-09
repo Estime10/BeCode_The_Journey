@@ -5,7 +5,7 @@
 
 >This repository serves as a collection of my projects and assignments that I have worked on throughout my journey. Each project showcases my skills and understanding of different technologies and programming languages such as HTML, CSS, JavaScript, and more.
 
->Here's a list of the repositories included in this file:
+>Here's a list of the repositories included in this folder:
 
 - 1.The Field:    In it you will have a sneak peek of what I did when I first started my training
 - 2.The Hill:     In it you will see more of my projects with better stacks then html/css 
