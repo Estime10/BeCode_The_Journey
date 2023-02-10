@@ -6,11 +6,12 @@ import session from "express-session"
 import dotenv from "dotenv"
 import passport from "passport" 
 import passportConfig from './config/passport.mjs'
-import User from "./models/user.mjs"
-import Posts from "./models/posts.mjs"
-import bcrypt from "bcryptjs" 
 import multer from "multer"
 import bodyParser from "body-parser"
+import { getLogin, postLogin } from './controllers/login.mjs';
+import { getRegister, postRegister } from './controllers/register.mjs';
+import { getAvatar, postAvatar } from './controllers/avatar.mjs';
+import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
 
 // Multer config
 const storage = multer.diskStorage({
@@ -78,173 +79,14 @@ const upload = multer({ storage: storage,
 app.get("/", (req, res)=>{
     res.render("welcome")
 })
-// Login Page
-app.get("/login", ( req, res ) =>{
-    res.render("login")
-})
-// Login Handle
-app.post("/login", (req, res, next) => {
-  console.log(req.body)
-  passport.authenticate("local", (err, user, info) => {
-  if (err) { return next(err) }
-  if (!user) {
-  req.flash("error", "Incorrect email or password")
-  return res.redirect("/login")
-  }
-  req.logIn(user, function(err) {
-  if (err) { return next(err) } 
-  return res.redirect("/dashbord")
-  });
-  })(req, res, next)
-}) 
-// Register Page
-app.get("/register", ( req, res ) =>{
-    res.render("register")
-})
-// Register Handle
-app.post("/register", ( req, res) =>{ 
-    console.log(req.body)
-    const { name, email, password, password2 } = req.body
-    let errors = []
-    // Check required fields
-    if ( !name || !email || !password || !password2 ){
-       errors.push({ message: "Please fill in all fields"}) 
-    }
-    // Check passwords match
-    if ( password !== password2 ){
-        errors.push({ message: "Password do not match"})
-    }
-    // Check password lenght
-    if ( password.length <6 ){
-        errors.push({ message: "Password should contain min 6 characters"})
-    }
-    if ( errors.length > 0 ){
-        res.render("register", {
-            errors,
-            name: name,
-            email: email,
-            password: password,
-            password2: password2
-        })
-    }
-    else { 
-    // Validation passed
-    User.findOne({ email: email })
-        .then(user => {
-            if (user){
-            // User exists
-            errors.push({ message: "Email already registered"})
-            res.render("register", {
-                errors,
-                name: name,
-                email: email,
-                password: password,
-                password2: password2
-    })
-        }
-            else {
-                const newUser = new User({
-                    name,
-                    email,
-                    password
-            })
-    // Hash Password
-    bcrypt.genSalt(10, (err, salt) =>
-    bcrypt.hash(newUser.password, salt,(err, hash)=>{
-            if (err) throw err
-    // set hashed password
-    newUser.password = hash
-    // save user
-    newUser.save()
-            .then( user => {
-            req.flash("success_msg", "You are now registered")
-            res.redirect("/login")
-            })
-            .catch( err => console.log(err))}))
-            }
-        })
-    }
-}) 
-// Dashbord Page
-app.get("/dashbord", (req, res) => {
-  console.log(req.user) 
-  if (!req.user) {
-  return res.redirect("/login") 
-  }
-  const { name, email, image, slide1, slide2, slide3, slide4, bio, _id } = req.user;
-  res.render("dashbord",
-   { name, email, image, slide1, slide2, slide3, slide4, bio, _id });
-})
-// working for one picture
-app.post("/dashbord/:id", (req, res) => {
-  console.log("dashbordPost", req.body)
-  const _id = req.params.id;
-  User.findOne({ _id })
-    .then(user => {
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      const name = user.name;
-      Posts.find({ userId: _id }).sort({ createdAt: -1 }).limit(1)
-        .then(posts => {
-          if (!posts.length) {
-            return res.status(404).json({ error: "Post not found" });
-          }
-          const post = posts[0];
-          console.log("post", post)
-          const avatar = post.avatar;
-          req.session.user = { _id, name, avatar };
-          res.render("dashbord", { _id, name, avatar });
-        })
-        .catch(error => {
-          res.status(500).json({ error: error });
-        });
-    })
-});
-
-// Avatar Page
-app.get("/avatar/:id", (req, res) => {
-  console.log(req.user)
-  if (!req.user) {
-    return res.redirect("/login");
-  }
-  const _id = req.user._id;
-  const name = req.user.name;
-  
-  req.session.user = { _id, name };
-
-  User.findOne({ user: _id, name })
-    .then(profile => {
-      res.render("avatar", { profile, _id, name, avatar: '' });
-    })
-    .catch(error => {
-      res.status(500).json({ error: error });
-    });
-})
-// Avatar Handle
-app.post("/avatar/:id", upload, (req, res) => { 
-  console.log(req.file);
-  
-  const avatar = new Posts({ 
-    avatar: req.file.filename,
-    name: req.body.name,
-    userId: req.params.id,
-  }); 
-  avatar.save((err) =>{
-    if(err){
-      res.json({ message: err.message });
-    } else {
-      User.findOne({ _id: req.params.id }, (err, user) => {
-        if (err) {
-          res.json({ message: err.message });
-        } else {
-          const { _id, name, avatar } = user;
-          res.render("avatar", { avatar: req.file.filename, name,  _id });
-        }
-      })
-    }
-  });
-})
+app.get("/login", getLogin);
+app.post("/login", postLogin);
+app.get("/register", getRegister);
+app.post("/register", postRegister);
+app.get("/dashbord", getDashbord);
+app.post("/dashbord/:id", postDashbord);
+app.get("/avatar/:id", getAvatar);
+app.post("/avatar/:id", upload, postAvatar);
 
 
 
