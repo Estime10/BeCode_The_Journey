@@ -76,9 +76,7 @@ const upload = multer({ storage: storage,
 
 // Routes 
 // Home Page
-app.get("/", (req, res)=>{
-    res.render("welcome")
-})
+app.get("/", (req, res)=>{res.render("welcome")})
 app.get("/login", getLogin);
 app.post("/login", postLogin);
 app.get("/register", getRegister);
