@@ -4,7 +4,7 @@ import Posts from "../models/posts.mjs";
 
 // get Avatar
 export const getAvatar = ( req, res ) => {
-    console.log( req.user )
+    console.log( "getAvatar", req.user )
     if (!req.user) {
     return res.redirect("/login")
     }
@@ -21,28 +21,31 @@ export const getAvatar = ( req, res ) => {
         res.status(500).json({ error: error });
     });
 }
-
 // post Avatar
-export const postAvatar = ( req, res ) => {
-    console.log(req.file);
-
-    const avatar = new Posts({ 
-        avatar: req.file.filename,
+export const postAvatar = (req, res) => {
+    console.log( "postAvatar" ,req.files);
+  
+    req.files.forEach(file => {
+      const avatar = new Posts({
+        avatar: file.filename,
         name: req.body.name,
-        userId: req.params.id,
-    }); 
-    avatar.save((err) =>{
-        if(err){
-            res.json({ message: err.message });
+        userId: req.params.id
+      })
+      avatar.save((err) => {
+        if (err) {
+          res.json({ message: err.message });
         } else {
-            User.findOne({ _id: req.params.id }, (err, user) => {
-                if (err) {
-                    res.json({ message: err.message });
-                } else {
-                    const { _id, name, avatar } = user;
-                    res.render("avatar", { avatar: req.file.filename, name,  _id });
-                }
-            })
+          User.findOne({ _id: req.params.id }, (err, user) => {
+            if (err) {
+              res.json({ message: err.message });
+            } else {
+              const { _id, name, avatar } = user;
+              res.render("dashbord", { avatar: file.filename, name, _id });
+            }
+          })
         }
-    });
-}
+      })
+    })
+  }
+  
+  

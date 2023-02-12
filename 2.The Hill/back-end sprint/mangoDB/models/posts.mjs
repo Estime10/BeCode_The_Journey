@@ -5,7 +5,6 @@ const test = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    
   },
   avatar: {
       type: String,
@@ -31,10 +30,10 @@ const test = new mongoose.Schema({
   postContent: {
     type: String,
   },
-  post: {
-    type: Number,
+  postTitle: {
+    type: String,
   },
-  date: {
+    date: {
     type: Date,
     default: Date.now
   },

@@ -12,6 +12,7 @@ import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
 import { getAvatar, postAvatar } from './controllers/avatar.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
+import { getSlideOne, postSlideOne } from "./controllers/slideOne.mjs";
 
 // Multer config
 const storage = multer.diskStorage({
@@ -21,7 +22,7 @@ const storage = multer.diskStorage({
       filename: function (req, file, cb) {
       cb(null, file.fieldname + "_"+ Date.now() +"_"+ file.originalname)
       },
-  });
+  })
   // Init app
   dotenv.config()
   const app = express()
@@ -39,11 +40,8 @@ const storage = multer.diskStorage({
 app.use(expressEjsLayouts);
 app.use(express.static('public')); 
 app.use('/uploads', express.static('uploads'))
-app.set("views", "./routes/views");
+app.set("views", "./routes/views") 
 app.set("view engine", "ejs")
-// Static files
-
-
 // BodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -59,7 +57,6 @@ app.use(
 passportConfig(passport);
 app.use(passport.initialize());
 app.use(passport.session());
-
 // Connect flash middleware
 app.use(flash());
 // Global vars middleware
@@ -70,11 +67,12 @@ app.use((req, res, next) => {
   next();
 });
 // Multer middleware
-const upload = multer({ storage: storage,
-}).single("image");
+const avatarUpload = multer({ storage: storage,
+}).array("avatar", 1);
+const slidesUpload = multer({ storage: storage,
+}).array("slide1", 1); 
 
-
-// Routes 
+// Routes
 // Home Page
 app.get("/", (req, res)=>{res.render("welcome")})
 app.get("/login", getLogin);
@@ -84,35 +82,11 @@ app.post("/register", postRegister);
 app.get("/dashbord", getDashbord);
 app.post("/dashbord/:id", postDashbord);
 app.get("/avatar/:id", getAvatar);
-app.post("/avatar/:id", upload, postAvatar);
+app.post("/avatar/:id", avatarUpload, postAvatar);
+app.get("/slides/:id", getSlideOne);
+app.post("/slides/:id", slidesUpload, postSlideOne);
 
 
-
-// still need to try to update the avatar in the dashbord page
-// app.put("/dashbord/:id", (req, res) => {
-//   console.log("dashbordPut", req.body)
-//   const _id = req.params.id;
-//   User.findOne({ _id })
-//   .then(user => {
-//   if (!user) {
-//   return res.status(404).json({ error: "User not found" });
-//   }
-//   const name = user.name;
-//   Posts.findOneAndUpdate({ userId: _id }, { avatar: req.body.avatar }, { new: true })
-//   .then(post => {
-//   if (!post) {
-//   return res.status(404).json({ error: "Post not found" });
-//   }
-//   console.log("post", post)
-//   const avatar = post.avatar;
-//   req.session.user = { _id, name, avatar };
-//   res.render("dashbord", { _id, name, avatar });
-//   })
-//   .catch(error => {
-//   res.status(500).json({ error: error });
-//   });
-//   })
-// })
 
 // app.get('/logout', (req, res) => {
 //   // Use the logout provided by passport, passing in a callback
@@ -121,55 +95,7 @@ app.post("/avatar/:id", upload, postAvatar);
 //   console.error(err);
 //   }
 //   res.redirect('/login');
-//   });
+//   }) 
 // });     
-
-
-// test  successfull upload to database( post schema)
-
-// app.post("/test", upload, ( req, res ) =>{
-//   console.log(req.body)
-//   console.log(req.file)
-  
-//     const user = new Posts({
-//         userId: req.body.userId,
-//         avatar: req.file.filename,
-//     });
-//     console.log(user)
-//     user.save((err) =>{
-//         if(err){
-//             res.json({ message: err.message, type: "danger" })
-//         } else {
-//             res.redirect("/test");
-//         }
-//     })
-// })
-
-// find one and uptdate does not really work 
-// app.post("/dashbord/:id", (req, res) => {
-//   console.log("dashbordPost", req.body)
-//   const _id = req.params.id;
-//   User.findOne({ _id })
-//   .then(user => {
-//   if (!user) {
-//   return res.status(404).json({ error: "User not found" });
-//   }
-//   const name = user.name;
-//   Posts.findOneAndUpdate({ userId: _id }, { avatar: req.body.avatar }, { new: true })
-//   .then(post => {
-//   if (!post) {
-//   return res.status(404).json({ error: "Post not found" });
-//   }
-//   console.log("post", post)
-//   const avatar = post.avatar;
-//   req.session.user = { _id, name, avatar };
-//   res.render("dashbord", { _id, name, avatar });
-//   })
-//   .catch(error => {
-//   res.status(500).json({ error: error });
-//   });
-//   })
-// })
-
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`))

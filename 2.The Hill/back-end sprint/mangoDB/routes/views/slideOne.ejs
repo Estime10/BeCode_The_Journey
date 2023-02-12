@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>what-a-drop</title>
+</head>
+<body>
+  <a href="/avatar/<%= _id %>" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Back to the previous page</a>
+<br>
+<div class="container">
+<h1 class="proname"><span class="nom"><%= name %></span>' S hotdrop selection </h1>
+<br>
+<br>
+<form action="/slides/<%= _id %>" method="POST" enctype="multipart/form-data">
+  <div>
+    <label for="slide1"><h4>Select slide One picture</h4><br></label>
+    <img id="pics" 
+          src="/Image.jpg" 
+          alt="your image" width="200px" height="200px" />
+    <input type="file" id="avatar" name="slide1"
+    onchange="document.getElementById('pics').src = window.URL.createObjectURL(this.files[0])"
+          accept=".jpg, .jpeg, .png" />
+  </div>
+  <button type="submit" name="submit" value="Add Image">upload</button>
+</form>
+</div>
+</body>
+</html>

@@ -9,9 +9,10 @@
     <title>What-a-Face</title>
 </head>
 <body>
+  <a href="/slides/<%= _id %>" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Heading to the hotdrop page</a>
   <br>
   <div class="container">
-        <h1 class="proname"><span class="nom"><%= name %></span>' S PROFILE </h1>
+        <h1 class="proname"><span class="nom"><%= name %></span>' S Avatar </h1>
           <br>
           <br>
           <form action="/avatar/<%= _id %>" method="POST" enctype="multipart/form-data">
@@ -20,29 +21,11 @@
               <img id="pics" 
                     src="/Image.jpg" 
                     alt="your image" width="200px" height="200px" style="border-radius: 50%;" />
-              <input type="file" id="avatar" name="image"
+              <input type="file" id="avatar" name="avatar"
               onchange="document.getElementById('pics').src = window.URL.createObjectURL(this.files[0])"
                     accept=".jpg, .jpeg, .png" />
             </div>
-            <button type="submit" name="submit" value="Add Image">upload</button>
+            <button type="submit" name="submit" value="Add Image">Validate</button>
           </form>
   </div>
-  <br> 
-  <br>
-  <div class="container-2">
-    <form action="/dashbord/<%= _id %>" method="post">
-      <h4>Uploaded Image:
-        <% if (typeof avatar !== 'undefined' && avatar) { %>
-          <img src="/uploads/<%= avatar %>" alt="Avatar"
-          width="200px" height="200px" style="border-radius: 50%;" />
-        <% } else { %>
-          <img src="/Image.jpg" alt="Avatar"
-          width="200px" height="200px" style="border-radius: 50%;" />
-        <% } %>
-      </h4>
-      <input type="hidden" name="image" value="<%= avatar %>">
-      <button type="submit" id="validateButton">Validate</button>
-    </form>
-    
-</div>
 </body>
