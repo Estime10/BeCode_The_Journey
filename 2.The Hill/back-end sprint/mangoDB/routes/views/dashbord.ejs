@@ -23,7 +23,7 @@
            
 <div class="name-pro">
     <div class="picprof">
-      <a href="http://localhost:3000/avatar/<%= name %>">
+      <a href="http://localhost:3000/slides/<%= name %>">
 
         <% if (typeof avatar !== 'undefined' && avatar) { %>
 
@@ -55,9 +55,12 @@
   <% } %>
     </div>
   
-  
+    <% if (typeof slide2 !== 'undefined' && slide2) { %>
+      <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
+        <% } else { %>
     <div class="slide"  id="slide2" style="background-image: url('/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
       <h3>Air Jordan 1 High OG Dior </h3>
+      <% } %>
     </div>
   
     <div class="slide"  id="slide3" style="background-image: url('/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">

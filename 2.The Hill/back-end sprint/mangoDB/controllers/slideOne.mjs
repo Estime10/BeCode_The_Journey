@@ -1,5 +1,5 @@
 import User from "../models/user.mjs";
-import Posts from "../models/posts.mjs";
+
 
 // get slideOne
 export const getSlideOne = ( req, res ) => {
@@ -22,28 +22,30 @@ export const getSlideOne = ( req, res ) => {
     )
 }
 // post slideOne
-export const postSlideOne = ( req, res ) => {
-    console.log( "postSlideOne" ,req.files);
-
-    req.files.forEach(file => {
-      const slide1 = new Posts({ 
-        slide1: file.filename,
-        name: req.body.name,
-        userId: req.params.id,
-    })
-    slide1.save((err) =>{
-        if (err) {
-            res.json({ message: err.message });
-        } else {
-        User.findOne({ _id: req.params.id }, (err, user) => {
-            if (err) {
-                res.json({ message: err.message });
-            } else {
-            const { _id, name, slide1 } = user;
-            res.render("dashbord", { slide1: file.filename, name,  _id });
-            }
-        })
+export const postSlides = async (req, res) => {
+    console.log("postSlides", req.files);
+    try {
+        const user = await User.findOne({ _id: req.params.id });
+        if (!user) {
+            throw new Error("User not found");
+        }
+        if (!req.files || !req.files.length) {
+            throw new Error("No files were uploaded");
+        } 
+        user.avatar = req.files[0].filename;
+        user.slide1 = req.files[1].filename;
+        user.slide2 = req.files[2].filename;
+       
+        await user.save();
+        res.render("dashbord", {
+            avatar: user.avatar,
+            name: user.name,
+            _id: user._id,
+            slide1: user.slide1,
+            slide2: user.slide2,
+           
+        });
+    } catch (err) {
+        res.json({ message: err.message });
     }
-})  
-})
 }

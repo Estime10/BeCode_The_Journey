@@ -9,24 +9,48 @@
     <title>what-a-drop</title>
 </head>
 <body>
-  <a href="/avatar/<%= _id %>" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Back to the previous page</a>
+  <a href="/dashbord/" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Back to the previous page</a>
 <br>
 <div class="container">
 <h1 class="proname"><span class="nom"><%= name %></span>' S hotdrop selection </h1>
 <br>
 <br>
-<form action="/slides/<%= _id %>" method="POST" enctype="multipart/form-data">
+<form action="/slides/<%= name %>/<%= _id %>" method="POST" enctype="multipart/form-data">
+
+        <div>
+          <label for="avatar"><h4>Select profile picture</h4><br></label>
+          <img id="avatar" 
+                src="/Image.jpg" 
+                alt="your image" width="200px" height="200px" style="border-radius: 50%;" />
+          <input type="file" id="avatar" name="image"
+          onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])"
+                accept=".jpg, .jpeg, .png" />
+        </div>
+
+
   <div>
     <label for="slide1"><h4>Select slide One picture</h4><br></label>
-    <img id="pics" 
+    <img id="slide1" 
           src="/Image.jpg" 
           alt="your image" width="200px" height="200px" />
-    <input type="file" id="avatar" name="slide1"
-    onchange="document.getElementById('pics').src = window.URL.createObjectURL(this.files[0])"
+    <input type="file" id="avatar" name="image"
+    onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
           accept=".jpg, .jpeg, .png" />
   </div>
-  <button type="submit" name="submit" value="Add Image">upload</button>
+  <br>
+  <div>
+    <label for="slides"><h4>Select slide Two picture</h4><br></label>
+    <img id="slide2" 
+          src="/Image.jpg" 
+          alt="your image" width="200px" height="200px" />
+    <input type="file" id="avatar" name="image"
+    onchange="document.getElementById('slide2').src = window.URL.createObjectURL(this.files[0])"
+          accept=".jpg, .jpeg, .png" />
+  </div>
+  <button type="submit" name="submit" value="Add Image">Validate</button>
 </form>
+
+
 </div>
 </body>
 </html>

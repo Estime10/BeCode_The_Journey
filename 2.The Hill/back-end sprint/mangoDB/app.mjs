@@ -10,9 +10,9 @@ import multer from "multer"
 import bodyParser from "body-parser"
 import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
-import { getAvatar, postAvatar } from './controllers/avatar.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
-import { getSlideOne, postSlideOne } from "./controllers/slideOne.mjs";
+import { getSlideOne } from "./controllers/slideOne.mjs";
+import { postSlides } from "./controllers/slideOne.mjs"
 
 // Multer config
 const storage = multer.diskStorage({
@@ -67,10 +67,12 @@ app.use((req, res, next) => {
   next();
 });
 // Multer middleware
-const avatarUpload = multer({ storage: storage,
-}).array("avatar", 1);
-const slidesUpload = multer({ storage: storage,
-}).array("slide1", 1); 
+// const avatarUpload = multer({ storage: storage,
+// }).array("avatar", 1);
+const imageUpload = multer({ storage: storage,
+}).array("image", 9999); 
+// const slide2Upload = multer({ storage: storage,
+// }).array("slide2", 9999);
 
 // Routes
 // Home Page
@@ -79,12 +81,16 @@ app.get("/login", getLogin);
 app.post("/login", postLogin);
 app.get("/register", getRegister);
 app.post("/register", postRegister);
-app.get("/dashbord", getDashbord);
+app.get("/dashbord/", getDashbord);
 app.post("/dashbord/:id", postDashbord);
-app.get("/avatar/:id", getAvatar);
-app.post("/avatar/:id", avatarUpload, postAvatar);
 app.get("/slides/:id", getSlideOne);
-app.post("/slides/:id", slidesUpload, postSlideOne);
+app.post("/slides/:id", imageUpload, postSlides);
+
+
+// app.get("/avatar/:id", getAvatar);
+// app.post("/avatar/:id", imageUpload, postAvatar);
+// app.get("/slides/:id", getSlideTwo);
+// app.post("/slides/:id", slide2Upload, postSlides);
 
 
 
