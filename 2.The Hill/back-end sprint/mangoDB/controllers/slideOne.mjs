@@ -29,13 +29,24 @@ export const postSlides = async (req, res) => {
         if (!user) {
             throw new Error("User not found");
         }
-        if (!req.files || !req.files.length) {
-            throw new Error("No files were uploaded");
-        } 
-        user.avatar = req.files[0].filename;
-        user.slide1 = req.files[1].filename;
-        user.slide2 = req.files[2].filename;
-       
+        if (req.body.bio) {
+            user.bio = req.body.bio;
+        }
+        if (req.files && req.files.length) {
+            user.avatar = req.files[0].filename;
+            if (req.files[1]) {
+                user.slide1 = req.files[1].filename;
+            }
+            if (req.files[2]) {
+                user.slide2 = req.files[2].filename;
+            }
+            if (req.files[3]) {
+                user.slide3 = req.files[3].filename;
+            }
+            if (req.files[4]) {
+                user.slide4 = req.files[4].filename;
+            }
+        }
         await user.save();
         res.render("dashbord", {
             avatar: user.avatar,
@@ -43,9 +54,13 @@ export const postSlides = async (req, res) => {
             _id: user._id,
             slide1: user.slide1,
             slide2: user.slide2,
-           
+            slide3: user.slide3,
+            slide4: user.slide4,
+            bio: user.bio,
         });
     } catch (err) {
         res.json({ message: err.message });
     }
 }
+
+

@@ -1,0 +1,99 @@
+<br>
+
+<body class="body">
+    <div class="container">
+        <div class="gallery">
+            <div class="gallery-item" id="impair1">
+                <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" />
+            </div>
+    
+            <div class="gallery-item" id="pair2">
+                <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" />
+            </div>
+    
+            <div class="gallery-item" id="impair3">
+                <img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" />
+            </div>
+    
+            <div class="gallery-item" id="pair4">
+                <img class="gallery-image" src="/images/nike back 2 the future.jpg" />
+            </div>
+    
+            <div class="gallery-item" id="impair5">
+                <img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" />
+            </div>
+    
+            <div class="gallery-item" id="pair6">
+                <img class="gallery-image" src="/images/Off-White-Nike-VaporMax-White-Box.jpg" >
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .body {
+	min-height: 100vh;
+	background-color: black;
+}
+.container {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+}
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	/* Compensate for excess margin on outer gallery flex items */
+	margin: -1rem -1rem;
+}
+.gallery-item {
+	/* Minimum width of 24rem and grow to fit available space */
+	flex: 1 0 24rem;
+	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+	margin: 1rem;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+}
+.gallery-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	transition: transform 400ms ease-out;
+}
+.gallery-image:hover {
+	transform: scale(1.15);
+}
+#impair1{
+    height: 225px;
+    border-radius: 25%;
+    background-color: black;
+}
+#pair2{
+    height: 450px;
+    border-radius: 25%;
+    background-color: black;
+}
+#impair3{
+    height: 225px;
+    border-radius: 25%;
+    background-color: black;
+}
+#pair4{
+    height: 450px;
+    border-radius: 25%;
+    margin-top: -225px;
+    background-color: black;
+}
+#impair5{
+    height: 225px;
+    border-radius: 25%;
+    background-color: black;
+}
+#pair6{
+    height: 450px;
+    border-radius: 25%;
+    margin-top: -225px;
+    background-color: black;
+}
+</style>
+</html>

@@ -33,6 +33,7 @@ const UserSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
+    default: "",
   },
   postContent: {
     type: String,

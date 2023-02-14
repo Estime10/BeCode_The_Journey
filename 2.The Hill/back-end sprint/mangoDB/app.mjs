@@ -52,7 +52,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
   })
-)
+) 
 // Passport middleware
 passportConfig(passport);
 app.use(passport.initialize());
@@ -67,15 +67,13 @@ app.use((req, res, next) => {
   next();
 });
 // Multer middleware
-// const avatarUpload = multer({ storage: storage,
-// }).array("avatar", 1);
 const imageUpload = multer({ storage: storage,
 }).array("image", 9999); 
-// const slide2Upload = multer({ storage: storage,
-// }).array("slide2", 9999);
+
 
 // Routes
 // Home Page
+app.get("/test", (req, res)=>{res.render("test")})
 app.get("/", (req, res)=>{res.render("welcome")})
 app.get("/login", getLogin);
 app.post("/login", postLogin);
