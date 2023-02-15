@@ -22,46 +22,39 @@
 
 
            
-<div class="name-pro">
+
+
     <div class="picprof">
       <a href="http://localhost:3000/slides/<%= name %>">
-
         <% if (typeof avatar !== 'undefined' && avatar) { %>
-
-        <img src="/uploads/<%= avatar %>" alt="Avatar"
-             width="200px" height="200px" style="border-radius: 50%; margin-top: -70px;" />
-
+          <img src="/uploads/<%= avatar %>" alt="Avatar"
+             width="200px" height="200px" style="border-radius: 50%; margin-top: 0px;" />
         <% } else { %>
-
-        <img src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%; margin-top: -70px;"
+          <img src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%; margin-top: 0px;"
              width="200px" height="200px" />
-
         <% } %>
-
       </a>
-</div>
-    
-    
-
-<div class="hotdrop">
-      <h2 class="drop">THE <span class="nom">HOT</span> DROP</h2> 
-</div>
-
-<div class="container-sneaker">
-  <!-- slide one -->
-    <% if (typeof slide1 !== 'undefined' && slide1) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
-    <% } else { %>
-    <div class="slide" id="slide1" style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
-      <h3>Nike Travis Scott Phantom Black </h3>
-    <% } %>
     </div>
-    <!-- slide two -->
-    <% if (typeof slide2 !== 'undefined' && slide2) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
-        <% } else { %>
-    <div class="slide"  id="slide2" style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
-    <h3>Air Jordan 1 High OG Dior </h3>
+    <div class="hotdrop">
+      <h2 class="drop">THE <span class="nom">HOT</span> DROP</h2> 
+    </div>
+
+    <div class="container-sneaker">
+          <!-- slide one -->
+      <% if (typeof slide1 !== 'undefined' && slide1) { %>
+        <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+            <% } else { %>
+      <div class="slide" id="slide1" style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
+            <h3>Nike Travis Scott Phantom Black </h3>
+            <% } %>
+      </div>
+
+          <!-- slide two -->
+      <% if (typeof slide2 !== 'undefined' && slide2) { %>
+        <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
+            <% } else { %>
+      <div class="slide"  id="slide2" style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
+      <h3>Air Jordan 1 High OG Dior </h3>
       <% } %>
     </div>
     <!-- slide three -->
@@ -82,8 +75,7 @@
     </div>
     </div>
     </div>
-
-  <div class="bio">
+<div class="bio">
     <% if ( typeof bio !== 'undefined' && bio) { %>
       <p class="bio"><%= bio %></p>
     <% } else { %>
@@ -97,11 +89,9 @@
         failure, success. 
         </p>
     <% } %>
-  </div>
-
-  
+</div>
   <!-- </section>   -->
-  <div class="followers">
+<div class="followers">
       <p class="posts">posts
           <span class="number" id="post-count">0</span>
       </p>
@@ -111,33 +101,134 @@
       <p class="followed">followed
           <span class="number">0</span>
       </p>
-  </div>
-
-  <div class="btn-activities">
-      <button class="following">
+</div>
+<div class="btn-activities">
+<button class="following">
        follow
-  </button>
+</button>
 
-   <button class="btn-activities" style="margin-left: 20px">
+<button class="btn-activities" style="margin-left: 20px">
       <a href="http://localhost:3000/hotdrop/<%= name %>"
         class="add" style="color: whitesmoke"> post
       </a>
 </button>
+<!-- feed -->
+<div class="test" style="margin-top: -165px;" >
+<section class="feed" style="display: flex;  position: absolute;
+top: -100px;
+left: 0px; ">
+<div class="feedPictures" style="display: flex;
+        justify-content: space-between;
+        height: 100%;">
+ 
+        <!-- first row -->
+<div class="duo" style="display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;" >
+                        <div class="gallery-item" id="impair1">
+                            <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" style=
+                            "position: absolute;
+                            height: 285px;
+                            position: absolute;
+                            left: 145px;
+                            top: 874px;"/>
+                        </div>
+        
+                        <div class="gallery-item" id="pair2">
+                            <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" style=
+                            "height: 360px;
+                            position: absolute;
+                            left: 145px;
+                            top: 1171px;"/>
+                        </div> 
 </div>
-</div>
-</div>
-</div>
-</div>
+        <!-- second row -->
+<div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair3">
+                    <img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" style="
+                      top: 874px;
+                      position: absolute;
+                      height: 405px;
+                      left: 380px;" />
+                </div>
 
+                <div class="gallery-item" id="pair4">
+                    <img class="gallery-image" src="/images/nike back 2 the future.jpg" style=
+                    "height: 235px;
+                    position: absolute;
+                    top: 1296px;
+                    left: 380px;"/>
+                </div>
+</div>
+        <!-- third row -->
+<div class="duo" style="display: flex;
+flex-direction: column;
+justify-content: space-between;" >
+    <div class="gallery-item" id="impair5">
+        <img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" style="position: absolute;
+            top: 878px;
+            left: 615px;
+            height: 165px;
+            width: 280px;" />
+    </div>
 
+    <div class="gallery-item" id="pair6">
+        <img class="gallery-image" src="/images/jordan 4 ligghtblue.jpg" style="width: 205px;
+        position: absolute;
+        top: 878px;
+        left: 910px;
+        height: 470px;" >
+    </div>
+</div>
+        <!-- fourth row -->
+<div class="duo" style="display: flex;
+ flex-direction: column;
+ justify-content: space-between;" >
+     <div class="gallery-item" id="impair7">
+         <img class="gallery-image"  src="/images/nikeflag.jpg" style=
+        "position: absolute;
+        top: 1368px;
+        left: 615px;
+        height: 163px;
+        width: 470px;" />
+     </div>
 
+     <div class="gallery-item" id="pair8">
+         <img class="gallery-image" src="/images/Off-White-Nike-VaporMax-White-Box.jpg" style="width: 218px;
+         position: absolute;
+         top: 878px;
+         left: 1130px;
+         height: 260px;" >
+     </div>
+</div>
+        <!-- fitht row -->
+<div class="duo" style="display: flex;
+flex-direction: column;
+justify-content: space-between;" >
+    <div class="gallery-item" id="impair9">
+        <img class="gallery-image"  src="/images/air force 1.jpg" style=
+        "top: 1157px;
+        position: absolute;
+        height: 370px;
+        left: 1130px;" />
+    </div>
 
+    <div class="gallery-item" id="pair10">
+        <img class="gallery-image" src="/images/jordan 1 green.jpg" style=" 
+        height: 290px;
+        position: absolute;
+        width: 276px;
+        top: 1064px;
+        left: 615px;"/>
+    </div>
+</div>
+</div>
+</section>
+</div>
 </body>
-<footer>
-  <p>
-    Estime aka The Real Batman
-  </p>
-</footer>
+</html>
 <script>
     function sliderPluggin(activeslide = 0) {
   const slides = document.querySelectorAll('.slide');
@@ -192,6 +283,19 @@ addBtn.addEventListener("click", () =>{
 
 </script>
 <style>
+  .gallery-image {
+        width: 220px;
+        height: 265px;
+        margin: 15px;
+        object-fit: cover;
+        transition: transform 400ms ease-out;
+        box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -webkit-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -moz-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        border-radius: 35px 35px 35px 35px;
+        -webkit-border-radius: 35px 35px 35px 35px;
+        -moz-border-radius: 35px 35px 35px 35px;
+    }
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
       body {
         background: black;
@@ -262,12 +366,6 @@ addBtn.addEventListener("click", () =>{
         opacity: 1;
         transition: opacity 0.3s ease-in 0.4s;
       }
-      .proname{
-        text-align: left;
-        text-transform: uppercase;
-        margin-top: 25px;
-        color: whitesmoke;
-      }
       .nom{
         color: rgb(210, 42, 42);
         text-align: left;
@@ -287,7 +385,7 @@ addBtn.addEventListener("click", () =>{
       .proname{
         text-align: left;
         text-transform: uppercase;
-        margin-top: 25px;
+        margin-top: 90px;
         color:whitesmoke;
       }
        h2 {

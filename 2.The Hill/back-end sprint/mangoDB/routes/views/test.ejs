@@ -1,99 +1,132 @@
-<br>
 
-<body class="body">
-    <div class="container">
-        <div class="gallery">
-            <div class="gallery-item" id="impair1">
-                <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" />
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <section class="feed" style="display: flex;
+    margin: 100px 18px;">
+        <div class="feedPictures" style="display: flex;
+        justify-content: space-between;
+        height: 100%;">
+            <!-- first row -->
+            <div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair1">
+                    <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" />
+                </div>
+
+                <div class="gallery-item" id="pair2">
+                    <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" style="height: 360px;"/>
+                </div> 
             </div>
-    
-            <div class="gallery-item" id="pair2">
-                <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" />
+            <!-- second row -->
+            <div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair3">
+                    <img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" style="    top: 100px;
+                    position: absolute;
+                    height: 405px;" />
+                </div>
+
+                <div class="gallery-item" id="pair4">
+                    <img class="gallery-image" src="/images/nike back 2 the future.jpg" style="height: 235px;"/>
+                </div>
             </div>
-    
-            <div class="gallery-item" id="impair3">
-                <img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" />
+            <!-- third row -->
+            <div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair5">
+                    <img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" style="position: absolute;
+                        top: 97px;
+                        left: 620px;
+                        height: 165px;
+                        width: 280px;" />
+                </div>
+        
+                <div class="gallery-item" id="pair6">
+                    <img class="gallery-image" src="/images/jordan 4 ligghtblue.jpg" style="width: 205px;
+                    position: absolute;
+                    top: 100px;
+                    left: 926px;
+                    height: 510px;" >
+                </div>
             </div>
-    
-            <div class="gallery-item" id="pair4">
-                <img class="gallery-image" src="/images/nike back 2 the future.jpg" />
+            <!-- fourth row -->
+            <div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair7">
+                    <img class="gallery-image"  src="/images/nikeflag.jpg" style="position: absolute;
+                        top: 616px;
+                        left: 670px;
+                        height: 163px;
+                        width: 424px;" />
+                </div>
+        
+                <div class="gallery-item" id="pair8">
+                    <img class="gallery-image" src="/images/Off-White-Nike-VaporMax-White-Box.jpg" style="width: 218px;
+                    position: absolute;
+                    top: 516px;
+                    left: 1165px;
+                    height: 260px;" >
+                </div>
             </div>
-    
-            <div class="gallery-item" id="impair5">
-                <img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" />
+            <!-- fitht row -->
+            <div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair9">
+                    <img class="gallery-image"  src="/images/air force 1.jpg" style="top: 96px;
+                    position: absolute;
+                    height: 405px;
+                    left: 1160px;" />
+                </div>
+
+                <div class="gallery-item" id="pair10">
+                    <img class="gallery-image" src="/images/jordan 1 green.jpg" style=" height: 310px;
+                    position: absolute;
+                    width: 270px;
+                    top: 295px;"/>
+                </div>
             </div>
-    
-            <div class="gallery-item" id="pair6">
-                <img class="gallery-image" src="/images/Off-White-Nike-VaporMax-White-Box.jpg" >
-            </div>
-        </div>
-    </div>
+    </section>
 </body>
 <style>
-    .body {
-	min-height: 100vh;
-	background-color: black;
-}
-.container {
-	max-width: 100rem;
-	margin: 0 auto;
-	padding: 0 2rem 2rem;
-}
-.gallery {
-	display: flex;
-	flex-wrap: wrap;
-	/* Compensate for excess margin on outer gallery flex items */
-	margin: -1rem -1rem;
-}
-.gallery-item {
-	/* Minimum width of 24rem and grow to fit available space */
-	flex: 1 0 24rem;
-	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
-	margin: 1rem;
-	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
-	overflow: hidden;
-}
-.gallery-image {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	transition: transform 400ms ease-out;
-}
-.gallery-image:hover {
-	transform: scale(1.15);
-}
-#impair1{
-    height: 225px;
-    border-radius: 25%;
-    background-color: black;
-}
-#pair2{
-    height: 450px;
-    border-radius: 25%;
-    background-color: black;
-}
-#impair3{
-    height: 225px;
-    border-radius: 25%;
-    background-color: black;
-}
-#pair4{
-    height: 450px;
-    border-radius: 25%;
-    margin-top: -225px;
-    background-color: black;
-}
-#impair5{
-    height: 225px;
-    border-radius: 25%;
-    background-color: black;
-}
-#pair6{
-    height: 450px;
-    border-radius: 25%;
-    margin-top: -225px;
-    background-color: black;
-}
+    /* .feed{
+        display: flex;
+        margin: 100px 18px;
+        
+    } */
+    /* .feedPictures{
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+    } */
+    .gallery-image {
+        width: 220px;
+        height: 265px;
+        margin: 15px;
+        object-fit: cover;
+        transition: transform 400ms ease-out;
+        box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -webkit-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -moz-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        border-radius: 35px 35px 35px 35px;
+        -webkit-border-radius: 35px 35px 35px 35px;
+        -moz-border-radius: 35px 35px 35px 35px;
+    }
+    /* .duo{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    } */
 </style>
-</html>
+</html> 
