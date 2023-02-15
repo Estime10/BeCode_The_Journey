@@ -11,8 +11,8 @@ import bodyParser from "body-parser"
 import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
-import { getSlideOne } from "./controllers/slideOne.mjs";
-import { postSlides } from "./controllers/slideOne.mjs";
+import { getSlideOne,postSlides } from "./controllers/slideOne.mjs";
+
 
 
 // Multer config
@@ -68,8 +68,11 @@ app.use((req, res, next) => {
   next();
 });
 // Multer middleware
-const imageUpload = multer({ storage: storage,
-}).array("image", 9999); 
+const imageUpload = multer({ storage: storage }).fields([
+  { name: 'image', maxCount: 9999 },
+  { name: 'avatar', maxCount: 1 }
+]);
+
 
 
 // Routes
