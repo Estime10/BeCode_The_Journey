@@ -20,10 +20,6 @@
 <!-- <a href="/logout" class="btn btn-secondary">Logout</a> -->
 <!-- move the logout in the profile settings menu -->
 
-
-           
-
-
     <div class="picprof">
       <a href="http://localhost:3000/slides/<%= name %>">
         <% if (typeof avatar !== 'undefined' && avatar) { %>
@@ -125,22 +121,22 @@ left: 0px; ">
 <div class="duo" style="display: flex;
                     flex-direction: column;
                     justify-content: space-between;" >
-                        <div class="gallery-item" id="impair1">
+<div class="gallery-item" id="impair1">
                             <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" style=
                             "position: absolute;
                             height: 285px;
                             position: absolute;
                             left: 145px;
                             top: 874px;"/>
-                        </div>
+</div>
         
-                        <div class="gallery-item" id="pair2">
+<div class="gallery-item" id="pair2">
                             <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" style=
                             "height: 360px;
                             position: absolute;
                             left: 145px;
                             top: 1171px;"/>
-                        </div> 
+</div> 
 </div>
         <!-- second row -->
 <div class="duo" style="display: flex;
@@ -192,7 +188,7 @@ justify-content: space-between;" >
         top: 1368px;
         left: 615px;
         height: 163px;
-        width: 470px;" />
+        width: 498px;" />
      </div>
 
      <div class="gallery-item" id="pair8">
@@ -226,6 +222,124 @@ justify-content: space-between;" >
 </div>
 </div>
 </section>
+
+<!-- feed 2 -->
+<div class="test2" style=" margin-top: 1115px;" >
+<div class="place" style=" margin-top: 20px;">
+<section class="feed" style="display: flex;
+  margin: 100px 18px;">
+<div class="feedPictures" style="display: flex;
+  justify-content: space-between;
+  height: 100%;">
+<!-- first row -->
+<div class="duo" style="display: flex;
+              flex-direction: column;
+              justify-content: space-between;" >
+                  <div class="gallery-item" id="impair1">
+                      <img class="gallery-image" src="/images/yeezy foam.jpg" style=
+                      "position: absolute;
+                      top: 1500px;
+                      left: 140px;"
+                      />
+                  </div>
+  
+                  <div class="gallery-item" id="pair2">
+                      <img class="gallery-image" src="/images/adidas ozwego beige.jpg" style=
+                      "height: 360px;
+                      position: absolute;
+                      top: 1780px;
+                      left: 140px;"
+                      />
+                  </div> 
+</div>
+<!-- second row -->
+<div class="duo" style="display: flex;
+            flex-direction: column;
+            justify-content: space-between;" >
+                <div class="gallery-item" id="impair3">
+                    <img class="gallery-image"  src="/images/adidas samba.jpg" style="
+                    top: 1500px;
+                    position: absolute;
+                    left: 380px;
+                    height: 405px;" />
+                </div>
+
+                <div class="gallery-item" id="pair4">
+                    <img class="gallery-image" src="/images/adidas slide onyx.jpg" style=
+                    "position: absolute;
+                    height: 235px;
+                    left: 380px;
+                    top: 1920px;"/>
+                </div>
+</div>
+<!-- third row -->
+<div class="duo" style="display: flex;
+flex-direction: column;
+justify-content: space-between;" >
+
+<div class="gallery-item" id="impair5">
+        <img class="gallery-image"  src="/images/adidas spezial black.jpg" style="position: absolute;
+            top: 1500px;
+            left: 620px;
+            height: 165px;
+            width: 280px;" />
+</div>
+            
+<div class="gallery-item" id="pair6">
+<img class="gallery-image" src="/images/adidas stan smith j.crew.jpg" style="width: 205px;
+  position: absolute;
+  top: 1500px;
+  left: 920px;
+  height: 510px;" >
+</div>
+
+</div>
+<!-- fourth row -->
+<div class="duo" style="display: flex;
+flex-direction: column;
+justify-content: space-between;" >
+<div class="gallery-item" id="impair7">
+        <img class="gallery-image"  src="/images/adidas flag.jpg" style="position: absolute;
+        top: 2010px;
+        left: 616px;
+        height: 163px;
+        width: 539px;" />
+</div>
+<div class="gallery-item" id="pair8">
+        <img class="gallery-image" src="/images/yeezy boost 350 black.jpg" style=
+        "width: 218px;
+        position: absolute;
+        top: 1895px;
+        left: 1150px;
+        height: 260px;" >
+</div>
+</div>
+ <!-- fitht row -->
+ <div class="duo" style="display: flex;
+ flex-direction: column;
+ justify-content: space-between;" >
+     <div class="gallery-item" id="impair9">
+         <img class="gallery-image"  src="/images/adidas gazelle green yellow.jpg" style=
+         "top: 1500px;
+         position: absolute;
+         height: 380px;
+         left: 1140px;
+         " />
+     </div>
+
+     <div class="gallery-item" id="pair10">
+         <img class="gallery-image" src="/images/yeezy-700-blue.jpg" style=" height: 310px;
+         position: absolute;
+         width: 270px;
+         left: 630px;
+         top: 1688px;"/>
+     </div>
+ </div>
+</div>
+</section>
+</div>
+
+</div>
 </div>
 </body>
 </html>
@@ -283,20 +397,11 @@ addBtn.addEventListener("click", () =>{
 
 </script>
 <style>
-  .gallery-image {
-        width: 220px;
-        height: 265px;
-        margin: 15px;
-        object-fit: cover;
-        transition: transform 400ms ease-out;
-        box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        -webkit-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        -moz-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        border-radius: 35px 35px 35px 35px;
-        -webkit-border-radius: 35px 35px 35px 35px;
-        -moz-border-radius: 35px 35px 35px 35px;
-    }
+ 
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+  html {
+    scroll-behavior: smooth;
+  }
       body {
         background: black;
         font-family: 'Montserrat', sans-serif;
@@ -523,26 +628,22 @@ addBtn.addEventListener("click", () =>{
         font-size: 25px;
         margin-right: 5px;
       }
-      footer {
-        /* background-color: #f6f5f7; */
-        color: red;
-        font-size: 14px;
-        bottom: 0;
-        position: fixed;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 999;
-      }
-      footer p {
-        margin: 10px 0;
-      }
-      .fa-circle-plus:before, .fa-plus-circle:before {
-        content: "\f055";
-        position: absolute;
-        top: 200px;
-        right: 235px;
-        font-size: 20px;
-      }
+   /* feed */
+   .gallery-image {
+        width: 220px;
+        height: 265px;
+        margin: 15px;
+        object-fit: cover;
+        transition: transform 400ms ease-out;
+        box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -webkit-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        -moz-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
+        border-radius: 35px 35px 35px 35px;
+        -webkit-border-radius: 35px 35px 35px 35px;
+        -moz-border-radius: 35px 35px 35px 35px;
+    }
+    .gallery-image:hover {
+        transform: scale(1.1);
+    }
 </style>
 
