@@ -12,7 +12,8 @@ import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
 import { getSlideOne } from "./controllers/slideOne.mjs";
-import { postSlides } from "./controllers/slideOne.mjs"
+import { postSlides } from "./controllers/slideOne.mjs";
+
 
 // Multer config
 const storage = multer.diskStorage({
@@ -22,7 +23,7 @@ const storage = multer.diskStorage({
       filename: function (req, file, cb) {
       cb(null, file.fieldname + "_"+ Date.now() +"_"+ file.originalname)
       },
-  })
+  }) 
   // Init app
   dotenv.config()
   const app = express()
@@ -52,7 +53,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
   })
-) 
+)
 // Passport middleware
 passportConfig(passport);
 app.use(passport.initialize());
@@ -73,7 +74,9 @@ const imageUpload = multer({ storage: storage,
 
 // Routes
 // Home Page
-app.get("/test", (req, res)=>{res.render("test")})
+// app.get("/test", (req, res)=>{res.render("test")})
+
+
 app.get("/", (req, res)=>{res.render("welcome")})
 app.get("/login", getLogin);
 app.post("/login", postLogin);
@@ -85,10 +88,6 @@ app.get("/slides/:id", getSlideOne);
 app.post("/slides/:id", imageUpload, postSlides);
 
 
-// app.get("/avatar/:id", getAvatar);
-// app.post("/avatar/:id", imageUpload, postAvatar);
-// app.get("/slides/:id", getSlideTwo);
-// app.post("/slides/:id", slide2Upload, postSlides);
 
 
 
@@ -100,6 +99,6 @@ app.post("/slides/:id", imageUpload, postSlides);
 //   }
 //   res.redirect('/login');
 //   }) 
-// });     
+// }); 
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`))
