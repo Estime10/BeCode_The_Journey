@@ -3,359 +3,269 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
- 
-  <title>What-a-Dashboard</title>
+  <title>Document</title>
 </head>
 <body>
 
-  
-<h1 class="proname"><span class="nom"><%= name %></span> 's Sneaker profile</h1>
-  
-    
-
-<!-- <a href="/logout" class="btn btn-secondary">Logout</a> -->
-<!-- move the logout in the profile settings menu -->
-
-
-    <div class="picprof">
-      <a href="http://localhost:3000/slides/<%= name %>">
-        <% if (typeof avatar !== 'undefined' && avatar) { %>
-          <img src="/uploads/<%= avatar %>" alt="Avatar"
-             width="200px" height="200px" style="border-radius: 50%; margin-top: 0px;" />
-        <% } else { %>
-          <img src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%; margin-top: 0px;"
-             width="200px" height="200px" />
-        <% } %>
-      </a>
-    </div>
-    <div class="hotdrop">
-      <h2 class="drop">THE <span class="nom">HOT</span> DROP</h2> 
-    </div>
-
-    <div class="container-sneaker">
-          <!-- slide one -->
-      <% if (typeof slide1 !== 'undefined' && slide1) { %>
-        <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
-            <% } else { %>
-      <div class="slide" id="slide1" style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
-            <h3>Nike Travis Scott Phantom Black </h3>
-            <% } %>
-      </div>
-
-          <!-- slide two -->
-      <% if (typeof slide2 !== 'undefined' && slide2) { %>
-        <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
-            <% } else { %>
-      <div class="slide"  id="slide2" style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
-      <h3>Air Jordan 1 High OG Dior </h3>
-      <% } %>
-    </div>
-    <!-- slide three -->
-    <% if (typeof slide3 !== 'undefined' && slide3) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
-        <% } else { %>
-    <div class="slide"  id="slide3" style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
-    <h3>Air Jordan 4 UC </h3>
-      <% } %>
-    </div>
-    <!-- slide four -->
-    <% if (typeof slide4 !== 'undefined' && slide4) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
-        <% } else { %>
-    <div class="slide"  id="slide4" style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
-    <h3>Yeezy 700 Wash orange</h3>
-      <% } %>
-    </div>
-    </div>
-    </div>
-<div class="bio">
-    <% if ( typeof bio !== 'undefined' && bio) { %>
-      <p class="bio"><%= bio %></p>
-    <% } else { %>
-      <p style="text-align: center">"Everything I’m building now is because of them and for them," he said.<br>
-        "As a coach for one of my daughter’s teams, I also hope to pass along a <br>
-        little 
-        Basketball knowledge too." Bryant had a magnificent and straightforward<br> 
-        way with words, talent he worked hard at, Just like he did to hone his skills on<br> 
-        the court. 
-        "Through basketball, I learned discipline, perseverance, teamwork,<br>
-        failure, success. 
-        </p>
-    <% } %>
+<top style="display: flex;
+flex-direction: row-reverse;
+flex-wrap: wrap;
+align-items: center;
+align-content: space-around;
+justify-content: space-between;">
+  <!-- title -->
+<div class="title" style="margin-top: 15px;">
+    <h1 class="proname"><span class="nom" style="color: red;"><%= name %></span> 's Sneaker profile</h1> 
 </div>
-  <!-- </section>   -->
-<div class="followers">
-      <p class="posts">posts
-          <span class="number" id="post-count">0</span>
+<!-- profile -->
+<div class="profile" style="
+display: flex;
+flex-direction: column;
+height: 240px;
+align-items: flex-start;
+">
+  <!-- link to profile upload -->
+  <a href="http://localhost:3000/slides/<%= name %>">
+    <!-- profile picture -->
+    <% if (typeof avatar !== 'undefined' && avatar) { %>
+      <img src="/uploads/<%= avatar %>" alt="Avatar"
+         width="200px" height="200px" style="
+         border-radius: 50%;
+         margin-top: 40px;
+         margin-bottom: 0px;" />
+    <% } else { %>
+      <img src="/images/Image.jpg" alt="Avatar" style="
+          border-radius: 50%;
+          margin-top: 40px;
+          margin-bottom: 0px;"
+         width="200px" height="200px" />
+    <% } %>
+  </a>
+
+<div class="adds" style="display: flex;
+align-items: flex-end;
+justify-content: space-between;
+flex-direction: row;
+flex-wrap: nowrap;">
+  <div class="followers" style="
+    display: flex;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px;">
+      <p class="posts" style="margin-right: 10px;">posts
+          <span class="number" style="color: red;" id="post-count">0</span>
       </p>
-      <p class="follow">followers
-          <span class="number" id="following-count">0</span>
+      <p class="follow" style="margin-right: 10px;">followers
+          <span class="number" style="color: red;" id="following-count">0</span>
       </p>
       <p class="followed">followed
-          <span class="number">0</span>
+          <span class="number" style="color: red;">0</span>
       </p>
+  </div>
+  <div class="btn-activities" style="margin: 15px;">
+    <button class="dm">
+           message
+    </button>
+    <button class="following">
+           follow
+    </button>
+    <button class="btn-activities" >
+      <a style="
+      color: whitesmoke;
+      text-decoration: none;" href="http://localhost:3000/hotdrop/<%= name %>" > post</a>
+    </button>
 </div>
-<div class="btn-activities">
-<button class="following">
-       follow
-</button>
+</div>  
+</div>
 
-<button class="btn-activities" style="margin-left: 20px">
-      <a href="http://localhost:3000/hotdrop/<%= name %>"
-        class="add" style="color: whitesmoke"> post
-      </a>
-</button>
-<!-- feed -->
-<div class="test" style="margin-top: -165px;" >
-<section class="feed" style="display: flex;  position: absolute;
-top: -100px;
-left: 0px; ">
-<div class="feedPictures" style="display: flex;
-        justify-content: space-between;
-        height: 100%;">
- 
-        <!-- first row -->
-<div class="duo" style="display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;" >
-<div class="gallery-item" id="impair1">
-                            <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" style=
-                            "position: absolute;
-                            height: 285px;
-                            position: absolute;
-                            left: 145px;
-                            top: 874px;"/>
+<!-- hotdrop section -->
+<div class="hotdropTitle">
+<!-- hotdrop subtitle -->
+<div class="hotdrop" style="display: flex;">
+    <h2 class="drop">THE <span class="nom" style="color: red;">HOT</span> DROP</h2> 
 </div>
-        
-<div class="gallery-item" id="pair2">
-                            <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" style=
-                            "height: 360px;
-                            position: absolute;
-                            left: 145px;
-                            top: 1171px;"/>
-</div> 
 </div>
-        <!-- second row -->
-<div class="duo" style="display: flex;
-            flex-direction: column;
-            justify-content: space-between;" >
-                <div class="gallery-item" id="impair3">
-                    <img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" style="
-                      top: 874px;
-                      position: absolute;
-                      height: 405px;
-                      left: 380px;" />
-                </div>
+<div class="hotdropGallery">
+  <div class="container" style="
+      width: 1180px;
+    margin-left: 170px;">
+<!-- slide one -->
+<% if (typeof slide1 !== 'undefined' && slide1) { %>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+      <% } else { %>
+  <div class="slide"style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
+    <h3 style="color: red;">Nike Travis Scott Phantom Black </h3>
+    <% } %>
+  </div>
 
-                <div class="gallery-item" id="pair4">
-                    <img class="gallery-image" src="/images/nike back 2 the future.jpg" style=
-                    "height: 235px;
-                    position: absolute;
-                    top: 1296px;
-                    left: 380px;"/>
-                </div>
-</div>
-        <!-- third row -->
-<div class="duo" style="display: flex;
-flex-direction: column;
-justify-content: space-between;" >
-    <div class="gallery-item" id="impair5">
-        <img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" style="position: absolute;
-            top: 878px;
-            left: 615px;
-            height: 165px;
-            width: 280px;" />
-    </div>
+   <!-- slide two -->
+   <% if (typeof slide2 !== 'undefined' && slide2) { %>
+    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
+        <% } else { %>
+  <div class="slide"style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
+    <h3 style="color: red;">Air Jordan 1 High OG Dior</h3>
+    <% } %>
+  </div>
+<!-- slide three -->
+<% if (typeof slide3 !== 'undefined' && slide3) { %>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
+      <% } else { %>
+  <div class="slide"style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
+    <h3 style="color: red;">Air Jordan 4 UC</h3>
+    <% } %>
+  </div>
 
-    <div class="gallery-item" id="pair6">
-        <img class="gallery-image" src="/images/jordan 4 ligghtblue.jpg" style="width: 205px;
-        position: absolute;
-        top: 878px;
-        left: 910px;
-        height: 470px;" >
-    </div>
-</div>
-        <!-- fourth row -->
-<div class="duo" style="display: flex;
- flex-direction: column;
- justify-content: space-between;" >
-     <div class="gallery-item" id="impair7">
-         <img class="gallery-image"  src="/images/nikeflag.jpg" style=
-        "position: absolute;
-        top: 1368px;
-        left: 615px;
-        height: 163px;
-        width: 498px;" />
-     </div>
+<!-- slide four -->
+<% if (typeof slide4 !== 'undefined' && slide4) { %>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
+      <% } else { %>
+  <div class="slide"style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
+    <h3 style="color: red;">Yeezy 700 Wash orange</h3>
+    <% } %>
+  </div>
 
-     <div class="gallery-item" id="pair8">
-         <img class="gallery-image" src="/images/Off-White-Nike-VaporMax-White-Box.jpg" style="width: 218px;
-         position: absolute;
-         top: 878px;
-         left: 1130px;
-         height: 260px;" >
-     </div>
-</div>
-        <!-- fitht row -->
-<div class="duo" style="display: flex;
-flex-direction: column;
-justify-content: space-between;" >
-    <div class="gallery-item" id="impair9">
-        <img class="gallery-image"  src="/images/air force 1.jpg" style=
-        "top: 1157px;
-        position: absolute;
-        height: 370px;
-        left: 1130px;" />
-    </div>
-
-    <div class="gallery-item" id="pair10">
-        <img class="gallery-image" src="/images/jordan 1 green.jpg" style=" 
-        height: 290px;
-        position: absolute;
-        width: 276px;
-        top: 1064px;
-        left: 615px;"/>
-    </div>
-</div>
-</div>
-</section>
-
-<!-- feed 2 -->
-<div class="test2" style=" margin-top: 1115px;" >
-<div class="place" style=" margin-top: 20px;">
-<section class="feed" style="display: flex;
-  margin: 100px 18px;">
-<div class="feedPictures" style="display: flex;
-  justify-content: space-between;
-  height: 100%;">
-<!-- first row -->
-<div class="duo" style="display: flex;
-              flex-direction: column;
-              justify-content: space-between;" >
-                  <div class="gallery-item" id="impair1">
-                      <img class="gallery-image" src="/images/yeezy foam.jpg" style=
-                      "position: absolute;
-                      top: 1500px;
-                      left: 140px;"
-                      />
-                  </div>
   
-                  <div class="gallery-item" id="pair2">
-                      <img class="gallery-image" src="/images/adidas ozwego beige.jpg" style=
-                      "height: 360px;
-                      position: absolute;
-                      top: 1780px;
-                      left: 140px;"
-                      />
-                  </div> 
+  </div>
 </div>
-<!-- second row -->
-<div class="duo" style="display: flex;
-            flex-direction: column;
-            justify-content: space-between;" >
-                <div class="gallery-item" id="impair3">
-                    <img class="gallery-image"  src="/images/adidas samba.jpg" style="
-                    top: 1500px;
-                    position: absolute;
-                    left: 380px;
-                    height: 405px;" />
-                </div>
 
-                <div class="gallery-item" id="pair4">
-                    <img class="gallery-image" src="/images/adidas slide onyx.jpg" style=
-                    "position: absolute;
-                    height: 235px;
-                    left: 380px;
-                    top: 1920px;"/>
-                </div>
+<!-- feed one  -->
+<div class="feed">
+  <div class="pictureFeed">
+    <div class="galleryBox">
+      <div class="yellow" style="
+      margin: 0px;
+      display: flex;
+      flex-direction: row;
+      padding-top: 65px;
+      width: 1000px;
+      margin-right: 200px">
+            <div class="duo" >
+    <div class="gallery-item" id="impair1">
+      <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" >
+    </div>
+    <div class="gallery-item" id="pair2">
+      <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" />
+    </div> 
+  </div>
+<!-- second row -->
+<div class="duo"  >
+<div class="gallery-item" id="impair3">
+<img class="gallery-image"  src="/images/nike air max 1 prm mini swoosh.jpg" />
+</div>
+<div class="gallery-item" id="pair4">
+<img class="gallery-image" src="/images/nike back 2 the future.jpg" />
+</div>
 </div>
 <!-- third row -->
-<div class="duo" style="display: flex;
-flex-direction: column;
-justify-content: space-between;" >
-
+<div class="duo" >
 <div class="gallery-item" id="impair5">
-        <img class="gallery-image"  src="/images/adidas spezial black.jpg" style="position: absolute;
-            top: 1500px;
-            left: 620px;
-            height: 165px;
-            width: 280px;" />
+<img class="gallery-image"  src="/images/OFF WHITE x Nike Blazer Grey Summer 2018.jpg" />
 </div>
-            
 <div class="gallery-item" id="pair6">
-<img class="gallery-image" src="/images/adidas stan smith j.crew.jpg" style="width: 205px;
-  position: absolute;
-  top: 1500px;
-  left: 920px;
-  height: 510px;" >
+<img class="gallery-image" src="/images/jordan 4 ligghtblue.jpg"  >
 </div>
-
 </div>
 <!-- fourth row -->
-<div class="duo" style="display: flex;
-flex-direction: column;
-justify-content: space-between;" >
+<div class="duo"  >
 <div class="gallery-item" id="impair7">
-        <img class="gallery-image"  src="/images/adidas flag.jpg" style="position: absolute;
-        top: 2010px;
-        left: 616px;
-        height: 163px;
-        width: 539px;" />
+<img class="gallery-image"  src="/images/Off-White-Nike-VaporMax-White-Box.jpg" />
 </div>
 <div class="gallery-item" id="pair8">
-        <img class="gallery-image" src="/images/yeezy boost 350 black.jpg" style=
-        "width: 218px;
-        position: absolute;
-        top: 1895px;
-        left: 1150px;
-        height: 260px;" >
+<img class="gallery-image" src="/images/nikeflag.jpg" >
 </div>
 </div>
- <!-- fitht row -->
- <div class="duo" style="display: flex;
- flex-direction: column;
- justify-content: space-between;" >
-     <div class="gallery-item" id="impair9">
-         <img class="gallery-image"  src="/images/adidas gazelle green yellow.jpg" style=
-         "top: 1500px;
-         position: absolute;
-         height: 380px;
-         left: 1140px;
-         " />
-     </div>
+<!-- fitht row -->
+<div class="duo"  >
+<div class="gallery-item" id="impair9">
+<img class="gallery-image"  src="/images/air force 1.jpg" />
+</div>
+<div class="gallery-item" id="pair10">
+<img class="gallery-image" src="/images/jordan 1 green.jpg" />
+</div>
+</div>  
+      </div>
+    </div>
+</div>
+</div> 
+<!-- feed two -->
+<div class="feed">
+  <div class="pictureFeed">
+    <div class="galleryBox">
+      <div class="yellow" style="
+      margin: 0px;
+      display: flex;
+      flex-direction: row;
+      padding-top: 65px;
+      width: 1000px;
+      margin-right: 200px">
+            <div class="duo" >
+    <div class="gallery-item" id="impair1">
+      <img class="gallery-image" src="/images/yeezy foam.jpg" >
+    </div>
+    <div class="gallery-item" id="pair2">
+      <img class="gallery-image" src="/images/adidas ozwego beige.jpg" />
+    </div> 
+  </div>
+<!-- second row -->
+<div class="duo"  >
+<div class="gallery-item" id="impair3">
+<img class="gallery-image"  src="/images/adidas samba.jpg" />
+</div>
+<div class="gallery-item" id="pair4">
+<img class="gallery-image" src="/images/yeezy-700-blue.jpg" />
+</div>
+</div>
+<!-- third row -->
+<div class="duo" >
+<div class="gallery-item" id="impair5">
+<img class="gallery-image"  src="/images/adidas slide onyx.jpg" />
+</div>
+<div class="gallery-item" id="pair6">
+<img class="gallery-image" src="/images/adidas spezial black.jpg"  >
+</div>
+</div>
+<!-- fourth row -->
+<div class="duo"  >
+<div class="gallery-item" id="impair7">
+<img class="gallery-image"  src="/images/adidas stan smith j.crew.jpg" />
+</div>
+<div class="gallery-item" id="pair8">
+<img class="gallery-image" src="/images/adidas flag.jpg" >
+</div>
+</div>
+<!-- fitht row -->
+<div class="duo"  >
+<div class="gallery-item" id="impair9">
+<img class="gallery-image"  src="/images/yeezy boost 350 black.jpg" />
+</div>
+<div class="gallery-item" id="pair10">
+<img class="gallery-image" src="/images/adidas gazelle green yellow.jpg" />
+</div>
+</div>  
+      </div>
+    </div>
+</div>
+</div> 
+</top>
 
-     <div class="gallery-item" id="pair10">
-         <img class="gallery-image" src="/images/yeezy-700-blue.jpg" style=" height: 310px;
-         position: absolute;
-         width: 270px;
-         left: 630px;
-         top: 1688px;"/>
-     </div>
- </div>
-</div>
-</section>
-</div>
 
-</div>
-</div>
 </body>
 </html>
+
 <script>
-    function sliderPluggin(activeslide = 0) {
+  function sliderPluggin(activeslide = 0) {
   const slides = document.querySelectorAll('.slide');
   
   slides[activeslide].classList.add('active');
-
   function clearActiveClasses() {
     slides.forEach((slide) => {
       slide.classList.remove('active');
     });
   }
-
   for (const slide of slides) {
     slide.addEventListener('click', () => {
       clearActiveClasses();
@@ -363,16 +273,13 @@ justify-content: space-between;" >
     });
   }
 }
-
 sliderPluggin(0);
-
 // button follow
 const followBtn = document.querySelector(".following")
 const postBtn = document.querySelector(".post")
 // count followers
 const count = document.querySelector("#following-count")
 const add= document.querySelector("#post-count")
-
 // button clicked
 let clicked = false;
 followBtn.addEventListener("click", () =>{
@@ -395,256 +302,158 @@ addBtn.addEventListener("click", () =>{
       add.textContent--;
   }
 });
-
 </script>
 <style>
- 
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-  html {
-    scroll-behavior: smooth;
-  }
-      body {
+  body {
         background: black;
         font-family: 'Montserrat', sans-serif;
         color:whitesmoke;
+        width: 100vh;
+        height: 100vh;
       }
-      .picprof{
-        display: flex;
-        float: right;
-        margin-top: -30px;
-      }
-      .bio{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: flex-end;
-        width: 32%;
-        align-content: flex-end;
-        justify-content: flex-start;
-      }
-      .container-sneaker {
-        width: 60%;
-        display: flex;
-        padding: 0px 0px;
-        float: left;
-        left: 50px;
-        margin-right: 100px;
-      }
-      .hotdrop{
-        align-items: center;
-        }
-      .followers{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 32%;
-        align-content: flex-end;
-        justify-content: flex-start;
-      }
-      .slide {
-        height: 50vh;
-        border-radius: 20px;
-        margin: 10px;
-        margin-top: 100px;
-        cursor: pointer;
-        color: #fff;
-        flex: 1;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: relative;
-        transition: all 500ms ease-in-out;
-        margin-left: 4px;
-      }
-      .slide h3 {
-        position: absolute;
-        font-size: 15px;
-        bottom: 20px;
-        left: 15px;
-        margin: 0;
-        opacity: 0;
-        color: red;
-      }
-      .slide.active {
-        flex: 10;
-      }
-      .slide.active h3 {
-        opacity: 1;
-        transition: opacity 0.3s ease-in 0.4s;
-      }
-      .nom{
-        color: rgb(210, 42, 42);
-        text-align: left;
-        text-transform: uppercase;
-        font-size: 30px;
-      }
-      .defaultpic{
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-      }
-      h1 {
-        font-weight: bold;
-        margin: 0;
-        text-align: center;
-      }
-      .proname{
-        text-align: left;
-        text-transform: uppercase;
-        margin-top: 90px;
-        color:whitesmoke;
-      }
-       h2 {
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-top: 60px;
+      h1, h2, h3{
         color: whitesmoke;
-      } 
-      .lead{
-        margin-top: 35px;
-        text-align: left;
       }
-      p {
-        font-size: 16px;
-        font-weight: bold;
-        line-height: 20px;
-        letter-spacing: 0.5px;
-        margin: 0px 0 10px;
-      }
-      span {
-        font-size: 15px;
-      }
-      a {
-        color: #333;
-        font-size: 14px;
-        text-decoration: none;
-        margin: 15px 0;
-      }
-      button {
-        border-radius: 20px;
-        border: 1px solid whitesmoke;
-        background-color: black;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 0px 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-      }
-      .modifProfil{
-        top: 55px;
-        border: 1px solid whitesmoke;
-        border-radius: 20px;
-        background-color: black;
-        color: white;
-        font-size: 10px;
-        font-weight: bold;
-        padding: 0px 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-        flex-direction: row;
-        position: relative;
-      }
-      button:active {
-        transform: scale(0.95);
-        padding: 1px 10px;
-      }
-      button:focus {
-        outline: none;
-      }
-      button.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-      }
-      form {
-        background-color: #FFFFFF;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 50px;
-        height: 100%;
-        text-align: center;
-        border-radius: 2%;
-      }
-      input {
-        background-color: #eee;
-        border: none;
-        padding: 12px 15px;
-        margin: 8px 0;
-        width: 100%;
-      }
-      .form-container {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        transition: all 0.6s ease-in-out;
-      }
-      .sign-in-container {
-        left: 0;
-        width: 50%;
-        z-index: 2;
-      }
-      @keyframes show {
-        0%, 49.99% {
-          opacity: 0;
-          z-index: 1;
-        }
-        50%, 100% {
-          opacity: 1;
-          z-index: 5;
-        }
-      }
-      .container-pro{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        width: 100%;
-      }
-      .followers{
-        display: flex;
-        font-size: 25px;
-        justify-content: space-between;
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
-      .number{
-        color: rgb(210, 42, 42);
-        text-transform: lowercase;
-        font-size: 20px;
-        margin-top: 19px;
-      }
-      .posts{
-        font-size: 25px;
-        margin-right: 5px;
-        margin-bottom: 20px;
-      }
-      .follow{
-        font-size: 25px;
-        margin-right: 5px;
-      }
-      .followed{
-        font-size: 25px;
-        margin-right: 5px;
-      }
-   /* feed */
-   .gallery-image {
-        width: 220px;
-        height: 265px;
-        margin: 15px;
-        object-fit: cover;
-        transition: transform 400ms ease-out;
-        box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        -webkit-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        -moz-box-shadow: 15px 20px 11px 0px rgba(0,0,0,0.34);
-        border-radius: 35px 35px 35px 35px;
-        -webkit-border-radius: 35px 35px 35px 35px;
-        -moz-border-radius: 35px 35px 35px 35px;
-    }
-    .gallery-image:hover {
+    .container {
+    width: 70%;
+  display: flex;
+  
+}
+.slide {
+  height: 50vh;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  color: #fff;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+.slide h3 {
+  position: absolute;
+  font-size: 20px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+  color: whitesmoke;
+}
+.slide.active {
+  flex: 10;
+}
+.slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+button {
+    border-radius: 20px;
+    border: 1px solid whitesmoke;
+    background-color: black;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin: 10px;
+  }
+  /* feed */
+  .feed {
+    margin: 0px;
+    padding: 0px;
+  }
+  .duo{
+    display: flex;
+    flex-direction: column;
+  }
+  .gallery-item{
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+  }
+  .gallery-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+    padding: 0px 10px;
+    border-radius: 35px 35px 35px 35px;
+-webkit-border-radius: 35px 35px 35px 35px;
+-moz-border-radius: 35px 35px 35px 35px;
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  }
+  .gallery-image:hover {
         transform: scale(1.1);
     }
 </style>
+
+  
+
+  
+    
+ 
+
+
+
+
+
+
+
+
+
+    
+
+    
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+ 
+ .container {
+     width: 70%;
+   display: flex;
+   
+ }
+ .slide {
+     height: 400px;;
+   border-radius: 20px;
+   margin: 10px;
+   cursor: pointer;
+   color: #fff;
+   flex: 1;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: relative;
+   transition: all 500ms ease-in-out;
+ }
+ .slide h3 {
+   position: absolute;
+   font-size: 20px;
+   bottom: 20px;
+   left: 20px;
+   margin: 0;
+   opacity: 0;
+   color: whitesmoke;
+ }
+ .slide.active {
+   flex: 10;
+ }
+ .slide.active h3 {
+   opacity: 1;
+   transition: opacity 0.3s ease-in 0.4s;
+ }
+    </style>
+  
+   
+    
+
+
+
 

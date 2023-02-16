@@ -1,3 +1,114 @@
+
+
+
+    <div class="container">
+
+      <div class="slide"style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
+        <h3>Asus</h3>
+      </div>
+
+      <div class="slide"style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
+        <h3>PS 4</h3>
+      </div>
+
+      <div class="slide"style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
+        <h3>Gaming</h3>
+      </div>
+
+      <div class="slide"style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
+        <h3>Xbox</h3>
+      </div>
+
+      <div class="slide"style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
+        <h3>Razer</h3>
+      </div>
+      
+    </div>
+    
+   <style>
+ @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.container {
+    width: 70%;
+  display: flex;
+  
+}
+.slide {
+    height: 400px;;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  color: #fff;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+.slide h3 {
+  position: absolute;
+  font-size: 20px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+  color: whitesmoke;
+}
+.slide.active {
+  flex: 10;
+}
+.slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+   </style>
+<script>
+    function sliderPluggin(activeslide = 0) {
+  const slides = document.querySelectorAll('.slide');
+  
+  slides[activeslide].classList.add('active');
+
+  function clearActiveClasses() {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+  }
+
+  for (const slide of slides) {
+    slide.addEventListener('click', () => {
+      clearActiveClasses();
+      slide.classList.add('active');
+    });
+  }
+}
+
+sliderPluggin(0);
+</script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- 
  <!DOCTYPE html>
 <html lang="en">

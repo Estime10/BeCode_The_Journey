@@ -75,9 +75,10 @@ const imageUpload = multer({ storage: storage }).fields([
 
 
 
+
 // Routes
 // Home Page
-// app.get("/test", (req, res)=>{res.render("test")})
+app.get("/test", (req, res)=>{res.render("test")})
 
 
 app.get("/", (req, res)=>{res.render("welcome")})
