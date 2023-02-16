@@ -91,11 +91,12 @@ flex-wrap: nowrap;">
 </div>
 <div class="hotdropGallery">
   <div class="container" style="
-      width: 1180px;
-    margin-left: 170px;">
+      width: 850px;
+      margin-left: 100px;">
 <!-- slide one -->
+
 <% if (typeof slide1 !== 'undefined' && slide1) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');"></div>
       <% } else { %>
   <div class="slide"style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
     <h3 style="color: red;">Nike Travis Scott Phantom Black </h3>
@@ -104,7 +105,7 @@ flex-wrap: nowrap;">
 
    <!-- slide two -->
    <% if (typeof slide2 !== 'undefined' && slide2) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
+    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');"></div>
         <% } else { %>
   <div class="slide"style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
     <h3 style="color: red;">Air Jordan 1 High OG Dior</h3>
@@ -112,7 +113,7 @@ flex-wrap: nowrap;">
   </div>
 <!-- slide three -->
 <% if (typeof slide3 !== 'undefined' && slide3) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');"></div>
       <% } else { %>
   <div class="slide"style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
     <h3 style="color: red;">Air Jordan 4 UC</h3>
@@ -121,7 +122,7 @@ flex-wrap: nowrap;">
 
 <!-- slide four -->
 <% if (typeof slide4 !== 'undefined' && slide4) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');"></div>
       <% } else { %>
   <div class="slide"style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
     <h3 style="color: red;">Yeezy 700 Wash orange</h3>
@@ -143,7 +144,8 @@ flex-wrap: nowrap;">
       padding-top: 65px;
       width: 1000px;
       margin-right: 200px">
-            <div class="duo" >
+<!-- first row -->
+<div class="duo" >
     <div class="gallery-item" id="impair1">
       <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" >
     </div>
@@ -202,7 +204,8 @@ flex-wrap: nowrap;">
       padding-top: 65px;
       width: 1000px;
       margin-right: 200px">
-            <div class="duo" >
+<!-- first row -->
+  <div class="duo" >
     <div class="gallery-item" id="impair1">
       <img class="gallery-image" src="/images/yeezy foam.jpg" >
     </div>
