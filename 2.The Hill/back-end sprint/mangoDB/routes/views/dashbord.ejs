@@ -24,7 +24,7 @@ justify-content: space-between;">
 <div class="profile" style="
 display: flex;
 flex-direction: column;
-height: 240px;
+height: 300px;
 align-items: flex-start;
 ">
   <!-- link to profile upload -->
@@ -35,15 +35,18 @@ align-items: flex-start;
          width="200px" height="200px" style="
          border-radius: 50%;
          margin-top: 40px;
-         margin-bottom: 0px;" />
+         margin-bottom: 0px;
+         overflow: hidden;" />
     <% } else { %>
       <img src="/images/Image.jpg" alt="Avatar" style="
           border-radius: 50%;
           margin-top: 40px;
-          margin-bottom: 0px;"
+          margin-bottom: 0px;
+          overflow: hidden;"
          width="200px" height="200px" />
     <% } %>
   </a>
+  
 
 <div class="adds" style="display: flex;
 align-items: flex-end;
@@ -96,16 +99,18 @@ flex-wrap: nowrap;">
 <!-- slide one -->
 
 <% if (typeof slide1 !== 'undefined' && slide1) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');"></div>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+   
       <% } else { %>
   <div class="slide"style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
-    <h3 style="color: red;">Nike Travis Scott Phantom Black </h3>
+    <h3 style="color: red;">Nike Travis Scott Phantom Black</h3>
     <% } %>
   </div>
 
    <!-- slide two -->
    <% if (typeof slide2 !== 'undefined' && slide2) { %>
-    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');"></div>
+    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
+      
         <% } else { %>
   <div class="slide"style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
     <h3 style="color: red;">Air Jordan 1 High OG Dior</h3>
@@ -113,7 +118,7 @@ flex-wrap: nowrap;">
   </div>
 <!-- slide three -->
 <% if (typeof slide3 !== 'undefined' && slide3) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');"></div>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
       <% } else { %>
   <div class="slide"style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
     <h3 style="color: red;">Air Jordan 4 UC</h3>
@@ -122,7 +127,8 @@ flex-wrap: nowrap;">
 
 <!-- slide four -->
 <% if (typeof slide4 !== 'undefined' && slide4) { %>
-  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');"></div>
+  <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
+    
       <% } else { %>
   <div class="slide"style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
     <h3 style="color: red;">Yeezy 700 Wash orange</h3>
@@ -143,7 +149,8 @@ flex-wrap: nowrap;">
       flex-direction: row;
       padding-top: 65px;
       width: 1000px;
-      margin-right: 200px">
+      margin-right: 76px">
+    
 <!-- first row -->
 <div class="duo" >
     <div class="gallery-item" id="impair1">
@@ -189,23 +196,28 @@ flex-wrap: nowrap;">
 <img class="gallery-image" src="/images/jordan 1 green.jpg" />
 </div>
 </div>  
-      </div>
-    </div>
+</div>
+</div>
 </div>
 </div> 
 <!-- feed two -->
-<div class="feed">
+<div class="feed2">
   <div class="pictureFeed">
     <div class="galleryBox">
-      <div class="yellow" style="
+      <div class="yellow2">
+      
+      <div class="test" style="
       margin: 0px;
       display: flex;
       flex-direction: row;
       padding-top: 65px;
+      padding: 0px;
       width: 1000px;
-      margin-right: 200px">
-<!-- first row -->
-  <div class="duo" >
+      margin-right: 180px;
+      margin-left: 0px;">
+  <div class="duo" style=" width: 200%;
+  margin-left: 110px;
+  margin-right: 0px;" >
     <div class="gallery-item" id="impair1">
       <img class="gallery-image" src="/images/yeezy foam.jpg" >
     </div>
@@ -214,7 +226,8 @@ flex-wrap: nowrap;">
     </div> 
   </div>
 <!-- second row -->
-<div class="duo"  >
+<div class="duo" style="width: 200%;
+margin-right: 10px;" >
 <div class="gallery-item" id="impair3">
 <img class="gallery-image"  src="/images/adidas samba.jpg" />
 </div>
@@ -223,7 +236,9 @@ flex-wrap: nowrap;">
 </div>
 </div>
 <!-- third row -->
-<div class="duo" >
+<div class="duo" style="
+width: 200%;
+align-items: center" >
 <div class="gallery-item" id="impair5">
 <img class="gallery-image"  src="/images/adidas slide onyx.jpg" />
 </div>
@@ -232,7 +247,8 @@ flex-wrap: nowrap;">
 </div>
 </div>
 <!-- fourth row -->
-<div class="duo"  >
+<div class="duo" style="    width: 200%;
+margin-left: -10px;" >
 <div class="gallery-item" id="impair7">
 <img class="gallery-image"  src="/images/adidas stan smith j.crew.jpg" />
 </div>
@@ -241,14 +257,19 @@ flex-wrap: nowrap;">
 </div>
 </div>
 <!-- fitht row -->
-<div class="duo"  >
+<div class="duo" style="    width: 200%;
+margin-left: 0px;
+margin-right: -110px;" >
 <div class="gallery-item" id="impair9">
 <img class="gallery-image"  src="/images/yeezy boost 350 black.jpg" />
 </div>
 <div class="gallery-item" id="pair10">
 <img class="gallery-image" src="/images/adidas gazelle green yellow.jpg" />
 </div>
-</div>  
+</div>
+    </div>
+<!-- first row -->
+  
       </div>
     </div>
 </div>
@@ -307,152 +328,97 @@ addBtn.addEventListener("click", () =>{
 });
 </script>
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-  body {
-        background: black;
-        font-family: 'Montserrat', sans-serif;
-        color:whitesmoke;
-        width: 100vh;
-        height: 100vh;
-      }
-      h1, h2, h3{
-        color: whitesmoke;
-      }
-    .container {
-    width: 70%;
-  display: flex;
-  
-}
-.slide {
-  height: 50vh;
-  border-radius: 20px;
-  margin: 10px;
-  cursor: pointer;
-  color: #fff;
-  flex: 1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  transition: all 500ms ease-in-out;
-}
-.slide h3 {
-  position: absolute;
-  font-size: 20px;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
-  opacity: 0;
-  color: whitesmoke;
-}
-.slide.active {
-  flex: 10;
-}
-.slide.active h3 {
-  opacity: 1;
-  transition: opacity 0.3s ease-in 0.4s;
-}
-button {
-    border-radius: 20px;
-    border: 1px solid whitesmoke;
-    background-color: black;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 0px 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    cursor: pointer;
-    margin: 10px;
-  }
-  /* feed */
-  .feed {
-    margin: 0px;
-    padding: 0px;
-  }
-  .duo{
-    display: flex;
-    flex-direction: column;
-  }
-  .gallery-item{
-    width: 100%;
-    height: 100%;
-    margin: 10px;
-  }
-  .gallery-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5%;
-    padding: 0px 10px;
-    border-radius: 35px 35px 35px 35px;
--webkit-border-radius: 35px 35px 35px 35px;
--moz-border-radius: 35px 35px 35px 35px;
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  }
-  .gallery-image:hover {
-        transform: scale(1.1);
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    body {
+      background: black;
+      font-family: 'Montserrat', sans-serif;
+      color:whitesmoke;
+      width: 100vh;
+      height: 100vh;
     }
-</style>
-
-  
-
-  
-    
- 
-
-
-
-
-
-
-
-
-
-    
-
-    
-<style>
-  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
- 
- .container {
-     width: 70%;
-   display: flex;
-   
- }
- .slide {
-     height: 400px;;
-   border-radius: 20px;
-   margin: 10px;
-   cursor: pointer;
-   color: #fff;
-   flex: 1;
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-   position: relative;
-   transition: all 500ms ease-in-out;
- }
- .slide h3 {
-   position: absolute;
-   font-size: 20px;
-   bottom: 20px;
-   left: 20px;
-   margin: 0;
-   opacity: 0;
-   color: whitesmoke;
- }
- .slide.active {
-   flex: 10;
- }
- .slide.active h3 {
-   opacity: 1;
-   transition: opacity 0.3s ease-in 0.4s;
- }
+    h1, h2, h3{
+      color: whitesmoke;
+    }
+    .container {
+      width: 70%;
+      display: flex;
+    }
+    .slide {
+      height: 50vh;
+      border-radius: 20px;
+      margin: 10px;
+      cursor: pointer;
+      color: #fff;
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      transition: all 500ms ease-in-out;
+    }
+    .slide h3 {
+      position: absolute;
+      font-size: 20px;
+      bottom: 20px;
+      left: 20px;
+      margin: 0;
+      opacity: 0;
+      color: whitesmoke;
+    }
+    .slide.active {
+      flex: 10;
+    }
+    .slide.active h3 {
+      opacity: 1;
+      transition: opacity 0.3s ease-in 0.4s;
+    }
+    button {
+        border-radius: 20px;
+        border: 1px solid whitesmoke;
+        background-color: black;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0px 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+        cursor: pointer;
+        margin: 10px;
+      }
+      /* feed */
+      .feed {
+        margin: 0px;
+        padding: 0px;
+      }
+      .duo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .gallery-item{
+        width: 100%;
+        height: 100%;
+        margin: 10px;
+      }
+      .gallery-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5%;
+        padding: 0px 10px;
+        border-radius: 35px 35px 35px 35px;
+    -webkit-border-radius: 35px 35px 35px 35px;
+    -moz-border-radius: 35px 35px 35px 35px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+      }
+      .gallery-image:hover {
+            transform: scale(1.1);
+        }
     </style>
+ 
   
    
     
