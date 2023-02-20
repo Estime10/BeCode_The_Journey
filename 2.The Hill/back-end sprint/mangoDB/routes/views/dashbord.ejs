@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <title>Document</title>
+  <title>Sneakers Dashboard</title>
 </head>
 <body>
 
@@ -15,7 +15,8 @@ flex-direction: row-reverse;
 flex-wrap: wrap;
 align-items: center;
 align-content: space-around;
-justify-content: space-between;">
+justify-content: space-between;
+margin-left: -200px;">
   <!-- title -->
 <div class="title" style="margin-top: 15px;">
     <h1 class="proname"><span class="nom" style="color: red;"><%= name %></span> 's Sneaker profile</h1> 
@@ -24,7 +25,7 @@ justify-content: space-between;">
 <div class="profile" style="
 display: flex;
 flex-direction: column;
-height: 300px;
+height: 320px;
 align-items: flex-start;
 ">
   <!-- link to profile upload -->
@@ -55,10 +56,10 @@ flex-direction: row;
 flex-wrap: nowrap;">
   <div class="followers" style="
     display: flex;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 10px;">
+    margin: 8px;">
       <p class="posts" style="margin-right: 10px;">posts
           <span class="number" style="color: red;" id="post-count">0</span>
       </p>
@@ -76,10 +77,10 @@ flex-wrap: nowrap;">
     <button class="following">
            follow
     </button>
-    <button class="btn-activities" >
+    <button class="btn-activities" style="margin: 15px;">
       <a style="
       color: whitesmoke;
-      text-decoration: none;" href="http://localhost:3000/hotdrop/<%= name %>" > post</a>
+      text-decoration: none;" href="http://localhost:3000/slides/<%= name %>#picture" > post</a>
     </button>
 </div>
 </div>  
@@ -88,14 +89,15 @@ flex-wrap: nowrap;">
 <!-- hotdrop section -->
 <div class="hotdropTitle">
 <!-- hotdrop subtitle -->
-<div class="hotdrop" style="display: flex;">
-    <h2 class="drop">THE <span class="nom" style="color: red;">HOT</span> DROP</h2> 
+<div class="hotdrop" style="display: flex; margin-top: -100px;">
+    <h2 class="drop">THE <span class="nom" style="color: red; margin-top: -170px;">HOT</span> DROP</h2> 
 </div>
 </div>
-<div class="hotdropGallery">
+<div class="hotdropGallery" style="margin-right: 15px;">
   <div class="container" style="
-      width: 850px;
-      margin-left: 100px;">
+      width: 900px;
+      margin-left: 290px;
+      margin-top: 10px;">
 <!-- slide one -->
 
 <% if (typeof slide1 !== 'undefined' && slide1) { %>
@@ -128,7 +130,6 @@ flex-wrap: nowrap;">
 <!-- slide four -->
 <% if (typeof slide4 !== 'undefined' && slide4) { %>
   <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
-    
       <% } else { %>
   <div class="slide"style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
     <h3 style="color: red;">Yeezy 700 Wash orange</h3>
@@ -140,8 +141,9 @@ flex-wrap: nowrap;">
 </div>
 
 <!-- feed one  -->
-<div class="feed">
-  <div class="pictureFeed">
+<div class="feed"
+style="margin-left: 150px;">
+  <div class="pictureFeed" style=" margin-right: 40px;">
     <div class="galleryBox">
       <div class="yellow" style="
       margin: 0px;
@@ -149,13 +151,19 @@ flex-wrap: nowrap;">
       flex-direction: row;
       padding-top: 65px;
       width: 1000px;
-      margin-right: 76px">
+      margin-left: 0px">
     
 <!-- first row -->
 <div class="duo" >
+
+  <% if (image) { %>
     <div class="gallery-item" id="impair1">
-      <img class="gallery-image" src="/images/jordan 1 hight blus sky.jpg" >
+      <img class="gallery-image" src="/uploads/<%= image %>" >
     </div>
+  <% } else { %>
+    <div class="gallery-image" id="impair1" style="display: none;"></div>
+  <% } %>
+
     <div class="gallery-item" id="pair2">
       <img class="gallery-image" src="/images/jordan 11 concord 2018.jpg" />
     </div> 
@@ -195,37 +203,17 @@ flex-wrap: nowrap;">
 <div class="gallery-item" id="pair10">
 <img class="gallery-image" src="/images/jordan 1 green.jpg" />
 </div>
-</div>  
 </div>
 </div>
-</div>
-</div> 
-<!-- feed two -->
-<div class="feed2">
-  <div class="pictureFeed">
-    <div class="galleryBox">
-      <div class="yellow2">
-      
-      <div class="test" style="
+
+<div class="yellow2" style="
       margin: 0px;
       display: flex;
       flex-direction: row;
       padding-top: 65px;
-      padding: 0px;
       width: 1000px;
-      margin-right: 180px;
-      margin-left: 0px;">
-  <div class="duo" style=" width: 200%;
-  margin-left: 110px;
-  margin-right: 0px;" >
-    <div class="gallery-item" id="impair1">
-      <img class="gallery-image" src="/images/yeezy foam.jpg" >
-    </div>
-    <div class="gallery-item" id="pair2">
-      <img class="gallery-image" src="/images/adidas ozwego beige.jpg" />
-    </div> 
-  </div>
-<!-- second row -->
+      margin-left: 0px">
+<!-- sixth row -->
 <div class="duo" style="width: 200%;
 margin-right: 10px;" >
 <div class="gallery-item" id="impair3">
@@ -235,7 +223,7 @@ margin-right: 10px;" >
 <img class="gallery-image" src="/images/yeezy-700-blue.jpg" />
 </div>
 </div>
-<!-- third row -->
+<!-- seventh row -->
 <div class="duo" style="
 width: 200%;
 align-items: center" >
@@ -246,7 +234,7 @@ align-items: center" >
 <img class="gallery-image" src="/images/adidas spezial black.jpg"  >
 </div>
 </div>
-<!-- fourth row -->
+<!--heigth row -->
 <div class="duo" style="    width: 200%;
 margin-left: -10px;" >
 <div class="gallery-item" id="impair7">
@@ -256,7 +244,7 @@ margin-left: -10px;" >
 <img class="gallery-image" src="/images/adidas flag.jpg" >
 </div>
 </div>
-<!-- fitht row -->
+<!-- nineth row -->
 <div class="duo" style="    width: 200%;
 margin-left: 0px;
 margin-right: -110px;" >
@@ -267,13 +255,20 @@ margin-right: -110px;" >
 <img class="gallery-image" src="/images/adidas gazelle green yellow.jpg" />
 </div>
 </div>
-    </div>
-<!-- first row -->
-  
-      </div>
-    </div>
+<div class="duo" style=" width: 200%;
+margin-left: 110px;
+margin-right: 0px;" >
+  <div class="gallery-item" id="impair1">
+    <img class="gallery-image" src="/images/yeezy foam.jpg" >
+  </div>
+  <div class="gallery-item" id="pair2">
+    <img class="gallery-image" src="/images/adidas ozwego beige.jpg" />
+  </div> 
 </div>
-</div> 
+</div>
+</div>
+</div>
+</div>
 </top>
 
 
@@ -333,8 +328,6 @@ addBtn.addEventListener("click", () =>{
       background: black;
       font-family: 'Montserrat', sans-serif;
       color:whitesmoke;
-      width: 100vh;
-      height: 100vh;
     }
     h1, h2, h3{
       color: whitesmoke;
@@ -367,6 +360,9 @@ addBtn.addEventListener("click", () =>{
     }
     .slide.active {
       flex: 10;
+    }
+    @media screen {
+      
     }
     .slide.active h3 {
       opacity: 1;
@@ -413,6 +409,7 @@ addBtn.addEventListener("click", () =>{
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    background-color: black;
       }
       .gallery-image:hover {
             transform: scale(1.1);

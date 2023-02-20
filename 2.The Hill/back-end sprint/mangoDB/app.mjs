@@ -15,6 +15,7 @@ import { getSlideOne,postSlides } from "./controllers/slideOne.mjs";
 
 
 
+
 // Multer config
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -70,7 +71,8 @@ app.use((req, res, next) => {
 // Multer middleware
 const imageUpload = multer({ storage: storage }).fields([
   { name: 'image', maxCount: 9999 },
-  { name: 'avatar', maxCount: 1 }
+  { name: 'avatar', maxCount: 1 },
+  { name: 'picture', maxCount: 9999 }
 ]);
 
 
@@ -79,7 +81,6 @@ const imageUpload = multer({ storage: storage }).fields([
 // Routes
 // Home Page
 app.get("/test", (req, res)=>{res.render("test")})
-
 
 app.get("/", (req, res)=>{res.render("welcome")})
 app.get("/login", getLogin);
@@ -95,6 +96,7 @@ app.post("/slides/:id", imageUpload, postSlides);
 
 
 
+
 // app.get('/logout', (req, res) => {
 //   // Use the logout provided by passport, passing in a callback
 //   req.logout((err) => {
@@ -102,7 +104,7 @@ app.post("/slides/:id", imageUpload, postSlides);
 //   console.error(err);
 //   }
 //   res.redirect('/login');
-//   }) 
+//   })
 // }); 
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`))

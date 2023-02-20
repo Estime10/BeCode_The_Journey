@@ -6,78 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>what-a-drop</title>
+    <title>Sneakers profile</title>
 </head>
 <body>
-  <a href="/dashbord/" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Back to the previous page</a>
-<br>
-<div class="container">
-<h1 class="proname"><span class="nom"><%= name %></span>' S hotdrop selection </h1>
-<br>
-<br>
-<form action="/slides/<%= _id %>" method="POST" enctype="multipart/form-data">
-      <!-- avatar -->
+      <a href="/dashbord/" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase;" >Back to the previous page</a>
+    <br>
+    <div class="container">
+    <h1 class="proname"><span class="nom"><%= name %></span>' S hotdrop selection </h1>
+    <br>
+    <br>
+    <form action="/slides/<%= _id %>" method="POST" enctype="multipart/form-data">
+          <!-- avatar -->
+          <div>
+          <label for="avatar-input"><h4>Select profile picture</h4></label>
+          <img id="avatar-preview" 
+                src="/images/Image.jpg" 
+                alt="your image" width="50px" height="50px" style="border-radius: 50%; margin-left: 178px" />
+          <input type="file" id="avatar-input" name="avatar"
+          onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
+          accept=".jpg, .jpeg, .png" />
+    
+          </div>
+          <!-- slide ONE -->
+          <div>
+          <label for="slide1"><h4>Select slide One picture</h4></label>
+          <img id="slide1" 
+                src="/images/Image.jpg" 
+                alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
+          <input type="file" id="avatar" name="image"
+          onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
+                accept=".jpg, .jpeg, .png" />
+          </div>
+          <!-- slide TWO -->
+          <div>
+          <label for="slide2"><h4>Select slide Two picture</h4></label>
+          <img id="slide2" 
+                src="/images/Image.jpg" 
+                alt="your image" width="50px" height="50px" style="margin-left: 142px;"/>
+          <input type="file" id="avatar" name="image"
+          onchange="document.getElementById('slide2').src = window.URL.createObjectURL(this.files[0])"
+                accept=".jpg, .jpeg, .png" />
+          </div>
+          <!-- slide THREE -->
+          <div>
+                <label for="slide3"><h4>Select slide One picture</h4></label>
+                <img id="slide3" 
+                      src="/images/Image.jpg" 
+                      alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
+                <input type="file" id="avatar" name="image"
+                onchange="document.getElementById('slide3').src = window.URL.createObjectURL(this.files[0])"
+                      accept=".jpg, .jpeg, .png" />
+          </div>
+          <!-- slide FOUR -->
+          <div>
+                <label for="slide4"><h4>Select slide One picture</h4></label>
+                <img id="slide4" 
+                      src="/images/Image.jpg" 
+                      alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
+                <input type="file" id="avatar" name="image"
+                onchange="document.getElementById('slide4').src = window.URL.createObjectURL(this.files[0])"
+                      accept=".jpg, .jpeg, .png" />
+          </div>
+          <!-- bio -->
+          <!-- <div>
+          <label for="bio"><h4>biography</h4></label>
+          <textarea maxlength="80" name="bio" id="bio" cols="35" rows="3"  style="margin-left: 350px;"></textarea>
+          </div>
+          <br>
+          <br> --> <br>
+      <hr>
+      <br> 
       <div>
-      <label for="avatar-input"><h4>Select profile picture</h4></label>
-      <img id="avatar-preview" 
-            src="/images/Image.jpg" 
-            alt="your image" width="50px" height="50px" style="border-radius: 50%; margin-left: 178px" />
-      <input type="file" id="avatar-input" name="avatar"
-      onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
-      accept=".jpg, .jpeg, .png" />
-
-      </div>
-      <!-- slide ONE -->
-      <div>
-      <label for="slide1"><h4>Select slide One picture</h4></label>
-      <img id="slide1" 
-            src="/images/Image.jpg" 
-            alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
-      <input type="file" id="avatar" name="image"
-      onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
-            accept=".jpg, .jpeg, .png" />
-      </div><!-- slide TWO -->
-      <div>
-      <label for="slide2"><h4>Select slide Two picture</h4></label>
-      <img id="slide2" 
-            src="/images/Image.jpg" 
-            alt="your image" width="50px" height="50px" style="margin-left: 142px;"/>
-      <input type="file" id="avatar" name="image"
-      onchange="document.getElementById('slide2').src = window.URL.createObjectURL(this.files[0])"
-            accept=".jpg, .jpeg, .png" />
-      </div>
-      <!-- slide THREE -->
-      <div>
-            <label for="slide3"><h4>Select slide One picture</h4></label>
-            <img id="slide3" 
+            <label for="slide5"><h4>add new post</h4></label>
+            <img id="image" 
                   src="/images/Image.jpg" 
-                  alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
-            <input type="file" id="avatar" name="image"
-            onchange="document.getElementById('slide3').src = window.URL.createObjectURL(this.files[0])"
+                  alt="your image" width="50px" height="50px" style="margin-left: 300px;"/>
+            <input type="file" id="avatar" name="picture"
+            onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                   accept=".jpg, .jpeg, .png" />
       </div>
-      <!-- slide FOUR -->
-      <div>
-            <label for="slide4"><h4>Select slide One picture</h4></label>
-            <img id="slide4" 
-                  src="/images/Image.jpg" 
-                  alt="your image" width="50px" height="50px" style="margin-left: 150px;"/>
-            <input type="file" id="avatar" name="image"
-            onchange="document.getElementById('slide4').src = window.URL.createObjectURL(this.files[0])"
-                  accept=".jpg, .jpeg, .png" />
-      </div>
-      <!-- bio -->
-      <!-- <div>
-      <label for="bio"><h4>biography</h4></label>
-      <textarea maxlength="80" name="bio" id="bio" cols="35" rows="3"  style="margin-left: 350px;"></textarea>
-      </div>
-      <br>
-      <br> -->
       
 <button type="submit" name="submit" value="Add Image">update profile</button>
 </form>
-
-
 </div>
 </body>
 </html>

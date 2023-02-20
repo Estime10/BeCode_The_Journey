@@ -9,18 +9,21 @@ export const getSlideOne = ( req, res ) => {
     }
     const _id = req.user._id;
     const name = req.user.name;
+    
 
     req.session.user = { _id, name };
-
+  
     User.findOne({ user: _id, name })
     .then(profile => {
-        res.render("slideOne", { profile, _id, name, slide1: '' })
+        res.render("slideOne", { 
+            profile, _id, name, slide1: '', slide2: '', slide3: '', slide4: '', avatar: '', image: ''})
     })
     .catch(error => {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
     )
 }
+
 // post slideOne
 export const postSlides = async (req, res) => {
     console.log("postSlides", req.files);
@@ -35,6 +38,9 @@ export const postSlides = async (req, res) => {
         if (req.files && Object.keys(req.files).length > 0) {
             if (req.files['avatar'] && req.files['avatar'].length > 0) {
                 user.avatar = req.files['avatar'][0].filename;
+            }
+            if ( req.files['picture'] && req.files['picture'].length > 0 ) {
+                user.image = req.files['picture'][0].filename;
             }
             if (req.files['image'] && req.files['image'].length > 0) {
                 user.slide1 = req.files['image'][0].filename;
@@ -51,6 +57,7 @@ export const postSlides = async (req, res) => {
         }
         await user.save();
         res.render("dashbord", {
+            image: user.image,
             avatar: user.avatar,
             name: user.name,
             _id: user._id,
@@ -64,6 +71,3 @@ export const postSlides = async (req, res) => {
         res.json({ message: err.message });
     }
 };
-
-
-
