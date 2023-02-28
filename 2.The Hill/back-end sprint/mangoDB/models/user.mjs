@@ -16,9 +16,9 @@ const UserSchema = new mongoose.Schema({
   avatar: {
     type: String,
   },
-  image: {
+  images: [{
     type: String,
-  },
+  }],
   slide1: {
     type: String,
   },
@@ -35,12 +35,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  postContent: {
-    type: String,
-  },
-  postTitle: {
-    type: String,
-  },
     date: {
     type: Date,
     default: Date.now
@@ -49,6 +43,15 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now,
+  },
+  posts: {
+    type: Array,
+  },
+  followers: {
+    type: Array,
+  },
+  following: {
+    type: Array,
   },
   likes: {
     type: Number,

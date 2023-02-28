@@ -11,20 +11,13 @@
 </head>
 
 <body>
-
-  <top style="display: flex;
-flex-direction: row-reverse;
-flex-wrap: wrap;
-align-items: center;
-align-content: space-around;
-justify-content: space-between;
-margin-left: -200px;">
-    <!-- title -->
-    <div class="title" style="margin-top: 15px;">
-      <h1 class="proname"><span class="nom" style="color: red;">
-          <%= name %>
-        </span> 's Sneaker profile</h1>
-    </div>
+<top style="display: flex;flex-direction: row-reverse;flex-wrap: wrap;align-items: center;align-content: space-around;justify-content: space-between;margin-left: -200px;">
+<!-- title -->
+<div class="title" style="margin-top: -200px;">
+<h1 class="proname"><span class="nom" style="color: red;">
+<%= name %>
+</span> 's Sneaker profile</h1>
+</div>
 <!-- profile -->
 <div class="profile" style="display: flex;flex-direction: column;height: 320px;align-items: flex-start;">
 
@@ -38,8 +31,6 @@ margin-left: -200px;">
 <img src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%;margin-top: 40px;margin-bottom: 0px;overflow: hidden;" width="200px" height="200px" />
 <% } %>
 </a>
-
-
 <div class="adds" style="display: flex;align-items: flex-end;justify-content: space-between;flex-direction: row;flex-wrap: nowrap;">
 <div class="followers" style="display: flex;font-size: 12px;font-weight: bold;text-transform: uppercase;margin: 8px;">
 <p class="posts" style="margin-right: 10px;">posts
@@ -59,14 +50,14 @@ margin-left: -200px;">
 </div>
 </div>
 </div>
-
 <!-- hotdrop section -->
 <div class="hotdropTitle">
 <!-- hotdrop subtitle -->
-<div class="hotdrop" style="display: flex; margin-top: -100px;">
+<div class="hotdrop" style="display: flex; margin-top: -65px;">
 <h2 class="drop">THE <span class="nom" style="color: red; margin-top: -170px;">HOT</span> DROP</h2>
 </div>
 </div>
+
 <div class="hotdropGallery" style="margin-right: 15px;">
 <div class="container" style="width: 900px;margin-left: 290px;margin-top: 10px;">
 
@@ -74,38 +65,31 @@ margin-left: -200px;">
 <% if (typeof slide1 !=='undefined' && slide1) { %>
 <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
 <% } else { %>
-<div class="slide" style="background-image: url('/images/travis-scott-jordan-1-low-1670838159.jpg');">
-<h3 style="color: red;">Nike Travis Scott Phantom Black</h3>
+<div class="gallery-item hidden">
 <% } %>
 </div>
 <!-- slide two -->
 <% if (typeof slide2 !=='undefined' && slide2) { %>
 <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
 <% } else { %>
-<div class="slide" style="background-image: url('/images/AIR-JORDAN-1-HIGH-OG-DIOR-PACKSHOT-7.jpg');">
-<h3 style="color: red;">Air Jordan 1 High OG Dior</h3>
+<div class="gallery-item hidden">
 <% } %>
 </div>
 <!-- slide three -->
 <% if (typeof slide3 !=='undefined' && slide3) { %>
 <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
 <% } else { %>
-<div class="slide" style="background-image: url('/images/air-jordan-4-university-blue-closer-look-relase-info-1.jpg');">
-<h3 style="color: red;">Air Jordan 4 UC</h3>
+  <div class="gallery-item hidden">
 <% } %>
 </div>
 
 <!-- slide four -->
 <% if (typeof slide4 !=='undefined' && slide4) { %>
 <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
-                              <% } else { %>
-                                <div class="slide"
-                                  style="background-image: url('/images/yeezy-700-wash-orange-IG-1024x1280.jpg');">
-                                  <h3 style="color: red;">Yeezy 700 Wash orange</h3>
-                                  <% } %>
-                                </div>
-
-
+<% } else { %>
+  <div class="gallery-item hidden">
+<% } %>
+</div>
 </div>
 </div>
 
@@ -116,195 +100,213 @@ margin-left: -200px;">
 <div class="yellow" style="margin: 0px;display: flex;flex-direction: row;padding-top: 65px;width: 1000px;margin-left: 0px">
 
 <!-- first row -->
+
 <div class="duo">
 
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
+  <% if (image) { %>
+    <div class="gallery-item ">
+    <img class="gallery-image" src="/uploads/<%= image %>">
+    </div>
+    <% } else { %>
+    <div class="gallery-image hidden"></div>
+    <% } %>
+    <% if (image) { %>
+    <div class="gallery-item ">
+    <img class="gallery-image" src="/uploads/<%= image %>">
+    </div>
+    <% } else { %>
+    <div class="gallery-item hidden"></div>
+    <% } %>
 
 </div>
 <!-- second row -->
-<div class="duo">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
 
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
+<div class="duo">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
 </div>
 <!-- third row -->
-<div class="duo">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-</div>
-<!-- fourth row -->
-<div class="duo">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-</div>
-<!-- fitht row -->
-<div class="duo">
-<div class="gallery-item" id="impair9">
-  <% if (image) { %>
-    <div class="gallery-item " id="impair1">
-      <img class="gallery-image" src="/uploads/<%= image %>">
-    </div>
+  <div class="duo">
+    <% if (images && images.length > 0) { %>
+      <% const latestImage = images[images.length - 1]; %>
+      <% images.forEach(function(image, index) { %>
+        <div class="gallery-item" id="impair<%= index + 1 %>">
+          <% if (image === latestImage) { %>
+            <img class="gallery-image" src="/uploads/<%= latestImage %>">
+          <% } else { %>
+            <img class="gallery-image" src="/uploads/<%= image %>">
+          <% } %>
+        </div>
+      <% }); %>
     <% } else { %>
       <div class="gallery-image hidden" id="impair1"></div>
     <% } %>
+  </div>
   
-    <% if (image) { %>
-        <div class="gallery-item " id="impair1">
-          <img class="gallery-image" src="/uploads/<%= image %>">
-        </div>
-    <% } else { %>
-        <div class="gallery-item hidden" id="impair1"></div>
-    <% } %>
-                              </div>
+  
+
+
+<!-- fourth row -->
+
+<div class="duo">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
+</div>
+<!-- fitht row -->
+<div class="duo">
+
+<div class="gallery-item">
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
+</div>
 </div>
 <div class="yellow2" style="margin: 0px;display: flex;flex-direction: row;padding-top: 65px;width: 1000px;margin-left: 0px">
 <!-- sixth row -->
-  <div class="duo" style="width: 200%; margin-right: 10px;">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
+<div class="duo" style="width: 200%; margin-right: 10px;">
 
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-  </div>
-  <!-- seventh row -->
-  <div class="duo" style="width: 200%; align-items: center">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
 
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-  </div>
-  <!--heigth row -->
-  <div class="duo" style="    width: 200%;margin-left: -10px;">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-  </div>
-  <!-- nineth row -->
-  <div class="duo" style="    width: 200%;margin-left: 0px;margin-right: -110px;">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
-  </div>
-  <div class="duo" style=" width: 200%;margin-left: 110px;margin-right: 0px;">
-                                <% if (image) { %>
-                                  <div class="gallery-item " id="impair1">
-                                    <img class="gallery-image" src="/uploads/<%= image %>">
-                                  </div>
-                                  <% } else { %>
-                                    <div class="gallery-image hidden" id="impair1"></div>
-                                  <% } %>
-
-                                  <% if (image) { %>
-                                      <div class="gallery-item " id="impair1">
-                                        <img class="gallery-image" src="/uploads/<%= image %>">
-                                      </div>
-                                  <% } else { %>
-                                      <div class="gallery-item hidden" id="impair1"></div>
-                                  <% } %>
 </div>
 
+<!-- seventh row -->
+
+<div class="duo" style="width: 200%; align-items: center">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
 </div>
-  </div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
+</div>
+  
+<!--heigth row -->
+
+<div class="duo" style="    width: 200%;margin-left: -10px;">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
+</div>
+
+<!-- nineth row -->
+<div class="duo" style="    width: 200%;margin-left: 0px;margin-right: -110px;">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
+</div>
+
+<div class="duo" style=" width: 200%;margin-left: 110px;margin-right: 0px;">
+
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-image hidden"></div>
+<% } %>
+<% if (image) { %>
+<div class="gallery-item ">
+<img class="gallery-image" src="/uploads/<%= image %>">
+</div>
+<% } else { %>
+<div class="gallery-item hidden"></div>
+<% } %>
+
 </div>
 </div>
-  </top>
+</div>
+</div>
+</div>
+</top>
 </body>
 </html>
 <script>
