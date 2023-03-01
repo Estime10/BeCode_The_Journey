@@ -103,101 +103,94 @@
 
 <div class="duo">
 
-  <% if (image) { %>
-    <div class="gallery-item ">
-    <img class="gallery-image" src="/uploads/<%= image %>">
-    </div>
-    <% } else { %>
+  <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
     <div class="gallery-image hidden"></div>
+  <% } %>
+  
+  
+  <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
     <% } %>
-    <% if (image) { %>
-    <div class="gallery-item ">
-    <img class="gallery-image" src="/uploads/<%= image %>">
-    </div>
-    <% } else { %>
-    <div class="gallery-item hidden"></div>
-    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 <!-- second row -->
 
 <div class="duo">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
+
+  <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 <!-- third row -->
   <div class="duo">
     <% if (images && images.length > 0) { %>
-      <% const latestImage = images[images.length - 1]; %>
-      <% images.forEach(function(image, index) { %>
-        <div class="gallery-item" id="impair<%= index + 1 %>">
-          <% if (image === latestImage) { %>
-            <img class="gallery-image" src="/uploads/<%= latestImage %>">
-          <% } else { %>
-            <img class="gallery-image" src="/uploads/<%= image %>">
-          <% } %>
+      <% for (let i = 0; i < images.length; i++) { %>
+        <div class="gallery-item">
+          <img class="gallery-image" src="/uploads/<%= images[i] %>">
         </div>
-      <% }); %>
+      <% } %>
     <% } else { %>
-      <div class="gallery-image hidden" id="impair1"></div>
+      <div class="gallery-image hidden"></div>
     <% } %>
-  </div>
-  
-  
 
+  </div>
 
 <!-- fourth row -->
 
 <div class="duo">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 <!-- fitht row -->
 <div class="duo">
 
-<div class="gallery-item">
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 </div>
@@ -205,20 +198,15 @@
 <!-- sixth row -->
 <div class="duo" style="width: 200%; margin-right: 10px;">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 
@@ -226,20 +214,15 @@
 
 <div class="duo" style="width: 200%; align-items: center">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
   
@@ -247,59 +230,44 @@
 
 <div class="duo" style="    width: 200%;margin-left: -10px;">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 
 <!-- nineth row -->
 <div class="duo" style="    width: 200%;margin-left: 0px;margin-right: -110px;">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 
 <div class="duo" style=" width: 200%;margin-left: 110px;margin-right: 0px;">
 
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-image hidden"></div>
-<% } %>
-<% if (image) { %>
-<div class="gallery-item ">
-<img class="gallery-image" src="/uploads/<%= image %>">
-</div>
-<% } else { %>
-<div class="gallery-item hidden"></div>
-<% } %>
+   <% if (images && images.length > 0) { %>
+    <% for (let i = 0; i < images.length; i++) { %>
+      <div class="gallery-item">
+        <img class="gallery-image" src="/uploads/<%= images[i] %>">
+      </div>
+    <% } %>
+  <% } else { %>
+    <div class="gallery-image hidden"></div>
+  <% } %>
 
 </div>
 </div>

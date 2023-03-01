@@ -7,10 +7,13 @@ export const getDashbord = ( req, res ) => {
     if (!req.user) {
     return res.redirect("/login")
     }
-    const { name, avatar, image, slide1, slide2, slide3, slide4, _id } = req.user;
+    const { name, avatar, images, slide1, slide2, slide3, slide4, _id } = req.user;
     res.render("dashbord",
-     { name, avatar, image, slide1, slide2, slide3, slide4, _id });
+     { name, avatar, images, slide1, slide2, slide3, slide4, _id });
 }
+
+
+
 // post Dashbord
 export const postDashbord = async (req, res) => {
     console.log("dashbordPost", req.files);
@@ -19,30 +22,33 @@ export const postDashbord = async (req, res) => {
       if (!user) {
         throw new Error("User not found");
       }
+  
+      // get the current length of the images array
+      const currentLength = user.images.length;
+  
       if (req.files && Object.keys(req.files).length > 0) {
-        if (req.files["avatar"] && req.files["avatar"].length > 0) {
-          user.avatar = req.files["avatar"][0].filename;
-        }
-        if (req.files["picture"] && req.files["picture"].length > 0) {
-          const images = req.files["picture"].map((file) => file.filename);
-          user.images = images;
-        }
-        if (req.files["image"] && req.files["image"].length > 0) {
-          user.slide1 = req.files["image"][0].filename;
-        }
-        if (req.files["image"] && req.files["image"].length > 1) {
-          user.slide2 = req.files["image"][1].filename;
-        }
-        if (req.files["image"] && req.files["image"].length > 2) {
-          user.slide3 = req.files["image"][2].filename;
-        }
-        if (req.files["image"] && req.files["image"].length > 3) {
-          user.slide4 = req.files["image"][3].filename;
+        const fileKeys = Object.keys(req.files);
+        for (let i = 0; i < fileKeys.length; i++) {
+          const key = fileKeys[i];
+          const files = req.files[key];
+          if (key === "avatar" && files.length > 0) {
+            user.avatar = files[0].filename;
+          } else if (key === "picture" && files.length > 0) {
+            for (let j = 0; j < files.length && j < 999; j++) {
+              // add the new image file to the next available index in the images array
+              user.images[currentLength + j] = files[j].filename;
+            }
+          } else if (key === "image" && files.length > 0) {
+            for (let j = 0; j < files.length && j < 4; j++) {
+              // add the new image file to the next available index in the slide array
+              user["slide" + (j + 1)] = files[j].filename;
+            }
+          }
         }
       }
       await user.save();
       res.render("dashbord", {
-        image: user.image, // display the user's image property
+        images: user.images,
         avatar: user.avatar,
         name: user.name,
         _id: user._id,
@@ -51,12 +57,14 @@ export const postDashbord = async (req, res) => {
         slide3: user.slide3,
         slide4: user.slide4,
         bio: user.bio,
-        images: user.images, // display the user's images property
       });
     } catch (err) {
       res.json({ message: err.message });
     }
   };
+  
+  
+  
   
 
 
