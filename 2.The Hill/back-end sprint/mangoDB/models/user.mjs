@@ -19,18 +19,9 @@ const UserSchema = new mongoose.Schema({
   images: [{
     type: String,
   }],
-  slide1: {
+  slides: [{
     type: String,
-  },
-  slide2: {
-    type: String,
-  },
-  slide3: {
-    type: String,
-  },
-  slide4: {
-    type: String,
-  },
+  }],
   bio: {
     type: String,
     default: "",

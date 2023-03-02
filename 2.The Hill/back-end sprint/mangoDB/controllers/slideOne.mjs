@@ -16,7 +16,7 @@ export const getSlideOne = ( req, res ) => {
     User.findOne({ user: _id, name })
     .then(profile => {
         res.render("slideOne", { 
-            profile, _id, name, slide1: '', slide2: '', slide3: '', slide4: '', avatar: '', image: ''})
+            profile, _id, name, slides: '', avatar: '', images: ''})
     })
     .catch(error => {
         res.status(500).json({ error: error.message });

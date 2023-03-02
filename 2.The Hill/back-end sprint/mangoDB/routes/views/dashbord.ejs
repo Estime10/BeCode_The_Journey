@@ -63,36 +63,15 @@
   
 <div class="container">
 
-<!-- slide one -->
-<% if (typeof slide1 !=='undefined' && slide1) { %>
-<div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+<% if (slides && slides.length > 0) { %>
+  <% for (let i = 0; i < slides.length; i++) { %>
+    <div class="slide" id="slide<%= i+1 %>" style="background-image: url('/uploads/<%= slides[i] %>');">
+    </div>
+  <% } %>
 <% } else { %>
-<div class="gallery-item hidden">
+  <div class="gallery-item hidden"></div>
 <% } %>
-</div>
-<!-- slide two -->
-<% if (typeof slide2 !=='undefined' && slide2) { %>
-<div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide2 %>');">
-<% } else { %>
-<div class="gallery-item hidden">
-<% } %>
-</div>
-<!-- slide three -->
-<% if (typeof slide3 !=='undefined' && slide3) { %>
-<div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide3 %>');">
-<% } else { %>
-  <div class="gallery-item hidden">
-<% } %>
-</div>
 
-<!-- slide four -->
-<% if (typeof slide4 !=='undefined' && slide4) { %>
-<div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide4 %>');">
-<% } else { %>
-  <div class="gallery-item hidden">
-<% } %>
-</div>
-</div>
 </div>
 
 <!-- feed one  -->
@@ -104,14 +83,18 @@
           <% if (images && images.length > 0) { %>
             <% for (let i = 0; i < images.length; i++) { %>
               <div class="gallery-item">
-                <img class="gallery-image" src="/uploads/<%= images[i] %>">
+                <div class="image-wrapper">
+                  <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>" />
+                  <h3 class="image-title" style="text-align: center;">Image <%= i+1 %></h3>
+                  <span class="number" style="color: red;"></span>
+                </div>
               </div>
               <% counter++; %>
             <% } %>
           <% } else { %>
-            <div class="gallery-image hidden">
-            </div>
+            <div class="gallery-image hidden"></div>
           <% } %>
+          
           
         </div>
       </div>
@@ -256,20 +239,12 @@
     margin: 0px;
     padding: 0px;
   }
-
-  /* .duo {
-    display: flex;
-    flex: wrap;
-    justify-content: center;
-  } */
-
   .gallery-item {
      display: flex;
      flex-direction: row-reverse;
     flex: wrap;
     justify-content: center;
   }
-
   .yellow{
     margin: 0px;
     display: flex;
@@ -295,7 +270,6 @@
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     background-color: black;
   }
-
   .gallery-image:hover {
     transform: scale(1.1);
   }
