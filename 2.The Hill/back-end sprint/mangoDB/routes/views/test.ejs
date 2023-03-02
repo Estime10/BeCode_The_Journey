@@ -1,19 +1,82 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="/dashbord/" method="POST" enctype="multipart/form-data">
-    <label for="feed-input">Select image</label>
-    <img id="feed-preview"src="/images/Image.jpg" 
-    alt="your image" width="50%" height="50%" style="margin-left: 150px;"/>
-<input type="file" id="avatar" name="image"
-onchange="document.getElementById('feed-preview').src = window.URL.createObjectURL(this.files[0])"
-    accept=".jpg, .jpeg, .png" />
-    <input type="submit" value="Submit">
-</body>
-</html> -->
+<!-- <body>
+  <div class="container">
+
+    <% if (typeof slide1 !=='undefined' && slide1) { %>
+    <div class="slide" id="slide1" style="background-image: url('/uploads/<%= slide1 %>');">
+    <% } else { %>
+     <div class="gallery-item hidden">
+    <% } %>
+    </div>
+  </div>
+
+    <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1507457379470-08b800bebc67?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=80');"></div> 
+    <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=80');"></div>
+    <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1591109864300-46c417fa0475?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');"></div>
+    <div class="slide"style="background-image: url('https://images.unsplash.com/photo-1614285457768-646f65ca8548?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');"></div>
+    
+  </div>
+  
+  </body>
+  <script>
+    function sliderPluggin(activeslide = 0) {
+  const slides = document.querySelectorAll('.slide');
+  
+  slides[activeslide].classList.add('active');
+
+  function clearActiveClasses() {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+  }
+
+  for (const slide of slides) {
+    slide.addEventListener('click', () => {
+      clearActiveClasses();
+      slide.classList.add('active');
+    });
+  }
+}
+
+sliderPluggin(0);
+  </script>
+<style>
+
+
+.container {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+}
+
+.slide {
+  height: 50vh;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  color: #fff;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+
+.slide h3 {
+  position: absolute;
+  font-size: 20px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.slide.active {
+  flex: 10;
+}
+
+.slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+</style> -->

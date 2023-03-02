@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs"
 import User from "../models/user.mjs"
 import { Strategy as LocalStrategy } from "passport-local";
-import passport from "passport"
 
 
 const configPassport = (passport) => {

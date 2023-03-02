@@ -35,8 +35,8 @@ const storage = multer.diskStorage({
   mongoose.connect(URI, { useNewUrlParser: true })
       .then(() => console.log("MongoDataBase is connected successfully!"))
       .catch(err => console.log(err))
-  mongoose.connect(process.env.MONGO_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true }, err => {console.log('connected')})
+
+  
 
 // EJS
 app.use(expressEjsLayouts);
@@ -75,9 +75,6 @@ const imageUpload = multer({ storage: storage }).fields([
   { name: 'picture', maxCount: 9999 }
 ]);
 
-
-
-
 // Routes
 // Home Page
 app.get("/test", (req, res)=>{res.render("test")})
@@ -89,7 +86,7 @@ app.get("/register", getRegister);
 app.post("/register", postRegister);
 app.get("/dashbord/", getDashbord);
 app.post("/dashbord/:id",imageUpload, postDashbord);
-app.get("/slides/:id", getSlideOne);
+app.get("/profile/:id", getSlideOne);
 // app.post("/dashbord/:id", postFollow);
 
 
