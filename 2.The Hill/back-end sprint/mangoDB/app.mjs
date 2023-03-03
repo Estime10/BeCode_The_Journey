@@ -11,7 +11,9 @@ import bodyParser from "body-parser"
 import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
-import { getSlideOne } from "./controllers/slideOne.mjs";
+import { getSlides } from "./controllers/slides.mjs";
+import { getAvatar } from "./controllers/avatar.mjs";
+import { editPost, deleteImage} from "./controllers/edit.mjs"
 
 
 
@@ -86,8 +88,11 @@ app.get("/register", getRegister);
 app.post("/register", postRegister);
 app.get("/dashbord/", getDashbord);
 app.post("/dashbord/:id",imageUpload, postDashbord);
-app.get("/profile/:id", getSlideOne);
-// app.post("/dashbord/:id", postFollow);
+app.get("/editposts/:id", editPost);
+app.delete("/editposts/:id", deleteImage);
+app.get("/slides/:id", getSlides);
+app.get("/avatar/:id", getAvatar);
+
 
 
 

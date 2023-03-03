@@ -22,7 +22,7 @@
 <div class="profile">
 
 <!-- link to profile upload -->
-<a href="http://localhost:3000/profile/<%= name %>">
+<a href="http://localhost:3000/avatar/<%= name %>">
 <!-- profile picture -->
 <% if (typeof avatar !=='undefined' && avatar) { %>
 <img src="/uploads/<%= avatar %>" alt="Avatar" width="200px" height="200px" style="
@@ -47,7 +47,7 @@
 <div class="btn-activities" >
 <button class="dm">message</button>
 <button class="following">follow</button>
-<button class="btn-activities" ><a style="color: whitesmoke;text-decoration: none;" href="http://localhost:3000/profile/<%= _id %>"> post</a></button>
+<button class="btn-activities" ><a style="color: whitesmoke;text-decoration: none;" href="http://localhost:3000/slides/<%= name %>"> post</a></button>
 </div>
 </div>
 </div>
@@ -83,18 +83,19 @@
           <% if (images && images.length > 0) { %>
             <% for (let i = 0; i < images.length; i++) { %>
               <div class="gallery-item">
-                <div class="image-wrapper">
-                  <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>" />
-                  <h3 class="image-title" style="text-align: center;">Image <%= i+1 %></h3>
-                  <span class="number" style="color: red;"></span>
-                </div>
+                
+                  <div class="image-container">
+                    <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>">
+                    <br>
+                  <h3 class="image-title" style="text-align: center;color: red">Image <%= i+1 %></h3>
+                  </div>
+                
               </div>
               <% counter++; %>
             <% } %>
           <% } else { %>
             <div class="gallery-image hidden"></div>
           <% } %>
-          
           
         </div>
       </div>
@@ -144,6 +145,37 @@
   const postCount = document.getElementById("post-count");
   // Update the text content with the counter value
   postCount.textContent = '<%= counter %>';
+
+// initialize the hyperlink
+document.querySelectorAll(".image-link").forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    event.stopPropagation(); // prevent the click event from bubbling up to the parent element
+  });
+});
+// delete the image
+// const deleteButtons = document.querySelectorAll(".delete-btn");
+// deleteButtons.forEach((btn) => {
+//   btn.addEventListener("click", (event) => {
+//     event.preventDefault();
+//     const imageIndex = btn.dataset.index;
+//     fetch(`/dashbord/images/${imageIndex}`, { method: "DELETE" })
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP error ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         // Refresh the page to reflect the updated images array
+//         location.reload();
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//         // Display an error message to the user
+//       });
+//   });
+// });
+
 
 </script>
 <style>
@@ -254,6 +286,8 @@
     margin-left: 0px;
     flex-wrap: wrap-reverse;
     justify-content: center;
+    align-content: space-around;
+    align-items: center;
   }
   .gallery-image {
     width: 275px;
@@ -270,7 +304,34 @@
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     background-color: black;
   }
+  
   .gallery-image:hover {
     transform: scale(1.1);
   }
+  .image-container {
+  position: relative;
+}
+.image-container img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.delete-btn::after {
+  content: "...";
+  font-size: 75px;
+  position: absolute;
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  color: red;
+  opacity: 0;
+  transition: opacity 0.0.1s ease-in-out;
+}
+
+.delete-btn:hover::after {
+  opacity: 1;
+  cursor: pointer;
+}
+
 </style>

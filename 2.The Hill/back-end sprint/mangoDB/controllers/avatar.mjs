@@ -2,8 +2,8 @@ import User from "../models/user.mjs";
 
 
 // get slideOne
-export const getSlideOne = ( req, res ) => {
-    console.log( "getSlideOne" ,req.user )
+export const getAvatar = ( req, res ) => {
+    console.log( "getAvatar" ,req.user )
     if ( !req.user ) {
         return res.redirect("/login")
     }
@@ -15,7 +15,7 @@ export const getSlideOne = ( req, res ) => {
   
     User.findOne({ user: _id, name })
     .then(profile => {
-        res.render("slideOne", { 
+        res.render("avatar", { 
             profile, _id, name, slides: '', avatar: '', images: ''})
     })
     .catch(error => {

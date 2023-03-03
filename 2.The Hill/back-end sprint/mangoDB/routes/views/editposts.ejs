@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>Sneakers Edit</title>
+      </head>
+      <body>
+        <a href="/dashbord/" style="text-align: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;" >Back into the matrix</a>
+        <br>
+        <div class="container">
+        <h1 class="proname" style="margin-top: 100;"><span style="color: red;" class="nom"><%= name %></span>' S Sneakers collection </h1>
+        <br>
+        <br>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="container-feed"style=" margin: 0px;
+            display: flex;
+            flex-direction: row-reverse;
+            padding-top: 65px;
+            width: 1000px;
+            margin-left: 0px;
+            flex-wrap: wrap-reverse;
+            justify-content: center;">
+            
+               
+              <div class="feed" style="margin-left: 40%;">
+          <div class="pictureFeed" style=" margin-right: 40px;">
+            <div class="galleryBox">
+              <div class="yellow">
+                
+                <form action="/editposts" method="post" enctype="multipart/form-data" style="margin: 0px;
+                display: flex;
+                flex-direction: row-reverse;
+                padding-top: 65px;
+                width: 1000px;
+                margin-left: 0px;
+                flex-wrap: wrap-reverse;
+                justify-content: center;">
+                <% if (images && images.length > 0) { %>
+                  <% for (let i = 0; i < images.length; i++) { %>
+                    <div class="gallery-item">
+                      <div class="image-wrapper">
+                        <div class="image-container">
+                          <label class="image-checkbox">
+                          <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>">
+                          <%= images[i].name %>
+                          </label>
+                          <input type="checkbox" name="selectedIds" value="<%= images[i]._id %>" class="checkbox">
+                          <br>
+                          <h3 class="image-title" style="text-align: center;color: red">Image <%= i+1 %></h3>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% } else { %>
+                  <div class="gallery-image hidden"></div>
+                <% } %>
+                <button type="submit">Delete selected</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>  
+            </div>
+        
+      </body>
+</html>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+  
+    body {
+      background: black;
+      font-family: 'Montserrat', sans-serif;
+      color: whitesmoke;
+    }
+  
+    h1,
+    h2,
+    h3 {
+      color: whitesmoke;
+    }
+    .profile {
+      display: flex;
+      flex-direction: row-reverse;
+      height: 200px;
+      align-items: flex-end;
+    }
+    .followers{
+      display: flex;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 7px;
+      flex-direction: column;
+    }
+  
+    .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+  
+    .hidden {
+      display: none;
+    }
+  
+    .slide {
+      height: 50vh;
+      border-radius: 20px;
+      margin: 10px;
+      cursor: pointer;
+      color: #fff;
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      transition: all 500ms ease-in-out;
+    }
+  
+    .slide h3 {
+      position: absolute;
+      font-size: 20px;
+      bottom: 20px;
+      left: 20px;
+      margin: 0;
+      opacity: 0;
+      color: whitesmoke;
+    }
+  
+    .slide.active {
+      flex: 10;
+    }
+  
+    @media screen {}
+  
+    .slide.active h3 {
+      opacity: 1;
+      transition: opacity 0.3s ease-in 0.4s;
+    }
+  
+    button {
+      border-radius: 20px;
+      border: 1px solid whitesmoke;
+      background-color: black;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0px 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+      cursor: pointer;
+      margin: 10px;
+    }
+  
+    /* feed */
+    .feed {
+      margin: 0px;
+      padding: 0px;
+    }
+    .gallery-item {
+       display: flex;
+       flex-direction: row-reverse;
+      flex: wrap;
+      justify-content: center;
+    }
+    .yellow{
+    margin: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 65px;
+    width: 1000px;
+    margin-left: 0px;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    }
+    .gallery-image {
+      width: 275px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5%;
+      margin: 10px;
+      padding: 0px 10px;
+      border-radius: 35px 35px 35px 35px;
+      -webkit-border-radius: 35px 35px 35px 35px;
+      -moz-border-radius: 35px 35px 35px 35px;
+      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      background-color: black;
+    }
+    .gallery-image:hover {
+      transform: scale(1.1);
+    }
+    .image-container {
+    position: relative;
+  }
+  .container-feed{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+  .image-checkbox {
+  display: inline-block;
+  position: relative;
+}
+
+.image-checkbox input[type="checkbox"] {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.image-checkbox img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+  
+</style>
