@@ -1,42 +1,37 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const UserSchema = new mongoose.Schema({
   name: {
-  type: String,
-  required: true,
+    type: String,
+    required: true,
   },
   email: {
-  type: String,
-  required: true,
+    type: String,
+    required: true,
   },
   password: {
-  type: String,
-  required: true,
+    type: String,
+    required: true,
   },
   avatar: {
     type: String,
   },
   images: [{
-    type: String,
+    images_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      auto: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
   }],
   slides: [{
     type: String,
   }],
-  bio: {
-    type: String,
-    default: "",
-  },
-    date: {
+  date: {
     type: Date,
-    default: Date.now
-  },
-  created: {
-    type: Date,
-    required: true,
     default: Date.now,
-  },
-  posts: {
-    type: Array,
   },
   followers: {
     type: Array,
@@ -47,14 +42,10 @@ const UserSchema = new mongoose.Schema({
   likes: {
     type: Number,
   },
+}, {
+  timestamps: true,
+});
 
-    },
-        {
-          timestamps: true
-        }
-      );
-      
 const User = mongoose.model("User", UserSchema);
-         
 
-export default User
+export default User;

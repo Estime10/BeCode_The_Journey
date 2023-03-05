@@ -15,7 +15,7 @@
 <!-- title -->
 <div class="title" style="margin-top: 40px;">
 <h1 class="proname"><span class="nom" style="color: red;">
-<%= name %>
+  <%= name %>
 </span> 's Sneaker profile</h1>
 </div>
 <!-- profile -->
@@ -77,29 +77,26 @@
 <!-- feed one  -->
 <div class="feed" style="margin-left: 150px;">
   <div class="pictureFeed" style=" margin-right: 40px;">
-      <div class="galleryBox">
-        <div class="yellow">
-
-          <% if (images && images.length > 0) { %>
-            <% for (let i = 0; i < images.length; i++) { %>
-              <div class="gallery-item">
-                
-                  <div class="image-container">
-                    <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>">
-                    <br>
-                  <h3 class="image-title" style="text-align: center;color: red">Image <%= i+1 %></h3>
-                  </div>
-                
+    <div class="galleryBox">
+      <div class="yellow">
+        <% if (images && images.length > 0) { %>
+          <% for (let i = 0; i < images.length; i++) { %>
+            <div class="gallery-item">
+              <div class="image-container">
+                <img class="gallery-image" src="/uploads/<%= images[i].url %>" alt="Image <%= i+1 %>">
+                <br>
+                <h3 class="image-title" style="text-align: center;color: red">Image <%= i+1 %></h3>
               </div>
-              <% counter++; %>
-            <% } %>
-          <% } else { %>
-            <div class="gallery-image hidden"></div>
+            </div>
+            <% counter++; %>
           <% } %>
-          
-        </div>
+        <% } else { %>
+          <div class="gallery-image hidden"></div>
+        <% } %>
       </div>
+    </div>
   </div>
+</div>
 </div>
 </top>
 </body>
@@ -145,7 +142,6 @@
   const postCount = document.getElementById("post-count");
   // Update the text content with the counter value
   postCount.textContent = '<%= counter %>';
-
 // initialize the hyperlink
 document.querySelectorAll(".image-link").forEach(function(link) {
   link.addEventListener('click', function(event) {
@@ -175,8 +171,6 @@ document.querySelectorAll(".image-link").forEach(function(link) {
 //       });
 //   });
 // });
-
-
 </script>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');

@@ -80,17 +80,27 @@ const imageUpload = multer({ storage: storage }).fields([
 // Routes
 // Home Page
 app.get("/test", (req, res)=>{res.render("test")})
-
+// welcome page
 app.get("/", (req, res)=>{res.render("welcome")})
+// Login Page
 app.get("/login", getLogin);
+// Login Handle
 app.post("/login", postLogin);
+// Register Page
 app.get("/register", getRegister);
+// Register Handle
 app.post("/register", postRegister);
+// Dashbord Page
 app.get("/dashbord/", getDashbord);
+// Dashbord Handle upload image
 app.post("/dashbord/:id",imageUpload, postDashbord);
-app.get("/editposts/:id", editPost);
-app.delete("/editposts/:id", deleteImage);
+// Edit Page 
+app.get("/delete-image/:id", editPost);
+// Delete image from dashbord page
+app.delete("/delete-image/:id", deleteImage);
+// Slides Page
 app.get("/slides/:id", getSlides);
+// Avatar Page 
 app.get("/avatar/:id", getAvatar);
 
 

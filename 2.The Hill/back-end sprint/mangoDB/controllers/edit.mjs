@@ -1,63 +1,95 @@
 import User from "../models/user.mjs";
+
 // get posts
 export const editPost = async (req, res) => {
-  console.log( "editPost", req.user )
-    if ( !req.user ) {
-        return res.redirect("/login")
+  console.log("editpost", req.user);
+  try {
+    console.log(req.user);
+    // Check if there is a logged in user
+    if (!req.user) {
+      return res.redirect("/dashbord");
     }
-    const _id = req.user._id;
-    const name = req.user.name;
+    const { name, _id } = req.user;
+    
     req.session.user = { _id, name };
-    const users = await User.find({ images: 
-      { $exists: true, $ne: [] } }); 
+
+    // Find all users who have images
+    const users = await User.find({ images: { $exists: true, $ne: [] } });
+    // Concatenate all the images from each user into one array
     let images = [];
     users.forEach(user => {
-      images = images.concat(user.images); 
-    User.findOne({ user: _id, name })
-    .then(profile => {
-      res.render("editposts", { 
-        profile, images, _id, name, });
-    })
-    .catch(error => {
-      res.status(500).json({ error: error.message });
+      images = images.concat(user.images);
     });
-  });
+
+    // Render the editposts page with the user's profile, all images, and user ID and name
+    res.render("editposts", { profile: req.user, images, _id, name });
+  } catch (error) {
+    // If there is an error, send a 500 response with the error message
+    res.status(500).json({ error: error.message });
+  }
 };
-// delete post image
+
+// delete image
 export const deleteImage = async (req, res) => {
-  console.log( "deleteImage", req.user )
+  const _id = req.params.id;
+  const { imageIds } = req.body;
 
-  const selectedIds = req.body.selectedIds;
-  // Use Mongoose to delete the selected items from the images array
-  User.updateOne(
-    { _id: req.user._id },
-    { $pull: { images: { _id: { $in: selectedIds } } } },
-    (err, result) => {
-      if (err) {
-        console.error(err);
-        res.sendStatus(500);
-        return;
-      }
-
-      // Update the post count in the database
-      User.findByIdAndUpdate(
-        req.user._id,
-        { $inc: { postCount: -selectedIds.length } },
-        { new: true }, // Set {new: true} to return the updated document
-        (err, result) => {
-          if (err) {
-            console.error(err);
-            res.sendStatus(500);
-            return;
-          }
-
-          // Redirect back to the main EJS file with the updated data
-          res.render("dashbord", { array: result.images, postCount: result.postCount });
-        }
-      );
+  try {
+    const user = await User.findById(_id);
+    if (!user) {
+      throw new Error('User not found');
     }
-  );
+
+    const imagesToDelete = user.images.filter(image => imageIds.includes(image._id.toString()));
+    if (imagesToDelete.length !== imageIds.length) {
+      throw new Error('One or more images not found');
+    }
+
+    await User.updateOne({ _id: _id }, { $pull: { images: { _id: { $in: imageIds } } } });
+
+    res.status(200).json({ message: 'Images deleted' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

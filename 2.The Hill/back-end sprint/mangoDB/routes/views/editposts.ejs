@@ -1,75 +1,86 @@
+Sure! Here's the updated code:
+
+html
+Copy code
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <title>Sneakers Edit</title>
-      </head>
-      <body>
-        <a href="/dashbord/" style="text-align: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;" >Back into the matrix</a>
-        <br>
-        <div class="container">
-        <h1 class="proname" style="margin-top: 100;"><span style="color: red;" class="nom"><%= name %></span>' S Sneakers collection </h1>
-        <br>
-        <br>
-            </div>
-            <br>
-            <hr>
-            <br>
-            <div class="container-feed"style=" margin: 0px;
-            display: flex;
-            flex-direction: row-reverse;
-            padding-top: 65px;
-            width: 1000px;
-            margin-left: 0px;
-            flex-wrap: wrap-reverse;
-            justify-content: center;">
-            
-               
-              <div class="feed" style="margin-left: 40%;">
-          <div class="pictureFeed" style=" margin-right: 40px;">
-            <div class="galleryBox">
-              <div class="yellow">
-                
-                <form action="/editposts" method="post" enctype="multipart/form-data" style="margin: 0px;
-                display: flex;
-                flex-direction: row-reverse;
-                padding-top: 65px;
-                width: 1000px;
-                margin-left: 0px;
-                flex-wrap: wrap-reverse;
-                justify-content: center;">
-                <% if (images && images.length > 0) { %>
-                  <% for (let i = 0; i < images.length; i++) { %>
-                    <div class="gallery-item">
-                      <div class="image-wrapper">
-                        <div class="image-container">
-                          <label class="image-checkbox">
-                          <img class="gallery-image" src="/uploads/<%= images[i] %>" alt="Image <%= i+1 %>">
-                          <%= images[i].name %>
-                          </label>
-                          <input type="checkbox" name="selectedIds" value="<%= images[i]._id %>" class="checkbox">
-                          <br>
-                          <h3 class="image-title" style="text-align: center;color: red">Image <%= i+1 %></h3>
-                        </div>
-                      </div>
-                    </div>
-                  <% } %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Sneakers Edit</title>
+  </head>
+  <body>
+    <a href="/dashbord/" style="text-align: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;">Back into the matrix</a>
+    <br />
+    <div class="container">
+      <h1 class="proname" style="margin-top: 100;">
+        <span style="color: red;" class="nom"><%= name %></span>' S Sneakers collection
+      </h1>
+      <br />
+      <br />
+    </div>
+    <br />
+    <hr />
+    <br />
+    <form id="delete-form" method="DELETE" data-userid="<%= _id %>">
+      <div class="images-container" id="images-container">
+        <% for (let i = 0; i < images.length; i++) { %>
+          <div class="gallery-item">
+            <div class="image-wrapper">
+              <div class="image-container">
+                <% if (images[i].url) { %>
+                  <label class="image-checkbox">
+                    <img class="gallery-image" src="/uploads/<%= images[i].url %>" />
+                    <input type="checkbox" name="selectedIds[]" value="<%= images[i]._id %>" class="checkbox" />
+                  </label>
                 <% } else { %>
                   <div class="gallery-image hidden"></div>
                 <% } %>
-                <button type="submit">Delete selected</button>
-                </form>
               </div>
             </div>
           </div>
-        </div>  
-            </div>
-        
-      </body>
+        <% } %>
+      </div>
+      <button type="submit" class="btn btn-danger">Delete Selected</button>
+    </form>
+    <div class="success-msg" style="display:none">Images deleted successfully!</div>
+<script>
+  const deleteForm = document.querySelector('#delete-form');
+
+deleteForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const userId = deleteForm.getAttribute('data-userid');
+  const selectedIds = Array.from(document.querySelectorAll('input[name="selectedIds[]"]:checked')).map(checkbox => checkbox.value);
+
+  try {
+    const response = await fetch(`/delete-image/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        imageIds: selectedIds
+      })
+    });
+
+    if (response.ok) {
+      document.querySelector('#images-container').innerHTML = '';
+      document.querySelector('.success-msg').style.display = 'block';
+    } else {
+      throw new Error(response.statusText);
+    }
+  } catch (error) {
+    console.error(error);
+    alert('Error deleting images. Please try again.');
+  }
+});
+
+</script>
+</body>
 </html>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
@@ -221,11 +232,11 @@
   margin: 10px;
 }
 
-.image-checkbox img {
+/* .image-checkbox img {
   display: block;
   max-width: 100%;
   height: auto;
-}
+} */
 
   
 </style>

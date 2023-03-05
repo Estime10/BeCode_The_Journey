@@ -1,9 +1,8 @@
 import User from "../models/user.mjs";
 
-
-// get Dashbord
+// get dashbord
 export const getDashbord = async (req, res) => {
-  console.log("getDashbord", req.user);
+  console.log("getdashbord", req.user);
   try {
     console.log(req.user);
     if (!req.user) {
@@ -14,21 +13,23 @@ export const getDashbord = async (req, res) => {
     // If there are more than 4 slides, only show the last 4
     const lastFourSlides = slides.slice(-4);
 
-    res.render("dashbord", { name, avatar, images, slides, _id });
+    res.render("dashbord", { 
+      name,
+      avatar,
+      images,
+      slides: lastFourSlides,
+      _id });
+      
   } catch (err) {
     res.json({ message: err.message });
   }
 };
 
-
-
-
-
-// post Dashbord
+// post dashbord
 export const postDashbord = async (req, res) => {
-  console.log("postDashorb", req.files);
+  console.log("postdashbord", req.files);
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.user._id);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -41,7 +42,7 @@ export const postDashbord = async (req, res) => {
     }
 
     if (picture && picture.length > 0) {
-      const images = picture.slice(0, 999).map(file => file.filename);
+      const images = picture.slice(0, 999).map(file => ({ url: file.filename }));
       user.images.push(...images);
     }
 
@@ -59,13 +60,3 @@ export const postDashbord = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
-
-
-
-
-
-
-
-
