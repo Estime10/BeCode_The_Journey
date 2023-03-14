@@ -23,6 +23,3 @@ export const getSlides = ( req, res ) => {
     }
     )
 }
-
-
-

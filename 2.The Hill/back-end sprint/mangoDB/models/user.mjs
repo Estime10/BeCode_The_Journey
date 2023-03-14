@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       auto: true,
     },
+    shoe_name: {
+      type: String,
+    },
     url: {
       type: String,
       required: true,

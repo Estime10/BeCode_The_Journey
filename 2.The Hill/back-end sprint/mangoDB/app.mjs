@@ -13,7 +13,8 @@ import { getRegister, postRegister } from './controllers/register.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
 import { getSlides } from "./controllers/slides.mjs";
 import { getAvatar } from "./controllers/avatar.mjs";
-import { editPost, deleteImage} from "./controllers/edit.mjs"
+import { editPost, deleteImage } from "./controllers/edit.mjs"
+
 
 
 
@@ -94,15 +95,14 @@ app.post("/register", postRegister);
 app.get("/dashbord/", getDashbord);
 // Dashbord Handle upload image
 app.post("/dashbord/:id",imageUpload, postDashbord);
-// Edit Page 
+// Edit post Page 
 app.get("/delete-image/:id", editPost);
-// Delete image from dashbord page
+// Delete posts image from dashbord page
 app.delete("/delete-image/:id", deleteImage);
 // Slides Page
 app.get("/slides/:id", getSlides);
 // Avatar Page 
 app.get("/avatar/:id", getAvatar);
-
 
 
 

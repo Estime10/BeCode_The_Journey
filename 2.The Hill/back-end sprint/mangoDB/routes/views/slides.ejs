@@ -36,7 +36,7 @@
       <div class="edit-slides" style="margin-left: 0px;
       margin-top: 20px;
       margin-bottom: 20px;">
-            <a href="http://localhost:3000/delete-image/<%= name %>" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;">edit post</a>
+            <a href="http://localhost:3000/delete-image/<%= name %>" style=" text-decoration: none; text-transform: uppercase; color: red;">edit post</a>
       </div>
             <img id="image" 
                   src="/images/Image.jpg" 
@@ -46,8 +46,12 @@
             onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                   accept=".jpg, .jpeg, .png" />
       </div>
+      <br>
       
-<button type="submit" name="submit" value="Add Image" style="margin-top: 50px;" >add pictures</button>
+      <input type="text" name="shoe_name" placeholder="Sneaker name" />
+      <br>
+      
+      <button type="submit" name="submit" value="Add Image" style="margin-top: 50px;" >add pictures</button>
 </form>
 
       <hr>

@@ -8,7 +8,7 @@ export const getDashbord = async (req, res) => {
     if (!req.user) {
       return res.redirect("/login");
     }
-    const { name, avatar, images, slides, _id } = req.user;
+    const { name, avatar, images, slides, _id, shoe_name } = req.user;
 
     // If there are more than 4 slides, only show the last 4
     const lastFourSlides = slides.slice(-4);
@@ -17,6 +17,7 @@ export const getDashbord = async (req, res) => {
       name,
       avatar,
       images,
+      shoe_name,
       slides: lastFourSlides,
       _id });
       
@@ -36,6 +37,8 @@ export const postDashbord = async (req, res) => {
     }
 
     const { avatar, picture, image } = req.files;
+    const shoe_name = req.body.shoe_name;
+
 
     if (avatar && avatar.length > 0) {
       user.avatar = avatar[0].filename;
@@ -44,6 +47,9 @@ export const postDashbord = async (req, res) => {
     if (picture && picture.length > 0) {
       const images = picture.slice(0, 999).map(file => ({ url: file.filename }));
       user.images.push(...images);
+      // Add shoe_name to the last image that was added
+      const lastImageIndex = user.images.length - 1;
+      user.images[lastImageIndex].shoe_name = req.body.shoe_name;
     }
 
     if (image && image.length > 0) {
