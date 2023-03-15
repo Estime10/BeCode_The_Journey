@@ -21,7 +21,7 @@
           <label for="avatar-input"><h4 style="color: whitesmoke;">Select profile picture</h4></label>
           <img id="avatar-preview" 
                 src="/images/Image.jpg" 
-                alt="your image" width="100" height="100"  style="margin-left: 178px" />
+                alt="your image" width="100" height="100"  style="margin-left: 178px; border-radius: 50%;" />
           <input type="file" id="avatar-input" name="avatar"
           onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
           accept=".jpg, .jpeg, .png" />

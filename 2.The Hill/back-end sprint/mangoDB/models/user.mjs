@@ -30,7 +30,14 @@ const UserSchema = new mongoose.Schema({
     },
   }],
   slides: [{
-    type: String,
+    slide_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      auto: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
   }],
   date: {
     type: Date,

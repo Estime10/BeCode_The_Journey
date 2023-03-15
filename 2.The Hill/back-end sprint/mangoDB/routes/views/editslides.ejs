@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Sneakers Edit</title>
+  </head>
+  <body>
+    <a href="/dashbord/" style="text-align: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;">Back into the matrix</a>
+    <br />
+    <div class="container">
+      <h1 class="proname" style="margin-top: 100;">
+        <span style="color: red;" class="nom"><%= name %></span>' S Sneakers collection
+      </h1>
+      <br />
+      <br />
+    </div>
+    <br />
+    <hr />
+    <br />
+    <form id="delete-form" method="DELETE" data-userid="<%= _id %>">
+      <div class="slides-container" id="slides-container" style="display: flex;
+      flex-direction: row;
+      flex-wrap: wrap-reverse;justify-content: center;">
+        <% for (let i = 0; i < slides.length; i++) { %>
+          <div class="gallery-item">
+            <div class="slide-wrapper">
+              <div class="slide-container">
+                <% if (slides[i]) { %>
+                  <label class="slide-checkbox">
+                    <img class="gallery-slide" src="/uploads/<%= slides[i].url %>" />
+                    <input type="checkbox" name="selectedIds[]" value="<%= slides[i]._id %>" class="checkbox" />
+                  </label>
+                <% } else { %>
+                  <div class="gallery-slide hidden"></div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+      <button type="submit" class="btn btn-danger">Delete Selected</button>
+    </form>
+    <div class="success-msg" style="display:none">Slides deleted successfully!</div>
+    <script>
+      const deleteForm = document.querySelector('#delete-form');
+    
+      deleteForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const userId = deleteForm.getAttribute('data-userid');
+        const selectedIds = Array.from(document.querySelectorAll('input[name="selectedIds[]"]:checked')).map(checkbox => checkbox.value);
+    
+        try {
+          const response = await fetch(`/delete-slide/${userId}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              slideIds: selectedIds
+            })
+          });
+    
+          if (response.ok) {
+            document.querySelector('#slides-container').innerHTML = '';
+            document.querySelector('.success-msg').style.display = 'block';
+          } else {
+            throw new Error(response.statusText);
+          }
+        } catch (error) {
+          console.error(error);
+          alert('Error deleting slides. Please try again.');
+        }
+      });
+    </script>
+    
+</body>
+</html>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+  
+    body {
+      background: black;
+      font-family: 'Montserrat', sans-serif;
+      color: whitesmoke;
+    }
+  
+    h1,
+    h2,
+    h3 {
+      color: whitesmoke;
+    }  
+    .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+  
+    .hidden {
+      display: none;
+    }
+    button {
+      border-radius: 20px;
+      border: 1px solid whitesmoke;
+      background-color: black;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 0px 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+      cursor: pointer;
+      margin: 10px;
+    }
+  
+    /* feed */
+    .feed {
+      margin: 0px;
+      padding: 0px;
+    }
+    .gallery-item {
+       display: flex;
+       flex-direction: row-reverse;
+      flex: wrap;
+      justify-content: center;
+    }
+    .yellow{
+    margin: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 65px;
+    width: 1000px;
+    margin-left: 0px;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    }
+    .gallery-image {
+      width: 275px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5%;
+      margin: 10px;
+      padding: 0px 10px;
+      border-radius: 35px 35px 35px 35px;
+      -webkit-border-radius: 35px 35px 35px 35px;
+      -moz-border-radius: 35px 35px 35px 35px;
+      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+      background-color: black;
+    }
+    .gallery-image:hover {
+      transform: scale(1.1);
+    }
+    .image-container {
+    position: relative;
+  }
+  .container-feed{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
+  /* .image-checkbox {
+  display: inline-block;
+  position: relative;
+} */
+
+/* .image-checkbox input[type="checkbox"] {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+} */
+.gallery-slide{
+  width: 275px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5%;
+  margin: 10px;
+  padding: 0px 10px;
+}
+
+  
+</style>

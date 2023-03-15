@@ -13,7 +13,7 @@ import { getRegister, postRegister } from './controllers/register.mjs';
 import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
 import { getSlides } from "./controllers/slides.mjs";
 import { getAvatar } from "./controllers/avatar.mjs";
-import { editPost, deleteImage } from "./controllers/edit.mjs"
+import { editPost, deleteImage, editSlide, deleteSlide } from "./controllers/edit.mjs"
 
 
 
@@ -101,22 +101,25 @@ app.get("/delete-image/:id", editPost);
 app.delete("/delete-image/:id", deleteImage);
 // Slides Page
 app.get("/slides/:id", getSlides);
-// Avatar Page 
+// Avatar Page
 app.get("/avatar/:id", getAvatar);
+// Edit Slide Page
+app.get("/delete-slide/:id", editSlide);
+// Delete Slide from slides page
+app.delete("/delete-slide/:id", deleteSlide);
 
 
 
 
-
-
-// app.get('/logout', (req, res) => {
-//   // Use the logout provided by passport, passing in a callback
-//   req.logout((err) => {
-//   if (err) {
-//   console.error(err);
-//   }
-//   res.redirect('/login');
-//   })
-// }); 
+// Logout Handle
+app.get('/logout', (req, res) => {
+  // Use the logout provided by passport, passing in a callback
+  req.logout((err) => {
+  if (err) {
+  console.error(err);
+  }
+  res.redirect('/login');
+  })
+}); 
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`))

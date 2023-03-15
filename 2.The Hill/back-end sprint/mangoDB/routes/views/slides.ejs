@@ -21,12 +21,13 @@
           <div style="display: flex;
           flex-direction: column;">
           <label for="slides"><h4 style="color: whitesmoke;">add hot drop picture</h4></label>
-        
+
+          <a href="http://localhost:3000/delete-slide/<%= name %>" style=" text-decoration: none; text-transform: uppercase; color: red;margin-top: 10px;">edit hot drop</a>
           <img id="slide1" 
                 src="/images/Image.jpg" 
                 alt="your image" width="100" height="100" style="margin-left: 0px;
                 margin-top: 20px;
-                margin-bottom: 20px;"/>
+                margin-bottom: 10px;"/>
           <input type="file" id="avatar" name="image"
           onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
                 accept=".jpg, .jpeg, .png" />
@@ -42,20 +43,14 @@
                   src="/images/Image.jpg" 
                   alt="your image" width="100" height="100" />
             <input type="file" id="avatar" name="picture"
-            style="margin-left: 0px; display: flex; margin-top: 20px"
+            style="margin-left: 0px; display: flex; margin-top: 10px"
             onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
                   accept=".jpg, .jpeg, .png" />
       </div>
-      <br>
-      
-      <input type="text" name="shoe_name" placeholder="Sneaker name" />
-      <br>
-      
+      <input type="text" name="shoe_name" placeholder="Sneaker name" style="margin-left: 10px;" />
       <button type="submit" name="submit" value="Add Image" style="margin-top: 50px;" >add pictures</button>
 </form>
-
       <hr>
-      <br> 
       <div>
             
 </div>

@@ -1,7 +1,7 @@
 {
   "name": "mangodb",
   "version": "1.0.0",
-  "description": "bookFace",
+  "description": "sneaker showcase",
   "main": "app.mjs",
   "scripts": {
     "dev": "nodemon app.mjs"
@@ -9,8 +9,6 @@
   "author": "the real Batman",
   "license": "ISC",
   "dependencies": {
-    "auth0": "^3.2.0",
-    "axios": "^1.3.4",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
@@ -24,8 +22,7 @@
     "mongoose": "^6.8.0",
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "sneaks-api": "^1.2.3"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
