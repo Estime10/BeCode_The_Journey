@@ -16,6 +16,9 @@ const UserSchema = new mongoose.Schema({
   avatar: {
     type: String,
   },
+  cloudinary_id: {
+    type: String,
+  },
   images: [{
     images_id: {
       type: mongoose.Schema.Types.ObjectId,

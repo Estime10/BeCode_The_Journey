@@ -7,6 +7,8 @@ import dotenv from "dotenv"
 import passport from "passport" 
 import passportConfig from './config/passport.mjs'
 import multer from "multer"
+// import cloudinary from "cloudinary"
+// import { CloudinaryStorage } from "multer-storage-cloudinary"
 import bodyParser from "body-parser"
 import { getLogin, postLogin } from './controllers/login.mjs';
 import { getRegister, postRegister } from './controllers/register.mjs';
@@ -19,7 +21,21 @@ import { editPost, deleteImage, editSlide, deleteSlide } from "./controllers/edi
 
 
 
-// Multer config
+  // cloudinary.config({
+  //   cloud_name: "dbi2upcex",
+  //   api_key:"385279812427178" ,
+  //   api_secret: "Z8Oola2-WfkQ4BsSVVdulw1b10o"
+  // });
+
+// cloudinary config
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary.v2,
+//   params: {
+//     folder: 'public/uploads',
+//     allowed_formats: ['jpg', 'png', 'gif'],
+//   }
+// })
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
       cb(null, "public/uploads");
@@ -28,18 +44,24 @@ const storage = multer.diskStorage({
       cb(null, file.fieldname + "_"+ Date.now() +"_"+ file.originalname)
       },
   }) 
-  // Init app
-  dotenv.config()
-  const app = express()
-  const PORT = process.env.PORT || 3000
-  // DB Congig
-  const URI = process.env.ATLAS_URI
-  mongoose.set('strictQuery', false)
-  mongoose.connect(URI, { useNewUrlParser: true })
-      .then(() => console.log("MongoDataBase is connected successfully!"))
-      .catch(err => console.log(err))
 
+// Init app
+dotenv.config()
+const app = express()
+const PORT = process.env.PORT || 3000
   
+// DB Congig
+const URI = process.env.ATLAS_URI
+mongoose.set('strictQuery', false)
+mongoose.connect(URI, { useNewUrlParser: true })
+    .then(() => console.log("MongoDataBase is connected successfully!"))
+    .catch(err => console.log(err))
+
+// Init app
+const server = app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
+
 
 // EJS
 app.use(expressEjsLayouts);
@@ -71,6 +93,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
 });
+
 // Multer middleware
 const imageUpload = multer({ storage: storage }).fields([
   { name: 'image', maxCount: 9999 },
@@ -85,15 +108,12 @@ app.get("/test", (req, res)=>{res.render("test")})
 app.get("/", (req, res)=>{res.render("welcome")})
 // Login Page
 app.get("/login", getLogin);
-// Login Handle
 app.post("/login", postLogin);
 // Register Page
 app.get("/register", getRegister);
-// Register Handle
 app.post("/register", postRegister);
 // Dashbord Page
 app.get("/dashbord/", getDashbord);
-// Dashbord Handle upload image
 app.post("/dashbord/:id",imageUpload, postDashbord);
 // Edit post Page 
 app.get("/delete-image/:id", editPost);
@@ -105,8 +125,11 @@ app.get("/slides/:id", getSlides);
 app.get("/avatar/:id", getAvatar);
 // Edit Slide Page
 app.get("/delete-slide/:id", editSlide);
+app.post("/edit-slide/:id",imageUpload, editSlide);
 // Delete Slide from slides page
 app.delete("/delete-slide/:id", deleteSlide);
+
+
 
 
 
@@ -121,5 +144,3 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
   })
 }); 
-
-app.listen(PORT, console.log(`Server started on port ${PORT}`))
