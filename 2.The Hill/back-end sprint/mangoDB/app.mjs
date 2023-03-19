@@ -5,36 +5,16 @@ import flash from "connect-flash"
 import session from "express-session"
 import dotenv from "dotenv"
 import passport from "passport" 
-import passportConfig from './config/passport.mjs'
+import passportConfig from "./config/passport.mjs"
 import multer from "multer"
-// import cloudinary from "cloudinary"
-// import { CloudinaryStorage } from "multer-storage-cloudinary"
 import bodyParser from "body-parser"
-import { getLogin, postLogin } from './controllers/login.mjs';
-import { getRegister, postRegister } from './controllers/register.mjs';
-import { getDashbord, postDashbord } from './controllers/dashbord.mjs';
-import { getSlides } from "./controllers/slides.mjs";
-import { getAvatar } from "./controllers/avatar.mjs";
+import { getLogin, postLogin } from "./controllers/login.mjs"
+import { getRegister, postRegister } from "./controllers/register.mjs"
+import { getDashbord, postDashbord } from "./controllers/dashbord.mjs"
+import { getSlides } from "./controllers/slides.mjs"
+import { getAvatar } from "./controllers/avatar.mjs"
 import { editPost, deleteImage, editSlide, deleteSlide } from "./controllers/edit.mjs"
 
-
-
-
-
-  // cloudinary.config({
-  //   cloud_name: "dbi2upcex",
-  //   api_key:"385279812427178" ,
-  //   api_secret: "Z8Oola2-WfkQ4BsSVVdulw1b10o"
-  // });
-
-// cloudinary config
-// const storage = new CloudinaryStorage({
-//   cloudinary: cloudinary.v2,
-//   params: {
-//     folder: 'public/uploads',
-//     allowed_formats: ['jpg', 'png', 'gif'],
-//   }
-// })
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -58,14 +38,13 @@ mongoose.connect(URI, { useNewUrlParser: true })
     .catch(err => console.log(err))
 
 // Init app
-const server = app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+ app.listen(PORT, () => { console.log(`Server started on port ${PORT}`)
+})
 
 
 // EJS
-app.use(expressEjsLayouts);
-app.use(express.static('public')); 
+app.use(expressEjsLayouts)
+app.use(express.static('public'))
 app.use('/uploads', express.static('uploads'))
 app.set("views", "./routes/views") 
 app.set("view engine", "ejs")
@@ -81,16 +60,16 @@ app.use(
   })
 )
 // Passport middleware
-passportConfig(passport);
-app.use(passport.initialize());
-app.use(passport.session());
+passportConfig(passport)
+app.use(passport.initialize())
+app.use(passport.session())
 // Connect flash middleware
 app.use(flash());
 // Global vars middleware
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
+  res.locals.success_msg = req.flash("success_msg")
+  res.locals.error_msg = req.flash("error_msg")
+  res.locals.error = req.flash("error")
   next();
 });
 
@@ -99,7 +78,7 @@ const imageUpload = multer({ storage: storage }).fields([
   { name: 'image', maxCount: 9999 },
   { name: 'avatar', maxCount: 1 },
   { name: 'picture', maxCount: 9999 }
-]);
+])
 
 // Routes
 // Home Page
@@ -107,27 +86,27 @@ app.get("/test", (req, res)=>{res.render("test")})
 // welcome page
 app.get("/", (req, res)=>{res.render("welcome")})
 // Login Page
-app.get("/login", getLogin);
-app.post("/login", postLogin);
+app.get("/login", getLogin)
+app.post("/login", postLogin)
 // Register Page
-app.get("/register", getRegister);
-app.post("/register", postRegister);
+app.get("/register", getRegister)
+app.post("/register", postRegister)
 // Dashbord Page
-app.get("/dashbord/", getDashbord);
-app.post("/dashbord/:id",imageUpload, postDashbord);
+app.get("/dashbord/", getDashbord)
+app.post("/dashbord/:id",imageUpload, postDashbord)
 // Edit post Page 
-app.get("/delete-image/:id", editPost);
+app.get("/delete-image/:id", editPost)
 // Delete posts image from dashbord page
-app.delete("/delete-image/:id", deleteImage);
+app.delete("/delete-image/:id", deleteImage)
 // Slides Page
-app.get("/slides/:id", getSlides);
+app.get("/slides/:id", getSlides)
 // Avatar Page
-app.get("/avatar/:id", getAvatar);
+app.get("/avatar/:id", getAvatar)
 // Edit Slide Page
-app.get("/delete-slide/:id", editSlide);
-app.post("/edit-slide/:id",imageUpload, editSlide);
+app.get("/delete-slide/:id", editSlide)
+app.post("/edit-slide/:id",imageUpload, editSlide)
 // Delete Slide from slides page
-app.delete("/delete-slide/:id", deleteSlide);
+app.delete("/delete-slide/:id", deleteSlide)
 
 
 
@@ -141,6 +120,6 @@ app.get('/logout', (req, res) => {
   if (err) {
   console.error(err);
   }
-  res.redirect('/login');
+  res.redirect('/login')
   })
-}); 
+})
