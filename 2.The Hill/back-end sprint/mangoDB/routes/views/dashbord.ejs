@@ -13,37 +13,46 @@
 <body>
 <top style="margin-top: 20px;">
 <!-- title -->
-  <a href="http://localhost:3000/logout" style="float: right; color: red;margin-top: 10px; text-decoration: none; text-transform: uppercase;">Logout</a>
+<a href="http://localhost:3000/logout" 
+  style="float: right; color: red;margin-top: 10px; text-decoration: none; text-transform: uppercase;">
+  Logout
+</a>
 
 <div class="title">
 
-<h1 class="proname"><span class="nom" style="color: red;">
-  <%= name %>
-</span> Sneaker profile</h1>
+  <h1 class="proname">
+    <span class="nom" 
+    style="color: red;">
+    <%= name %>
+    </span> 
+    Sneaker profile
+  </h1>
 </div>
 <!-- profile -->
 <div class="profile">
-
 <!-- link to profile upload -->
-<a href="http://localhost:3000/avatar/<%= name %>">
+<!-- <button class="bruton bruton bruton-open">Open Modal</button> -->
 <!-- profile picture -->
 <% if (typeof avatar !=='undefined' && avatar) { %>
-<img src="/uploads/<%= avatar %>" alt="Avatar" width="200px" height="200px" style="
+<img class="bruton bruton-open" src="/uploads/<%= avatar %>" alt="Avatar" width="200px" height="200px" style="
          border-radius: 50%;margin-top: 0px;margin-bottom: 0px;overflow: hidden;" />
 <% } else { %>
-<img src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%;margin-top: 40px;margin-bottom: 0px;overflow: hidden;" width="200px" height="200px" />
+<img class="bruton bruton-open" src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%;margin-top: 40px;margin-bottom: 0px;overflow: hidden;" width="200px" height="200px" />
 <% } %>
 </a>
-<div class="adds" style="display: flex; align-items: stretch; flex-direction: column;">
+<div class="adds">
   <div class="followers">
     <% let counter = 0; %>
-    <p class="posts">posts
+    <p class="posts" style="    margin-top: 0px;
+    margin-bottom: 10px;">posts
       <span class="number" style="color: red;" id="post-count"><%= images.length %></span>
     </p>
-    <p class="follow">followers
+    <p class="follow" style="    margin-top: 0;
+    margin-bottom: 10px;">followers
       <span class="number" style="color: red;" id="following-count">0</span>
     </p>
-    <p class="followed">followed
+    <p class="followed" style="    margin-top: 0;
+    margin-bottom: 10px;" >followed
       <span class="number" style="color: red;">0</span>
     </p>
   </div>
@@ -120,6 +129,59 @@
   </div>
 </div>
 </div>
+<!-- modal avatar -->
+<section class="modale hide">
+    <div class="flexe">
+        <h3 class="proname"><span class="nom" style="color: red;"><%= name %></span> profile picture </h3>
+        <button class="bruton-close">X</button>
+    </div>
+        <form action="/dashbord/<%= _id %>" method="POST" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
+          <!-- avatar -->
+        <div>
+          <label for="avatar-input"><h4 style="color: red;">Select profile picture</h4></label>
+          <br>
+          <br>
+          <input type="file" id="avatar-input" name="avatar"
+          onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
+          accept=".jpg, .jpeg, .png" />
+            <button type="submit" name="submit" value="Add Image">update profile</button>
+            <br>
+            <br>
+            <hr>
+            <div class="preview">
+                <img id="avatar-preview" src="/images/Image-bgoff.png" style="height: 250px; width: 250px;"/>
+            </div>
+                
+        </div>
+</form>
+</section>
+<div class="overlay hide"></div>
+<section class="modale hide">
+    <div class="flexe">
+        <h3 class="proname"><span class="nom" style="color: red;"><%= name %></span> profile picture </h3>
+        <button class="bruton-close">X</button>
+    </div>
+        <form action="/dashbord/<%= _id %>" method="POST" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
+          <!-- avatar -->
+        <div>
+          <label for="avatar-input"><h4 style="color: red;">Select profile picture</h4></label>
+          <br>
+          <br>
+          <input type="file" id="avatar-input" name="avatar"
+          onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
+          accept=".jpg, .jpeg, .png" />
+            <button type="submit" name="submit" value="Add Image">update profile</button>
+            <br>
+            <br>
+            <hr>
+            <div class="preview">
+                <img id="avatar-preview" src="/images/Image-bgoff.png" style="height: 250px; width: 250px;"/>
+            </div>
+                
+        </div>
+</form>
+</section>
+<div class="overlay hide"></div>
 </top>
 </body>
 </html>
@@ -166,7 +228,36 @@
       clicked = false;
       count.textContent--; // Decrement the followers count
     }
-  });
+  })
+  const modal = document.querySelector(".modale");
+  const overlay = document.querySelector(".overlay");
+  const openModalbruton = document.querySelector(".bruton-open");
+  const closeModalbruton = document.querySelector(".bruton-close");
+
+// close modal function
+  const closeModal = function () {
+  modal.classList.add("hide");
+  overlay.classList.add("hide");
+};
+
+// close the modal when the close button and overlay is clicked
+closeModalbruton.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+// close modal when the Esc key is pressed
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modal.classList.contains("hide")) {
+    closeModal();
+  }
+});
+
+// open modal function
+const openModal = function () {
+  modal.classList.remove("hide");
+  overlay.classList.remove("hide");
+};
+// open modal event
+openModalbruton.addEventListener("click", openModal);
 </script>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
@@ -184,8 +275,14 @@
   }
   .profile {
     display: flex;
+    height: 217px;
+    align-items: flex-end;
     flex-direction: row-reverse;
-    height: 200px;
+    justify-content: flex-start;
+  }
+  .adds{
+    display: flex;
+    flex-direction: row;
     align-items: flex-end;
   }
   .followers{
@@ -238,12 +335,18 @@
     background-color: black;
     color: #FFFFFF;
     font-size: 12px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 0px 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
+    margin: 10px;
+    font-weight: 600;
+  }
+  .btn-activities {
+    display: flex;
+    flex-direction: column-reverse;
     margin: 10px;
   }
   /* feed */
@@ -318,4 +421,72 @@
   cursor: pointer;
 }
 
+/* modal */
+.bruton {
+  cursor: pointer;
+}
+
+.modale {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 650px;
+    height: 600px;
+    padding: 1.3rem;
+    min-height: 250px;
+    position: absolute;
+    z-index: 2;
+    top: 10%;
+    left: 30%;
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+} 
+
+ .flexe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.modale input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.modale p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.bruton-close {
+    background: transparent;
+
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.hide {
+  display: none;
+}
 </style>

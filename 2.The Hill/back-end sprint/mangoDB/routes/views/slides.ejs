@@ -12,47 +12,71 @@
       <a href="/dashbord/" style="float: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;" >Back into the matrix</a>
     <br>
     <div class="container">
-    <h1 class="proname" style="margin-top: 100;"><span style="color: red;" class="nom"><%= name %></span>' S hot drop selection </h1>
+    <h1 class="proname" style="margin-top: 100;"><span style="color: red;" class="nom"><%= name %></span> hot drop selection </h1>
     <br>
     <br>
-    <form action="/dashbord/<%= _id %>" method="POST" enctype="multipart/form-data">
+<form action="/dashbord/<%= _id %>" method="POST" enctype="multipart/form-data" class="formulaire">
 
-
-          <div style="display: flex;
-          flex-direction: column;">
-          <label for="slides"><h4 style="color: whitesmoke;">add hot drop picture</h4></label>
-
-          <a href="http://localhost:3000/delete-slide/<%= name %>" style=" text-decoration: none; text-transform: uppercase; color: red;margin-top: 10px;">edit hot drop</a>
-          <img id="slide1" 
-                src="/images/Image.jpg" 
-                alt="your image" width="100" height="100" style="margin-left: 0px;
-                margin-top: 20px;
-                margin-bottom: 10px;"/>
-          <input type="file" id="avatar" name="image"
-          onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
-                accept=".jpg, .jpeg, .png" />
-          </div>
+<div class="cols">
+ <div class="dropers">
+      <label for="slides"><h4 style="color: whitesmoke;">add hot drop picture</h4></label>
+      <div class="edit-dropers" style="margin-bottom: 20px;">
+      <a href="http://localhost:3000/delete-slide/<%= name %>" 
+      style=" text-decoration: none; text-transform: uppercase; color: red;">edit hot drop</a>   
+      </div>
+      <input type="file" id="avatar" name="image"
+      onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
+      accept=".jpg, .jpeg, .png" /> 
+</div>
       <br>
-<label for="posts"><h4 style="color: whitesmoke;">add new post</h4></label>
-      <div class="edit-slides" style="margin-left: 0px;
-      margin-top: 20px;
-      margin-bottom: 20px;">
-            <a href="http://localhost:3000/delete-image/<%= name %>" style=" text-decoration: none; text-transform: uppercase; color: red;">edit post</a>
+      <br> 
+
+<div class="dropers">
+      <label for="posts"><h4 style="color: whitesmoke;">add new post</h4></label>
+      <div class="edit-slides" style="margin-bottom: 20px;">
+      <a href="http://localhost:3000/delete-image/<%= name %>"
+      style=" text-decoration: none; text-transform: uppercase; color: red;">edit post</a>
       </div>
-            <img id="image" 
-                  src="/images/Image.jpg" 
-                  alt="your image" width="100" height="100" />
-            <input type="file" id="avatar" name="picture"
-            style="margin-left: 0px; display: flex; margin-top: 10px"
-            onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
-                  accept=".jpg, .jpeg, .png" />
+      <div class="input-sliders">
+      <input type="file" id="avatar" name="picture"
+      onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
+      accept=".jpg, .jpeg, .png" />
+      <br>
+      <input type="text" name="shoe_name" placeholder="Sneaker name" />   
       </div>
-      <input type="text" name="shoe_name" placeholder="Sneaker name" style="margin-left: 10px;" />
-      <button type="submit" name="submit" value="Add Image" style="margin-top: 50px;" >add pictures</button>
+      
+</div>     
+</div>
+
+            
+      
+      <button type="submit" name="submit" value="Add Image">add pictures</button>
+      <!-- displayed files -->
 </form>
       <hr>
-      <div>
-            
+<div class="cols">
+      <div class="col2">
+      <h1 style="margin-top: 10px;">Hot drop</h1>
+      <div class="pictures">
+      <img id="slide1" 
+      src="/images/Image.jpg" 
+      alt="your image" width="200" height="200"
+      onchange="document.getElementById('slide1').src = window.URL.createObjectURL(this.files[0])"
+      accept=".jpg, .jpeg, .png" />      
+      </div>
+      </div>
+
+      <div class="col2">
+      <h1 style="margin-top: 10px; text-align: center">Posts</h1>
+      <div class="pictures">
+      <img id="image" 
+      src="/images/Image.jpg" 
+      alt="your image" width="200" height="200" 
+      onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
+      accept=".jpg, .jpeg, .png" />     
+      </div>
+      </div>
+</div>  
 </div>
 </body>
 </html>
@@ -60,29 +84,65 @@
       @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
     
       body {
-        background: black;
-        font-family: 'Montserrat', sans-serif;
-        color: whitesmoke;
+      background: black;
+      font-family: 'Montserrat', sans-serif;
+      color: whitesmoke;
       }
-    
       h1,
       h2,
       h3 {
-        color: whitesmoke;
+      color: whitesmoke;
       }
       button {
-        border-radius: 20px;
-        border: 1px solid whitesmoke;
-        background-color: black;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 0px 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-        cursor: pointer;
-        margin: 10px;
+      border-radius: 20px;
+      border: 1px solid whitesmoke;
+      background-color: black;
+      color: #FFFFFF;
+      font-size: 12px;
+      padding: 0px 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+      cursor: pointer;
+      margin: 10px;
+      font-weight: 600;
+      margin-top: 50px;
+      width: 135px;
       }
-  
+      .formulaire {
+      display: flex;
+      flex-direction: column;
+      }
+      .formulaire input {
+      padding: 0.7rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 0.9em;
+      }
+      .dropers{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+      .input-sliders{
+      display: flex;
+      flex-direction: column;
+      }
+      input{
+      width: 330px;
+      }
+      .cols{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      }
+      .col2{
+      display: flex;
+      flex-direction: column;
+      }
+      .pictures{
+      align-items: center;
+      }
+
+
 </style>

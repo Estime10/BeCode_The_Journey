@@ -110,7 +110,7 @@ app.delete("/delete-slide/:id", deleteSlide)
 
 
 
-
+app.get("/test", (req, res)=>{res.render("test")})
 
 
 // Logout Handle
