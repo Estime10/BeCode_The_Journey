@@ -95,9 +95,7 @@
     <hr style="margin-top: 50px;">
   </div>
 </div>
-<h2 class="collection"><span class="nom" style="color: red;">
-  <%= name %>
-</span> collection showcase</h2>
+
 <!-- feed one  -->
 <div class="feed" style="margin-left: 150px;">
   <div class="pictureFeed" style=" margin-right: 40px;">
@@ -156,32 +154,6 @@
 </form>
 </section>
 <div class="overlay hide"></div>
-<section class="modale hide">
-    <div class="flexe">
-        <h3 class="proname"><span class="nom" style="color: red;"><%= name %></span> profile picture </h3>
-        <button class="bruton-close">X</button>
-    </div>
-        <form action="/dashbord/<%= _id %>" method="POST" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
-          <!-- avatar -->
-        <div>
-          <label for="avatar-input"><h4 style="color: red;">Select profile picture</h4></label>
-          <br>
-          <br>
-          <input type="file" id="avatar-input" name="avatar"
-          onchange="document.getElementById('avatar-preview').src = window.URL.createObjectURL(this.files[0])"
-          accept=".jpg, .jpeg, .png" />
-            <button type="submit" name="submit" value="Add Image">update profile</button>
-            <br>
-            <br>
-            <hr>
-            <div class="preview">
-                <img id="avatar-preview" src="/images/Image-bgoff.png" style="height: 250px; width: 250px;"/>
-            </div>
-                
-        </div>
-</form>
-</section>
-<div class="overlay hide"></div>
 </top>
 </body>
 </html>
@@ -203,7 +175,8 @@
     }
   }
   sliderPluggin(0);
-
+</script>
+<script>
   // Initialize the counter for post
   // Get the element by its ID
   const postCount = document.getElementById("post-count");
@@ -229,35 +202,37 @@
       count.textContent--; // Decrement the followers count
     }
   })
+</script>
+<script>
   const modal = document.querySelector(".modale");
   const overlay = document.querySelector(".overlay");
   const openModalbruton = document.querySelector(".bruton-open");
   const closeModalbruton = document.querySelector(".bruton-close");
-
-// close modal function
+  
+  // close modal function
   const closeModal = function () {
-  modal.classList.add("hide");
-  overlay.classList.add("hide");
-};
-
-// close the modal when the close button and overlay is clicked
-closeModalbruton.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
-
-// close modal when the Esc key is pressed
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && !modal.classList.contains("hide")) {
-    closeModal();
-  }
-});
-
-// open modal function
-const openModal = function () {
-  modal.classList.remove("hide");
-  overlay.classList.remove("hide");
-};
-// open modal event
-openModalbruton.addEventListener("click", openModal);
+    modal.classList.add("hide");
+    overlay.classList.add("hide");
+  };
+  
+  // close the modal when the close button and overlay is clicked
+  closeModalbruton.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+  
+  // close modal when the Esc key is pressed
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.classList.contains("hide")) {
+      closeModal();
+    }
+  });
+  
+  // open modal function
+  const openModal = function () {
+    modal.classList.remove("hide");
+    overlay.classList.remove("hide");
+  };
+  // open modal event
+  openModalbruton.addEventListener("click", openModal);
 </script>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');

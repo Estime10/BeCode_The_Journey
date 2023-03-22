@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <body>
 <section class="modale hide">
     <div class="flexe">
         <h3 class="proname"><span class="nom" style="color: red;"></span> profile picture </h3>
         <button class="bruton-close">X</button>
     </div>
-        <form action="/dashbord/" method="POST" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
+        <form action="/dashbord/" method="POST" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;"> -->
           <!-- avatar -->
-        <div>
+        <!-- <div>
           <label for="slides"><h4 style="color: red;">Select hot drop picture</h4></label>
           <br>
           <br>
@@ -28,8 +28,8 @@
 <div class="overlay hide"></div>
 <button class="bruton bruton-open">hot drop</button>
 
-</body>
-<script>
+</body> -->
+<!-- <script>
 const modal = document.querySelector(".modale");
 const overlay = document.querySelector(".overlay");
 const openModalbruton = document.querySelector(".bruton-open");
@@ -59,9 +59,9 @@ const openModal = function () {
 };
 // open modal event
 openModalbruton.addEventListener("click", openModal);
-</script>
-</html>
-<style>
+</script> -->
+<!-- </html> -->
+<!-- <style>
 .bruton {
   cursor: pointer;
 }
@@ -129,4 +129,116 @@ openModalbruton.addEventListener("click", openModal);
 .hide {
   display: none;
 }
+</style> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Document</title>
+</head>
+
+  <nav>
+    <div class="nav-left">
+      
+      <img src="/images/vie.png"alt="logo" 
+      class="profile picture online" style="border-radius: 50%;">
+      
+      <ul class="nav-links">
+        <li><i class="fa-regular fa-bell"></i></li>
+        <li><i class="fa-regular fa-envelope"></i></li>
+        <li><i class="fa-regular fa-video-plus"></i></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="search-box">
+        <input type="text" placeholder="search">
+      </div>
+    </div>
+  </nav>
+  <div class="contner">
+    <div class="left-sidebar"></div>
+    <div class="main-content"></div>
+    <div class="right-sidebar"></div>
+  </div>
+</body>
+</html>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  }
+  /* body {
+  background: black;
+  } */
+  nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background: grey; */
+  padding: 5px 5%
+  }
+  .logo {
+  width: 160px;
+  margin-right: 45px;
+  }
+  .nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  }
+  .nav-left ul li {
+  list-style: none;
+  display: inline-block;
+  }
+  .nav-left ul li img {
+  width: 30px;
+  margin: 0 15px;
+  }
+  .search-box  {
+     background: whitesmoke;  
+    width: 135px;
+    border-radius: 20px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+  }
+  .search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 0 15px;
+  }
+  /* .online {
+    position: relative;
+  }
+  .online ::after{
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: rgb(2, 255, 2);
+    position: absolute;
+    top: 0;
+    right: 0;
+  } */
+  .contner {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 5%;
+  }
+  .left-sidebar {
+    flex-basis: 25%;
+    background: red;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+  }
 </style>

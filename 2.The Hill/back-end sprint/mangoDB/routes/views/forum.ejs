@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers forum</title>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <a href="/dashbord/"><img src="/images/vie.png" alt="profile-picture"></a>
+    </div>
+    <div class="nav-links">
+        <ul>
+            
+            <li><a href="/dashbord/">Profile</a><!-- goes straight to the dashboard --></li>
+            <li><a href="/dashbord/">Auctions</a><!-- create a room to exhange your sneakers private auctions ect --></li>
+            <li><a href="/dashbord/">Settings</a><!-- deletation of the profile/ updating the user info ( email, nickname etc ) --></li>
+            <li style="margin-top: 260px;"><a href="/login/">Logout</a></li>
+        </ul>
+    </div>
+</div>    
+<header>
+
+    <!-- forum page -->
+<div class="center">
+<div class="title">
+    <h1>Sneakers forum</h1>
+</div>
+<div class="posts">
+    <form action="post" class="post">
+        <textarea placeholder="Remember, be nice!" cols="30" rows="5" maxlength="600" id="message" onkeyup="countChars()"></textarea>
+        <div id="counter" style="position: absolute; bottom: 5px; right: 5px;"></div>
+        <!-- <div class="post-adds">
+            <div class="btn-activities">
+                <button type="button" id="btn-like">Like</button>
+                <button type="button" id="btn-dislike">Dislike</button>
+                <button type="button" id="btn-comment">Comment</button>
+            </div>
+        </div> -->
+        <input type="file" id="file" name="file" style="display:none"/>
+        <a onclick="file.click()">straight to your files</a>
+        <button>
+            add post
+        </button>
+    </form>
+</div>    
+</div>
+    
+</header>
+
+</body>
+</html>
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    background: black;
+    font-family: 'Montserrat', sans-serif;
+    color: whitesmoke;
+    }
+    h1,
+    h2,
+    h3
+    {
+    color: whitesmoke; 
+    } 
+    a {
+    color: red;
+    }
+    header{
+    display: flex;
+    margin-top: -710px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    }
+    .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    }
+    .logo{
+    width: 100%;
+    align-items: flex-start;
+    margin: 0px;
+    }
+    .nav-links{
+    /* width: 100%;
+    height: 100px;
+    align-items: flex-start; */
+    margin: 10px;
+    }
+    .nav-links ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    }
+    .nav-links ul li{
+    list-style: none;
+    margin: 10px;
+    }
+    .nav-links ul li a{
+    text-decoration: none; 
+    }
+    .center{
+    display: flex;
+    margin-left: 170px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    }
+    .title{
+    width: 100%;
+    height: 50px;
+    margin: 30px;
+    text-align: center;
+    }
+    .posts{
+    width: 100%;
+    align-items: center;
+    margin: 10px;
+    }
+    .post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    }
+    .post textarea{
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    margin: 10px 0px 0px 0;
+    resize: none;
+    overflow: auto;
+    }
+    .post a{
+    align-items: center;
+    margin: 10px 0px 0px 0;
+    margin-bottom: 25px;
+    color: red;
+    }
+    .post input[type="file"]{
+    width: 100%;
+    height: 50px;
+    margin: 10px 0px 0px 0;
+    }
+    .post input[type="file"]:hover{
+    cursor: pointer;
+    }
+    .post button:hover{
+    cursor: pointer;
+    }
+    .post a:hover{
+    cursor: pointer;
+    }
+    .post input[type="file"]:hover{
+    cursor: pointer;
+    }
+    .post input:focus{
+    outline: none;
+    }
+    .post button:focus{
+    outline: none;
+    }
+    .post a:focus{
+    outline: none;
+    }
+    .post input[type="file"]:focus{
+    outline: none;
+    }
+    button {
+    border-radius: 20px;
+    border: 1px solid whitesmoke;
+    background-color: black;
+    color: #FFFFFF;
+    font-size: 12px;
+    /* font-weight: bold; */
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin: 10px;
+    font-weight: 600;
+  }
+  .btn-activities {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 10px;
+  }
+  .counter{
+    margin: 10px;
+    color: red;
+    float: right;
+}
+   
+
+
+</style>
+<script>
+const countChars = () => {
+  const textarea = document.getElementById("message");
+  const counter = document.getElementById("counter");
+  counter.innerText = `${textarea.value.length} / 600 characters`;
+}
+
+document.getElementById("message").addEventListener("input", countChars);
+</script>

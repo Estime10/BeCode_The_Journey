@@ -14,6 +14,7 @@ import { getDashbord, postDashbord } from "./controllers/dashbord.mjs"
 import { getSlides } from "./controllers/slides.mjs"
 import { getAvatar } from "./controllers/avatar.mjs"
 import { editPost, deleteImage, editSlide, deleteSlide } from "./controllers/edit.mjs"
+import { getForum } from "./controllers/forum.mjs"
 
 
 const storage = multer.diskStorage({
@@ -107,6 +108,8 @@ app.get("/delete-slide/:id", editSlide)
 app.post("/edit-slide/:id",imageUpload, editSlide)
 // Delete Slide from slides page
 app.delete("/delete-slide/:id", deleteSlide)
+// get forum
+app.get("/forum", getForum )
 
 
 
