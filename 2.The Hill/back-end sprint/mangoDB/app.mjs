@@ -8,15 +8,26 @@ import passport from "passport"
 import passportConfig from "./config/passport.mjs"
 import multer from "multer"
 import bodyParser from "body-parser"
+// socket.io
+import http from "http"
+import { Server } from "socket.io"
+// Controllers
 import { getLogin, postLogin } from "./controllers/login.mjs"
 import { getRegister, postRegister } from "./controllers/register.mjs"
 import { getDashbord, postDashbord } from "./controllers/dashbord.mjs"
 import { getSlides } from "./controllers/slides.mjs"
 import { getAvatar } from "./controllers/avatar.mjs"
 import { editPost, deleteImage, editSlide, deleteSlide } from "./controllers/edit.mjs"
-import { getForum } from "./controllers/forum.mjs"
+import { getMessages, postMessages} from "./controllers/messages.mjs"
 
+// init app
+dotenv.config()
+const app = express()
+const server = http.createServer(app)
+const io = new Server(server)
+const PORT = process.env.PORT || 3000
 
+// storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
       cb(null, "public/uploads");
@@ -25,24 +36,12 @@ const storage = multer.diskStorage({
       cb(null, file.fieldname + "_"+ Date.now() +"_"+ file.originalname)
       },
   }) 
-
-// Init app
-dotenv.config()
-const app = express()
-const PORT = process.env.PORT || 3000
-  
 // DB Congig
 const URI = process.env.ATLAS_URI
 mongoose.set('strictQuery', false)
 mongoose.connect(URI, { useNewUrlParser: true })
     .then(() => console.log("MongoDataBase is connected successfully!"))
     .catch(err => console.log(err))
-
-// Init app
- app.listen(PORT, () => { console.log(`Server started on port ${PORT}`)
-})
-
-
 // EJS
 app.use(expressEjsLayouts)
 app.use(express.static('public'))
@@ -73,7 +72,6 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error")
   next();
 });
-
 // Multer middleware
 const imageUpload = multer({ storage: storage }).fields([
   { name: 'image', maxCount: 9999 },
@@ -108,8 +106,12 @@ app.get("/delete-slide/:id", editSlide)
 app.post("/edit-slide/:id",imageUpload, editSlide)
 // Delete Slide from slides page
 app.delete("/delete-slide/:id", deleteSlide)
-// get forum
-app.get("/forum", getForum )
+// Message Page
+app.get("/messages/:id", getMessages)
+app.post("/messages/:id", postMessages)
+
+
+
 
 
 
@@ -126,3 +128,28 @@ app.get('/logout', (req, res) => {
   res.redirect('/login')
   })
 })
+
+// log when a user connects/disconnects
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  })
+})
+
+// submit chat in the terminal
+// io.on('connection', (socket) => {
+//   socket.on('chat message', (msg) => {
+//     console.log('message: ' + msg);
+//   });
+// });
+
+// write the chat on the browser
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  })
+})
+
+
+server.listen(PORT, () => console.log(`Server listening on port ${PORT}`))

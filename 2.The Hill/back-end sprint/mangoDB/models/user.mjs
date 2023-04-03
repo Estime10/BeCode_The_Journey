@@ -39,22 +39,24 @@ const UserSchema = new mongoose.Schema({
       required: true,
     },
   }],
-  date: {
-    type: Date,
-    default: Date.now,
+  message: [{
+    message_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      auto: true,
+    },
+    content: {
+      type: String,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+}],
   },
-  followers: {
-    type: Array,
-  },
-  following: {
-    type: Array,
-  },
-  likes: {
-    type: Number,
-  },
-}, {
+ {
   timestamps: true,
 });
+
 
 const User = mongoose.model("User", UserSchema);
 

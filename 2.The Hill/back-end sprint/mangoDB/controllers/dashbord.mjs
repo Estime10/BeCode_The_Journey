@@ -2,29 +2,22 @@ import User from "../models/user.mjs";
 
 // get dashbord
 export const getDashbord = async (req, res) => {
-  console.log("getdashbord", req.user);
   try {
-    console.log("req.user", req.user);
-
-    if (!req.user) {
+    console.log("getdashbord", req.user);
+        if (!req.user) {
       return res.redirect("/login");
     }
-    
-    const { name, avatar, images, slides, _id, shoe_name } = req.user;
-
-    console.log("slides before slice", slides);
-
+    const { name, avatar, images, slides, _id, shoe_name, message } = req.user;
+    req.session.user = { _id, name };
     // If there are more than 4 slides, only show the last 4
     const lastFourSlides = slides.slice(-4);
-
-    console.log("lastFourSlides", lastFourSlides);
-
     res.render("dashbord", { 
       name,
       avatar,
       images,
       shoe_name,
       slides: lastFourSlides,
+      message,
       _id });
       
   } catch (err) {
@@ -44,11 +37,11 @@ export const postDashbord = async (req, res) => {
 
     const { avatar, picture, image } = req.files;
     const shoe_name = req.body.shoe_name;
-
+// profile picture aka avatar
     if (avatar && avatar.length > 0) {
       user.avatar = avatar[0].filename;
     }
-
+// feed images aka picture and shoe_name
     if (picture && picture.length > 0) {
       const images = picture.slice(0, 999).map(file => ({ url: file.filename }));
       user.images.push(...images);
@@ -56,7 +49,7 @@ export const postDashbord = async (req, res) => {
       const lastImageIndex = user.images.length - 1;
       user.images[lastImageIndex].shoe_name = req.body.shoe_name;
     }
-
+// slides aka image
     if (image && image.length > 0) {
       const slides = image.slice(0, 4).map(file => ({ url: file.filename }));
       user.slides.push(...slides);

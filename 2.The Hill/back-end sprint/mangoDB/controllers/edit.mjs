@@ -10,7 +10,6 @@ export const editPost = async (req, res) => {
       return res.redirect("/dashbord");
     }
     const { name, _id } = req.user;
-    
     req.session.user = { _id, name };
 
     // Find all users who have images

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+<body>
+  <a href="/dashbord/" style="text-align: right; margin-top: 25px; text-decoration: none; text-transform: uppercase; color: red;">Back into the matrix</a>
+  <br />
+<div class="title">
+<h1 class="proname"><span class="nom" ><%= name %></span> Messages
+</h1>
+</div>
+<ul id="messages">
+  <% messages.forEach((message) => { %>
+    <% if (message.content !== '') { %>
+      <li>
+        <span class="message-text"><%= message.content %></span>
+        <span class="message-timestamp"><%= message.timestamp %></span>
+      </li>
+    <% } %>
+  <% }) %>
+</ul>
+<form id="form" action="/send-message" method="post">
+  <input id="input" name="message" autocomplete="off" />
+  <button type="submit">Send</button>
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  const messages = document.getElementById('messages');
+  const form = document.getElementById('form');
+  const input = document.getElementById('input');
+  const userName = '<%= name %>';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('chat message', {
+        message: input.value,
+        name: userName,
+        timestamp: Date.now(),
+      })
+      input.value = '';
+    }
+  });
+
+  socket.on('chat message', (data) => {
+    const { message, name, timestamp } = data;
+    const item = document.createElement('li');
+    item.innerHTML = `<span class="message-name">
+      ${name}</span>: <span class="message-text">
+      ${message}</span> <br> <span class="message-timestamp">
+      ${new Date(timestamp).toLocaleString()}</span>`;
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+
+    // Send the timestamp to the server to save to the database
+    socket.emit('message sent', { timestamp });
+  });
+
+  socket.on('connect', () => {
+    socket.emit('get latest connection time');
+  });
+
+  socket.on('latest connection time', (time) => {
+    const message = document.createElement('div');
+    message.innerText =`Latest connection time: ${time}` ;
+    document.body.appendChild(message);
+  });
+
+  socket.on('user connected', () => {
+    const message = document.createElement('div');
+    message.innerText = 'User is connected';
+    document.body.appendChild(message);
+  });
+
+  socket.on('user disconnected', () => {
+    const message = document.createElement('div');
+    message.innerText = 'User has disconnected';
+    document.body.appendChild(message);
+  });
+</script>
+</body>
+</head>
+</html>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body {
+  background: black;
+  font-family: 'Montserrat', sans-serif;
+  color: whitesmoke;
+}
+.container {
+    margin-top: 50px;
+}
+h1,
+h2,
+h3 {
+  color: whitesmoke;
+}
+.proname{
+    margin-bottom: 100px;
+}
+.nom{
+color: red;
+}
+button {
+  border-radius: 20px;
+  border: 1px solid whitesmoke;
+  background-color: black;
+  color: #FFFFFF;
+  font-size: 12px;
+  padding: 0px 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: 600;
+}
+.btn-activities {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 10px;
+}
+#form { 
+background: rgba(123, 2, 2, 0.15);
+padding: 0.25rem; position: fixed;
+bottom: 0; left: 0; right: 0; 
+display: flex; height: 3rem; 
+box-sizing: border-box; 
+backdrop-filter: blur(10px);
+}
+#input { 
+border: none; 
+padding: 0 1rem; 
+flex-grow: 1; 
+border-radius: 2rem; 
+margin: 0.25rem;
+font-family: 'Montserrat', sans-serif;
+
+}
+#input:focus { outline: none; }
+#form > button { 
+background: #797878; border: none; 
+padding: 0 1rem; margin: 0.25rem;
+border-radius: 3px; 
+outline: none; color: red; 
+}
+#messages { 
+list-style-type: none; 
+margin: 0; padding: 0;
+}
+#messages > li { 
+padding: 0.5rem 1rem;
+margin-top: 20px;
+font-family: 'Montserrat', sans-serif;
+color: whitesmoke;
+
+}
+#messages > li:nth-child(odd) {
+background: #060606; 
+}
+#status {
+color: red;
+font-weight: bold;
+}
+#status div {
+margin-top: 10px;
+}
+</style> 
+</html>

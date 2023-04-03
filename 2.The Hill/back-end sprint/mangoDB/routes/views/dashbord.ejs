@@ -19,7 +19,6 @@
 </a>
 
 <div class="title">
-
   <h1 class="proname">
     <span class="nom" 
     style="color: red;">
@@ -34,32 +33,33 @@
 <!-- <button class="bruton bruton bruton-open">Open Modal</button> -->
 <!-- profile picture -->
 <% if (typeof avatar !=='undefined' && avatar) { %>
-<img class="bruton bruton-open" src="/uploads/<%= avatar %>" alt="Avatar" width="200px" height="200px" style="
-         border-radius: 50%;margin-top: 0px;margin-bottom: 0px;overflow: hidden;" />
+<img class="bruton bruton-open" src="/uploads/<%= avatar %>" alt="Avatar" width="200px" height="200px" style="border-radius: 50%;"  />
 <% } else { %>
-<img class="bruton bruton-open" src="/images/Image.jpg" alt="Avatar" style="border-radius: 50%;margin-top: 40px;margin-bottom: 0px;overflow: hidden;" width="200px" height="200px" />
+<img class="bruton bruton-open" src="/images/Image.jpg" alt="Avatar" width="200px" height="200px" style="border-radius: 50%;" />
 <% } %>
 </a>
 <div class="adds">
   <div class="followers">
     <% let counter = 0; %>
-    <p class="posts" style="    margin-top: 0px;
+    <p class="posts" style="margin-top: 0px;
     margin-bottom: 10px;">posts
-      <span class="number" style="color: red;" id="post-count"><%= images.length %></span>
+      <span class="number"id="post-count"><%= images.length %></span>
     </p>
-    <p class="follow" style="    margin-top: 0;
+    <p class="follow" style="margin-top: 0;
     margin-bottom: 10px;">followers
-      <span class="number" style="color: red;" id="following-count">0</span>
+      <span class="number"id="following-count">0</span>
     </p>
-    <p class="followed" style="    margin-top: 0;
+    <p class="followed" style="margin-top: 0;
     margin-bottom: 10px;" >followed
-      <span class="number" style="color: red;">0</span>
+      <span class="number">0</span>
     </p>
   </div>
   <div class="btn-activities">
-    <button class="dm"><a style="color: whitesmoke;text-decoration: none;" href="http://localhost:3000/message/">message</a></button>
+    <button class="dm"><a style="color: whitesmoke;text-decoration: none;" 
+      href="http://localhost:3000/messages/<%= name %>">message</a></button>
     <button class="following">follow</button>
-    <button class="btn-activities"><a style="color: whitesmoke;text-decoration: none;" href="http://localhost:3000/slides/<%= name %>"> post img</a></button>
+    <button class="btn-activities"><a style="color: whitesmoke;text-decoration: none;" 
+      href="http://localhost:3000/slides/<%= name %>"> post img</a></button>
   </div>
 </div>
 </div>
@@ -67,12 +67,13 @@
 <div class="hotdropTitle">
 <!-- hotdrop subtitle -->
 <div class="hotdrop" >
-<h2 class="drop" style="margin-left: 30px;">THE <span class="nom" style="color: red; margin-top: -170px;">HOT</span> DROP</h2>
+<h2 class="drop" style="margin-left: 30px;">THE <span class="nom" 
+  style="color: red; margin-top: -170px;">HOT</span> DROP</h2>
 </div>
 </div>
 <div class="bar">
   <div class="red">
-    <hr style="margin-top: 5px;">
+    
   </div>
 </div>
 
@@ -82,7 +83,8 @@
 
 <% if (slides && slides.length > 0) { %>
   <% for (let i = 0; i < slides.length; i++) { %>
-    <div class="slide" id="slide<%= i+1 %>" style="background-image: url('/uploads/<%= slides[i].url %>');">
+    <div class="slide" id="slide<%= i+1 %>" 
+      style="background-image: url('/uploads/<%= slides[i].url %>');">
     </div>
   <% } %>
 <% } else { %>
@@ -242,7 +244,6 @@
     font-family: 'Montserrat', sans-serif;
     color: whitesmoke;
   }
-
   h1,
   h2,
   h3 {
@@ -395,12 +396,21 @@
   opacity: 1;
   cursor: pointer;
 }
-
+.number{
+  color: red;
+}
 /* modal */
 .bruton {
   cursor: pointer;
 }
-
+.bruton .bruton-open{
+  border-radius: 50%;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  width:200px;
+  height:200px;
+}
 .modale {
     display: flex;
     flex-direction: column;
